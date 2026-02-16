@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Capture Cards – CompTIA A+ 220-1201 (Simple Exam Notes)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+        .key-point {
+            background-color: #f0fff4;
+            padding: 10px;
+            border-left: 5px solid #27ae60;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-top: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Video Capture Cards – CompTIA A+ 220-1201</h1>
+
+<h2>What is a Video Capture Card?</h2>
+
+<p>A video capture card takes video input from devices (like cameras, consoles, old VCRs) and brings it into the computer for recording, streaming, or editing.</p>
+
+<ul>
+    <li>Captures video (and usually audio) from external sources</li>
+    <li>Used for: live streaming games, digitizing old VHS tapes, video conferences, security cameras</li>
+    <li>Converts analog or digital signals to data the PC can use</li>
+</ul>
+
+<div class="key-point">
+    <strong>Exam Tip:</strong> Capture cards are expansion/add-on cards in Domain 3.0 Hardware (same section as sound/video/NIC cards).
+</div>
+
+<img src="https://m.media-amazon.com/images/I/51VEDoDqesL._AC_UF894,1000_QL80_.jpg" alt="PCIe internal video capture card">
+<div class="caption">Example of an internal PCIe video capture card (HDMI inputs)</div>
+
+<h2>Two Main Types</h2>
+
+<p><strong>Internal Capture Card</strong></p>
+<ul>
+    <li>Plugs into PCIe slot on motherboard (usually x1 or x4 for lower bandwidth needs)</li>
+    <li>Lower latency, better for high-quality capture (e.g., 1080p60 or higher)</li>
+    <li>Common for desktop PCs and serious streaming/recording</li>
+</ul>
+
+<p><strong>External Capture Card</strong></p>
+<ul>
+    <li>Connects via USB (usually USB 3.0 or higher for speed)</li>
+    <li>Easy plug-and-play, portable, no need to open case</li>
+    <li>Good for laptops or quick setups, but slightly higher latency</li>
+</ul>
+
+<img src="https://m.media-amazon.com/images/I/61ZFeC7UZPL._AC_UF894,1000_QL80_.jpg" alt="USB external video capture card">
+<div class="caption">Modern USB external capture card (HDMI in/out, portable)</div>
+
+<img src="https://m.media-amazon.com/images/I/718BA3CX7DL._AC_UF894,1000_QL80_.jpg" alt="PCIe capture card with ports">
+<div class="caption">Internal PCIe card showing HDMI and other inputs</div>
+
+<h2>How It Connects – Slots / Interfaces</h2>
+
+<p>Internal: **PCIe x1** or x4 slot (short slots, high bandwidth for video data).</p>
+
+<p>External: **USB 3.0** (or USB-C) – needs fast USB for smooth capture.</p>
+
+<div class="key-point">
+    <strong>Exam Tip:</strong> Plug source (console/camera) into capture card input. Connect monitor/TV to passthrough output if available. Install drivers/software after.
+</div>
+
+<h2>Common Ports / Connectors on Capture Cards</h2>
+
+<ul>
+    <li><strong>HDMI</strong> → Most common for modern devices (consoles, cameras). Carries video + audio, up to 4K/1080p60.</li>
+    <li><strong>Composite (RCA yellow)</strong> → Old analog video (VHS, old cameras). Low quality.</li>
+    <li><strong>S-Video</strong> → Better analog than composite (sharper old video sources).</li>
+    <li><strong>RCA Audio (red/white)</strong> → For analog audio input.</li>
+    <li>Passthrough HDMI out → Lets you see the source on a monitor while capturing.</li>
+</ul>
+
+<div class="key-point">
+    <strong>Exam loves this:</strong> Know HDMI for digital/high-quality capture. Composite/S-Video for legacy/analog sources (digitizing old media).
+</div>
+
+<img src="https://m.media-amazon.com/images/I/51a5FO1jW7L._AC_UF894,1000_QL80_.jpg" alt="USB capture with composite RCA and S-Video">
+<div class="caption">External USB capture device with composite (yellow), S-Video, and RCA audio inputs</div>
+
+<img src="https://m.media-amazon.com/images/I/51NvVcBLjFL._AC_UF894,1000_QL80_.jpg" alt="Capture card with HDMI AV RCA S-Video">
+<div class="caption">Multi-input capture device showing HDMI + analog ports</div>
+
+<h2>Installing a Capture Card (Simple Steps)</h2>
+<ul>
+    <li>Power off PC, unplug.</li>
+    <li>For internal: Open case, insert into PCIe slot, secure, close case.</li>
+    <li>For external: Just plug into USB port.</li>
+    <li>Connect video source to input port(s).</li>
+    <li>Boot up → install drivers/software (from manufacturer, like OBS Studio for streaming).</li>
+</ul>
+
+<h2>Troubleshooting Capture Issues</h2>
+<ul>
+    <li>No video → Wrong input selected, bad cable, source not powered/on, drivers missing.</li>
+    <li>Low quality / lag → Use USB 3.0+, check resolution/framerate settings, too much CPU usage.</li>
+    <li>No audio → Separate audio cable needed for analog, or HDMI audio not enabled.</li>
+    <li>After install no capture → Wrong port used, software not compatible, update drivers.</li>
+</ul>
+
+<h2>Quick Exam Cheat Sheet</h2>
+<div class="key-point">
+    <ul>
+        <li>Internal = PCIe slot, low latency, desktops</li>
+        <li>External = USB, portable, easy</li>
+        <li>Ports: HDMI (modern/digital), Composite/S-Video (old analog)</li>
+        <li>Install → Slot/USB + connect source + drivers/software</li>
+        <li>Troubleshoot: Cables/ports first, then drivers/settings</li>
+    </ul>
+</div>
+
+<footer>For CompTIA A+ Core 1 (220-1201) – Hardware domain (expansion cards). Good luck with your exam, Nischal! Keep going strong. 🚀</footer>
+
+</body>
+</html>

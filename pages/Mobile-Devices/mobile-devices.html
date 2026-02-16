@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Devices - CompTIA A+ 220-1201</title>
+
+    <style>
+      /* ============================================
+       COMPTIA A+ 220-1201 EXAM STUDY GUIDE
+       Milky White Theme Styles (same as hardware.html)
+       ============================================ */
+
+      :root {
+        --milky-white: #fdfcf8;
+        --milky-cream: #faf8f0;
+        --soft-white: #ffffff;
+        --warm-gray: #8b8680;
+        --light-gray: #e8e4dc;
+        --medium-gray: #c4bdb3;
+        --dark-gray: #4a4548;
+        --charcoal: #2d2a28;
+        --accent-blue: #5b8cb8;
+        --accent-green: #6b9e6b;
+        --accent-orange: #d4965b;
+        --accent-red: #c97064;
+        --accent-purple: #8b7b9e;
+        --text-primary: #3d3a36;
+        --text-secondary: #6b6560;
+        --border-color: #e0dcd4;
+        --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
+        --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.08);
+        --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.12);
+        --transition-fast: all 0.2s ease;
+        --transition-medium: all 0.3s ease;
+        --border-radius: 12px;
+        --border-radius-sm: 8px;
+        --border-radius-lg: 16px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          "Segoe UI",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Roboto",
+          "Helvetica Neue",
+          Arial,
+          sans-serif;
+        background-color: var(--milky-white);
+        color: var(--text-primary);
+        line-height: 1.7;
+        font-size: 16px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--charcoal);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.5px;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+      }
+
+      a {
+        color: var(--accent-blue);
+        text-decoration: none;
+        transition: var(--transition-fast);
+      }
+
+      a:hover {
+        color: var(--accent-blue);
+        text-decoration: underline;
+      }
+
+      /* HEADER & NAVIGATION */
+      .main-header {
+        background: var(--soft-white);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+      }
+
+      .logo-section h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0;
+        color: var(--charcoal);
+      }
+
+      .logo-section .subtitle {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+
+      .main-nav ul {
+        display: flex;
+        list-style: none;
+        gap: 8px;
+      }
+
+      .main-nav a {
+        display: block;
+        padding: 10px 20px;
+        color: var(--text-secondary);
+        border-radius: var(--border-radius-sm);
+        font-weight: 500;
+        transition: var(--transition-fast);
+      }
+
+      .main-nav a:hover,
+      .main-nav a.active {
+        background: var(--milky-cream);
+        color: var(--accent-blue);
+        text-decoration: none;
+      }
+
+      /* HERO SECTION */
+      .topic-hero {
+        padding: 80px 0 60px;
+        background: linear-gradient(
+          180deg,
+          var(--soft-white) 0%,
+          var(--milky-cream) 100%
+        );
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .hero-content .topic-icon-large {
+        font-size: 5.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-content h2 {
+        font-size: 2.75rem;
+        margin-bottom: 1rem;
+        color: var(--charcoal);
+      }
+
+      .topic-weight {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent-blue);
+        margin-bottom: 1.5rem;
+      }
+
+      /* TOPIC LIST */
+      .topic-content {
+        padding: 60px 0 80px;
+      }
+
+      .topic-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .topic-item {
+        background: var(--soft-white);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-lg);
+        padding: 28px;
+        box-shadow: var(--shadow-soft);
+        transition: var(--transition-medium);
+      }
+
+      .topic-item:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-medium);
+        border-color: var(--accent-blue);
+      }
+
+      .topic-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 12px;
+      }
+
+      .topic-icon {
+        font-size: 2.8rem;
+        color: var(--accent-blue);
+        flex-shrink: 0;
+      }
+
+      .topic-title {
+        font-size: 1.45rem;
+        font-weight: 600;
+        color: var(--charcoal);
+      }
+
+      .topic-desc {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        margin-bottom: 12px;
+      }
+
+      .status-pill {
+        display: inline-block;
+        padding: 6px 14px;
+        background: var(--milky-cream);
+        border: 1px solid var(--light-gray);
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--accent-blue);
+      }
+
+      /* FOOTER */
+      .main-footer {
+        background: var(--charcoal);
+        color: var(--light-gray);
+        padding: 60px 0 30px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h4 {
+        color: var(--soft-white);
+        margin-bottom: 1.25rem;
+        font-size: 1.1rem;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section a {
+        color: var(--medium-gray);
+        font-size: 0.95rem;
+      }
+
+      .footer-section a:hover {
+        color: var(--soft-white);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid var(--dark-gray);
+        padding-top: 25px;
+        text-align: center;
+      }
+
+      .footer-bottom p {
+        color: var(--medium-gray);
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 16px;
+        }
+        .main-nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .hero-content h2 {
+          font-size: 2.2rem;
+        }
+        .topic-icon-large {
+          font-size: 4.5rem;
+        }
+        .topic-item {
+          padding: 24px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 16px;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo-section">
+            <h1>CompTIA A+ 220-1201</h1>
+            <p class="subtitle">Core 1 Exam Study Guide</p>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="../../index.html">Home</a></li>
+              <li><a href="../index.html#topics">Topics</a></li>
+              <li><a href="#" class="active">Mobile Devices</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="topic-hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="topic-icon-large">📱⚙️</div>
+          <h2>Domain 1: Mobile Devices</h2>
+          <div class="topic-weight">13% of Exam</div>
+          <p>
+            Understand mobile device hardware, accessories, connectivity
+            options, network configuration, application support, and basic
+            management/troubleshooting.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic-content">
+      <div class="container">
+        <div class="topic-list">
+          <div class="topic-item">
+            <div class="topic-header">
+              <div class="topic-icon">🛠️</div>
+              <h3 class="topic-title">
+                <a href="1.1/topics.html"
+                  >1.1 Given a scenario, monitor mobile device hardware and use
+                  appropriate replacement techniques</a
+                >
+              </h3>
+            </div>
+            <p class="topic-desc">
+              Battery types & replacement, keyboard/keys, RAM, hard drive /
+              solid state drive, biometric sensors (fingerprint, facial
+              recognition), cameras & sensors.
+            </p>
+            <span class="status-pill">Detailed notes coming</span>
+          </div>
+
+          <div class="topic-item">
+            <div class="topic-header">
+              <div class="topic-icon">🔌</div>
+              <h3 class="topic-title">
+                <a href="#topic-1-2"
+                  >1.2 Compare and contrast mobile device accessories and
+                  connectivity options</a
+                >
+              </h3>
+            </div>
+            <p class="topic-desc">
+              USB / USB-C / Lightning, Bluetooth, NFC, wireless charging (Qi),
+              docking stations / port replicators, trackpads / styluses,
+              wearable device accessories.
+            </p>
+            <span class="status-pill">Detailed notes coming</span>
+          </div>
+
+          <div class="topic-item">
+            <div class="topic-header">
+              <div class="topic-icon">🌐</div>
+              <h3 class="topic-title">
+                <a href="#topic-1-3"
+                  >1.3 Given a scenario, configure basic mobile device network
+                  connectivity and application support</a
+                >
+              </h3>
+            </div>
+            <p class="topic-desc">
+              Wi-Fi (bands, SSID, WPA3), Bluetooth pairing, cellular (SIM/eSIM,
+              IMEI/ICCID), airplane mode, VPN, location services, MDM
+              enrollment, app installation / sideloading.
+            </p>
+            <span class="status-pill">Detailed notes coming</span>
+          </div>
+
+          <div class="topic-item">
+            <div class="topic-header">
+              <div class="topic-icon">🔒</div>
+              <h3 class="topic-title">
+                <a href="#topic-1-4"
+                  >1.4 Given a scenario, use methods to perform mobile device
+                  synchronization and provide application support</a
+                >
+              </h3>
+            </div>
+            <p class="topic-desc">
+              Data types to sync (contacts, calendars, photos, email),
+              connection methods (USB, Wi-Fi, cloud), account setup,
+              backup/restore, MDM policies & business apps.
+            </p>
+            <span class="status-pill">Detailed notes coming</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>CompTIA A+ 220-1201</h4>
+            <p>Comprehensive study guide for the Core 1 exam.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li>
+                <a href="mobile-devices.html" style="color: var(--accent-blue)"
+                  >Mobile Devices</a
+                >
+              </li>
+              <li><a href="networking.html">Networking</a></li>
+              <li><a href="hardware.html">Hardware</a></li>
+              <li><a href="virtualization.html">Virtualization</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Study Guide for CompTIA A+ 220-1201 Core 1 Exam</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

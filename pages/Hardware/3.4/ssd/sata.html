@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ Hardware: SATA Interface</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #3d3d3d;
+        /* Claude-style warm background */
+        background-color: #f4f1ea;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        /* Softer shadow for the lighter theme */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e0dbd1;
+        overflow: hidden;
+      }
+
+      header {
+        /* Claude-style Terracotta Gradient */
+        background: linear-gradient(135deg, #da7756, #c56346);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        /* Terracotta Text */
+        color: #da7756;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #e0dbd1;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #a35036;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #faf9f6;
+        border-left: 4px solid #da7756;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.95em;
+      }
+
+      th {
+        background: #da7756;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #eee;
+      }
+
+      tr:hover {
+        background: #fbf8f3;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #a35036;
+      }
+
+      /* Quiz Section */
+      .quiz-container {
+        background: #fdfcfb;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 2px solid #e6e1d6;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #da7756;
+      }
+
+      .score-display {
+        background: #da7756;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border: 1px solid #e0dbd1;
+        border-left: 5px solid #da7756;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f9f8f6;
+        border: 2px solid #eee;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: block;
+      }
+
+      .quiz-option:hover:not(.disabled) {
+        background: #f0ebe4;
+        border-color: #da7756;
+      }
+
+      .quiz-option.correct {
+        background: #e3f0e6;
+        border-color: #388e3c;
+        color: #1b5e20;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #fbeae9;
+        border-color: #d32f2f;
+        color: #b71c1c;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #e3f0e6;
+        border-left: 4px solid #388e3c;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+        color: #1b5e20;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #fbeae9;
+        border-color: #d32f2f;
+        color: #b71c1c;
+      }
+
+      .reset-btn {
+        background: #757575;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5c5c5c;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #da7756, #c56346);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #d4edda;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+        text-decoration-color: rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>💾 SATA Interface</h1>
+        <p>CompTIA A+ Hardware Domain - Storage Connections</p>
+      </header>
+
+      <div class="content">
+        <h2>What is SATA?</h2>
+        <p>
+          <strong>Serial ATA (SATA)</strong> is the standard interface for
+          connecting storage devices like SSDs, HDDs, and Optical Drives to the
+          motherboard. It replaced the older, bulky PATA (IDE) cables.
+        </p>
+
+        <h2>SATA Revisions & Speeds</h2>
+        <div class="simple-box">
+          <p>
+            <em
+              >Exam Tip: You must memorize the transfer rates (Gb/s) for each
+              revision.</em
+            >
+          </p>
+        </div>
+
+        <table>
+          <tr>
+            <th>Revision</th>
+            <th>Speed (Gb/s)</th>
+            <th>Max Throughput (approx)</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td><strong>SATA 1.0</strong></td>
+            <td>1.5 Gb/s</td>
+            <td>150 MB/s</td>
+            <td>Obsolete</td>
+          </tr>
+          <tr>
+            <td><strong>SATA 2.0</strong></td>
+            <td>3.0 Gb/s</td>
+            <td>300 MB/s</td>
+            <td>Legacy / Older PCs</td>
+          </tr>
+          <tr>
+            <td><strong>SATA 3.0</strong></td>
+            <td>6.0 Gb/s</td>
+            <td>600 MB/s</td>
+            <td><strong>Current Standard</strong></td>
+          </tr>
+          <tr>
+            <td><strong>SATA 3.2</strong></td>
+            <td>16 Gb/s</td>
+            <td>1900 MB/s</td>
+            <td>SATA Express (Rarely used)</td>
+          </tr>
+        </table>
+
+        <h2>Cables & Connectors</h2>
+
+        <h3>1. Data Cable (7-Pin)</h3>
+        <div class="simple-box">
+          <ul>
+            <li><strong>Pins:</strong> 7 pins total.</li>
+            <li>
+              <strong>Shape:</strong> L-shaped key connector (prevents plugging
+              it in upside down).
+            </li>
+            <li>
+              <strong>Length:</strong> Maximum cable length is
+              <strong>1 meter</strong> (3.3 feet).
+            </li>
+            <li>
+              <strong>Topology:</strong> Point-to-point (one cable = one drive).
+              No "Master/Slave" jumpers like PATA.
+            </li>
+          </ul>
+        </div>
+
+        <h3>2. Power Connector (15-Pin)</h3>
+        <div class="simple-box">
+          <ul>
+            <li><strong>Pins:</strong> 15 pins (wider than the data cable).</li>
+            <li>
+              <strong>Voltages:</strong> Provides 3.3V, 5V, and 12V power rails.
+            </li>
+            <li>
+              <strong>Purpose:</strong> Replaced the old 4-pin Molex power
+              connector.
+            </li>
+          </ul>
+        </div>
+
+        <h3>3. eSATA (External SATA)</h3>
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>Usage:</strong> For connecting external external hard
+              drives.
+            </li>
+            <li>
+              <strong>Connector:</strong> Different shape (flat/rectangular)
+              than internal SATA to prevent mistakes.
+            </li>
+            <li>
+              <strong>Length:</strong> Max length <strong>2 meters</strong>.
+            </li>
+            <li>
+              <strong>Power:</strong> Standard eSATA does <em>not</em> provide
+              power (requires separate power adapter), unlike USB.
+            </li>
+          </ul>
+        </div>
+
+        <h2>SATA vs. NVMe (M.2 Form Factor)</h2>
+
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>M.2 SATA SSD</th>
+            <th>M.2 NVMe SSD</th>
+          </tr>
+          <tr>
+            <td><strong>Interface</strong></td>
+            <td>Uses SATA bus (max 600 MB/s)</td>
+            <td>Uses PCIe bus (up to 7,000+ MB/s)</td>
+          </tr>
+          <tr>
+            <td><strong>Keying</strong></td>
+            <td>Usually B+M Key (two notches)</td>
+            <td>Usually M Key (one notch on right)</td>
+          </tr>
+          <tr>
+            <td><strong>Compatibility</strong></td>
+            <td>Works in M.2 slots that support SATA</td>
+            <td>Works in M.2 slots that support PCIe</td>
+          </tr>
+        </table>
+
+        <h2>Configuration: AHCI vs. RAID</h2>
+
+        <div class="simple-box">
+          <h3>AHCI (Advanced Host Controller Interface)</h3>
+          <ul>
+            <li>The standard mode SATA drives should run in.</li>
+            <li>
+              Enables <strong>NCQ (Native Command Queuing)</strong>: Optimizes
+              the order in which the drive executes read/write commands.
+            </li>
+            <li>
+              Enables <strong>Hot Swapping</strong>: Ability to plug/unplug the
+              drive while the PC is on (if the port supports it).
+            </li>
+          </ul>
+        </div>
+
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Click an answer to get immediate feedback!</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. What is the maximum transfer speed of SATA Revision 3.0?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'a')">
+                A) 1.5 Gb/s
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'b')">
+                B) 3.0 Gb/s
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'c')">
+                C) 6.0 Gb/s
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'd')">
+                D) 10 Gb/s
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q1">
+              <strong>✓ Correct!</strong> SATA 3.0 runs at 6.0 Gb/s (approx 600
+              MB/s). This is the standard for modern 2.5-inch SSDs.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. How many pins does a standard SATA data cable have?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'a')">
+                A) 7 pins
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'b')">
+                B) 15 pins
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'c')">
+                C) 40 pins
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'd')">
+                D) 24 pins
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q2">
+              <strong>✓ Correct!</strong> The SATA data connector is the smaller
+              L-shaped connector with 7 pins. The power connector has 15 pins.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. What is the maximum cable length for internal SATA?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'a')">
+                A) 45 centimeters
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'b')">
+                B) 1 meter
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'c')">
+                C) 2 meters
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'd')">
+                D) 5 meters
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q3">
+              <strong>✓ Correct!</strong> Internal SATA cables can be up to 1
+              meter (approx 3.3 feet) long. eSATA can be up to 2 meters.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. You are configuring the BIOS/UEFI. Which SATA mode enables
+              hot-swapping and NCQ?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'a')">
+                A) IDE Legacy
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'b')">
+                B) RAID
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'c')">
+                C) AHCI
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'd')">
+                D) NVMe
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q4">
+              <strong>✓ Correct!</strong> AHCI (Advanced Host Controller
+              Interface) is required for advanced features like Native Command
+              Queuing and hot-swapping.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. How many drives can you connect to a single SATA data cable?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'a')">
+                A) One (1)
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'b')">
+                B) Two (Master/Slave)
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'c')">
+                C) Four (Daisy-chained)
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'd')">
+                D) Unlimited
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q5">
+              <strong>✓ Correct!</strong> SATA is a point-to-point interface.
+              One cable connects exactly one drive to one port on the
+              motherboard.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. Which SATA revision operates at 3.0 Gb/s?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'a')">
+                A) SATA 1.0
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'b')">
+                B) SATA 2.0
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'c')">
+                C) SATA 3.0
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'd')">
+                D) SATA 3.2
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q6">
+              <strong>✓ Correct!</strong> SATA 2.0 is 3.0 Gb/s. SATA 1.0 was 1.5
+              Gb/s, and SATA 3.0 is 6.0 Gb/s.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. What feature physically prevents you from plugging a SATA power
+              cable in backwards?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'a')">
+                A) Color coding
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'b')">
+                B) Magnetic polarity
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'c')">
+                C) The "L" shaped connector
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'd')">
+                D) Different pin sizes
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q7">
+              <strong>✓ Correct!</strong> The L-shape (or "key") on both the
+              data and power connectors ensures they can only be inserted in the
+              correct orientation.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. Which M.2 SSD type uses the SATA bus?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'a')">
+                A) M.2 NVMe
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'b')">
+                B) M.2 PCIe
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'c')">
+                C) M.2 Legacy
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'd')">
+                D) M.2 SATA
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q8">
+              <strong>✓ Correct!</strong> M.2 drives come in both NVMe and SATA
+              varieties. An M.2 SATA drive is physically small but runs at the
+              slower 6 Gb/s speed of standard SATA.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              9. Does a standard eSATA cable provide power to the external
+              drive?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'a')">
+                A) Yes, always
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'b')">
+                B) No, it carries data only
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'c')">
+                C) Only if it is USB-C
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'd')">
+                D) Yes, up to 100W
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q9">
+              <strong>✓ Correct!</strong> Standard eSATA carries data only. You
+              must plug the external drive into a wall outlet or USB power
+              source. (eSATAp combined both but is rare/obsolete).
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              10. How many pins does the SATA power connector have?
+            </div>
+            <div class="quiz-options">
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'a')"
+              >
+                A) 4
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'b')"
+              >
+                B) 7
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'c')"
+              >
+                C) 15
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'd')"
+              >
+                D) 24
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q10">
+              <strong>✓ Correct!</strong> The SATA power connector is the wider
+              one with 15 pins.
+            </div>
+          </div>
+
+          <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li><strong>SATA 1.0:</strong> 1.5 Gb/s</li>
+            <li><strong>SATA 2.0:</strong> 3.0 Gb/s</li>
+            <li><strong>SATA 3.0:</strong> 6.0 Gb/s (The modern standard)</li>
+            <li><strong>Data Connector:</strong> 7 pins, L-shaped.</li>
+            <li>
+              <strong>Power Connector:</strong> 15 pins, L-shaped, 3.3V/5V/12V.
+            </li>
+            <li>
+              <strong>Max Length:</strong> 1 meter (Internal), 2 meters (eSATA).
+            </li>
+            <li>
+              <strong>AHCI:</strong> The mode required for Hot-swapping and NCQ.
+            </li>
+            <li>
+              <strong>1-to-1:</strong> One device per SATA port (no daisy
+              chaining).
+            </li>
+            <li>
+              <strong>M.2 SATA:</strong> Fits M.2 slot but runs at SATA 3 speeds
+              (slower than NVMe).
+            </li>
+            <li><strong>Hot Swappable:</strong> Yes, if AHCI is enabled.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "c",
+        q2: "a",
+        q3: "b",
+        q4: "c",
+        q5: "a",
+        q6: "b",
+        q7: "c",
+        q8: "d",
+        q9: "b",
+        q10: "c",
+      };
+
+      let score = 0;
+      let totalAnswered = 0;
+
+      function checkAnswer(element, questionId, selectedAnswer) {
+        if (element.classList.contains("disabled")) {
+          return;
+        }
+
+        const feedback = document.getElementById("feedback-" + questionId);
+        const allOptions =
+          element.parentElement.querySelectorAll(".quiz-option");
+        const correctAnswer = answers[questionId];
+
+        allOptions.forEach((opt) => opt.classList.add("disabled"));
+
+        if (selectedAnswer === correctAnswer) {
+          element.classList.add("correct");
+          feedback.classList.remove("wrong");
+          score++;
+        } else {
+          element.classList.add("incorrect");
+          feedback.classList.add("wrong");
+          feedback.innerHTML =
+            `<strong>✗ Incorrect.</strong> The correct answer is option ${correctAnswer.toUpperCase()}. ` +
+            feedback.innerHTML.split("</strong>")[1];
+
+          allOptions.forEach((opt) => {
+            const optionLetter = opt.textContent.trim().charAt(0).toLowerCase();
+            if (optionLetter === correctAnswer) {
+              opt.classList.add("correct");
+            }
+          });
+        }
+
+        feedback.classList.add("show");
+        totalAnswered++;
+
+        if (totalAnswered === 10) {
+          const percentage = Math.round((score / 10) * 100);
+          const scoreDisplay = document.getElementById("scoreDisplay");
+          let message = "";
+
+          if (percentage >= 90) {
+            message = "🏆 Excellent! You've mastered SATA!";
+          } else if (percentage >= 75) {
+            message = "👍 Good job! Review the connector pins.";
+          } else if (percentage >= 60) {
+            message = "📚 Keep studying. Memorize the 1.5/3.0/6.0 speeds.";
+          } else {
+            message =
+              "📖 More practice needed. Focus on cable types and speeds.";
+          }
+
+          scoreDisplay.innerHTML = `
+                    <div>Your Score: ${score} / 10 (${percentage}%)</div>
+                    <div>${message}</div>
+                `;
+          scoreDisplay.classList.add("show");
+          scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      function resetQuiz() {
+        score = 0;
+        totalAnswered = 0;
+
+        const allOptions = document.querySelectorAll(".quiz-option");
+        allOptions.forEach((opt) => {
+          opt.classList.remove("correct", "incorrect", "disabled");
+        });
+
+        const allFeedback = document.querySelectorAll(".feedback");
+        allFeedback.forEach((fb) => {
+          fb.classList.remove("show", "wrong");
+        });
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Video Cards – CompTIA A+ 220-1201 (Simple Exam Notes)</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+        .key-point {
+            background-color: #e8f4fd;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-top: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+    </head>
+    <body>
+
+        <h1>Video Cards / Graphics Cards – CompTIA A+ 220-1201</h1>
+
+        <h2>Two Main Types</h2>
+
+        <p><strong>Integrated Graphics</strong> (onboard)</p>
+        <ul>
+            <li>Built into the CPU (or motherboard chipset)</li>
+            <li>Cheap, uses less power, good for normal tasks (web, office,
+                video)</li>
+            <li>Not good for gaming or heavy work</li>
+        </ul>
+
+        <p><strong>Discrete Graphics</strong> (dedicated video card)</p>
+        <ul>
+            <li>Separate card plugged into PCIe slot</li>
+            <li>Has own GPU, VRAM, fans, and extra power cables</li>
+            <li>Much faster – used for gaming, editing, 3D, etc.</li>
+            <li>Brands: NVIDIA GeForce, AMD Radeon</li>
+        </ul>
+
+        <img
+            src="https://www.techcenturion.com/wp-content/uploads/2019/11/Integrated-Graphics-vs-Discrete-Graphics.jpg"
+            alt="Integrated vs Discrete Graphics">
+        <div class="caption">Integrated (left) vs Discrete / Dedicated graphics
+            card (right)</div>
+
+        <img src="https://cdn.mos.cms.futurecdn.net/VS7PXyt97haa6HEATUi2v7.jpg"
+            alt="Modern discrete graphics card">
+        <div class="caption">Example of a modern discrete graphics card with
+            fans</div>
+
+        <h2>How It Connects – PCIe Slots</h2>
+
+        <p>Use the long **PCIe x16** slot for best performance (gives most
+            bandwidth).</p>
+
+        <div class="key-point">
+            <strong>Exam Tip:</strong> Plug graphics card into PCIe x16 slot.
+            Plug monitor into the card ports (not motherboard ports) after
+            install!
+        </div>
+
+        <img
+            src="https://darkflash-image-cloud.s3.us-west-2.amazonaws.com/cdn/article/attach/000000000000115/202501200029748.png"
+            alt="PCIe x16 slot">
+        <div class="caption">PCIe x16 slot (long one) – correct for graphics
+            cards</div>
+
+        <img
+            src="https://assetsio.gnwcdn.com/How-to-install-a-graphics-card-(3).JPG?width=2048&height=2048&fit=bounds&quality=85&format=jpg&auto=webp"
+            alt="Installing graphics card">
+        <div class="caption">Installing a graphics card into PCIe x16 slot</div>
+
+        <h2>Common Video Ports / Outputs</h2>
+
+        <ul>
+            <li><strong>HDMI</strong> → Most common today. Video + audio.
+                Supports 4K, 8K.</li>
+            <li><strong>DisplayPort (DP)</strong> → Great for high refresh
+                rates, multi-monitor, daisy-chain.</li>
+            <li><strong>DVI</strong> → Older digital (no audio). Still seen
+                sometimes.</li>
+            <li><strong>VGA</strong> → Very old analog (blue 15-pin). Low
+                resolution max.</li>
+        </ul>
+
+        <div class="key-point">
+            <strong>Exam loves this:</strong> Know HDMI and DisplayPort are
+            modern digital + audio. VGA is old analog. DVI is digital but no
+            audio.
+        </div>
+
+        <img
+            src="https://www.xenarc.com/images/CKEDIT/1423%20x%20805%20%20Common%20Video%20Display%20Interfaces%20for%20Rugged%20Touchscreen%20Monitors%20Manufactaured%20By%20Xenarc%20Technologies-01.png"
+            alt="Common display ports diagram">
+        <div class="caption">Common ports: VGA, HDMI, DisplayPort, DVI and
+            more</div>
+
+        <img
+            src="https://preview.redd.it/common-computer-monitor-connectors-and-ports-v0-pdhibcpgulec1.png?auto=webp&s=334ab6f0597a16f0743a97d5046b4d471a1f16a8"
+            alt="Monitor connectors photos">
+        <div class="caption">Real photos of VGA, DVI, HDMI, DisplayPort
+            connectors</div>
+
+        <h2>Quick Exam Cheat Sheet</h2>
+        <div class="key-point">
+            <ul>
+                <li>Integrated = built-in CPU, basic use</li>
+                <li>Discrete = PCIe x16 card, powerful, needs power cables</li>
+                <li>Best ports now = HDMI & DisplayPort</li>
+                <li>Old ports = DVI (digital no audio), VGA (analog)</li>
+                <li>Install steps: Power off → insert card → connect power →
+                    plug monitor to card → install drivers</li>
+                <li>Troubleshoot: No picture? Check cable/port, power to card,
+                    drivers, wrong output used</li>
+            </ul>
+        </div>
+
+        <footer>For CompTIA A+ Core 1 (220-1201) – Hardware domain. Good luck
+            with your exam!</footer>
+
+    </body>
+</html>

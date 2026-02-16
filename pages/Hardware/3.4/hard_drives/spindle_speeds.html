@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: HDD Spindle Speeds</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #11998e, #38ef7d);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #11998e, #38ef7d);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #11998e;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #38ef7d;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #38ef7d;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #38ef7d;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .speed-card {
+        background: #f8f9fa;
+        border: 3px solid #38ef7d;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .speed-card h3 {
+        color: #11998e;
+        margin-top: 0;
+        font-size: 1.5em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #11998e;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #38ef7d;
+      }
+
+      .highlight-box {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      /* Quiz Section with Immediate Feedback */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #38ef7d;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #11998e;
+      }
+
+      .score-display {
+        background: #11998e;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #38ef7d;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover:not(.disabled) {
+        background: #e9ecef;
+        border-color: #38ef7d;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #11998e, #38ef7d);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #fff;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>💿 HDD Spindle Speeds</h1>
+        <p>CompTIA A+ 220-1101 - RPM Specifications</p>
+      </header>
+
+      <div class="content">
+        <h2>What is Spindle Speed (RPM)?</h2>
+
+        <div class="simple-box">
+          <p><strong>RPM = Revolutions Per Minute</strong></p>
+          <p>The speed at which the hard drive platters spin.</p>
+          <ul>
+            <li>Faster RPM = Faster data access</li>
+            <li>Faster RPM = More heat generated</li>
+            <li>Faster RPM = More power consumption</li>
+            <li>Faster RPM = More noise</li>
+            <li>Only applies to HDDs (SSDs have no moving parts)</li>
+          </ul>
+        </div>
+
+        <h2>Common HDD Spindle Speeds</h2>
+
+        <!-- 5400 RPM -->
+        <div class="speed-card">
+          <h3>5400 RPM</h3>
+          <div class="simple-box">
+            <p>
+              <strong>Most Common Use:</strong> Laptop HDDs, budget desktops
+            </p>
+            <ul>
+              <li><strong>Speed:</strong> Slower</li>
+              <li><strong>Power:</strong> Lower power consumption</li>
+              <li><strong>Heat:</strong> Runs cooler</li>
+              <li><strong>Noise:</strong> Quieter</li>
+              <li><strong>Battery:</strong> Better for laptop battery life</li>
+              <li>
+                <strong>Best for:</strong> Storage drives, media files, laptops
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 7200 RPM -->
+        <div class="speed-card">
+          <h3>7200 RPM</h3>
+          <div class="simple-box">
+            <p><strong>Most Common Use:</strong> Desktop HDDs, gaming PCs</p>
+            <ul>
+              <li><strong>Speed:</strong> Faster than 5400 RPM</li>
+              <li><strong>Power:</strong> Higher power consumption</li>
+              <li><strong>Heat:</strong> Runs hotter</li>
+              <li><strong>Noise:</strong> Louder</li>
+              <li>
+                <strong>Performance:</strong> Noticeably faster for OS and
+                applications
+              </li>
+              <li>
+                <strong>Best for:</strong> Desktop boot drives, general
+                computing
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 10,000 RPM -->
+        <div class="speed-card">
+          <h3>10,000 RPM</h3>
+          <div class="simple-box">
+            <p>
+              <strong>Most Common Use:</strong> Enterprise servers, workstations
+            </p>
+            <ul>
+              <li><strong>Speed:</strong> Very fast</li>
+              <li><strong>Form Factor:</strong> Usually 2.5" drives</li>
+              <li><strong>Power/Heat:</strong> High power and heat</li>
+              <li><strong>Cost:</strong> More expensive per GB</li>
+              <li>
+                <strong>Capacity:</strong> Lower capacities (600GB - 1.8TB
+                typical)
+              </li>
+              <li><strong>Best for:</strong> High-performance servers</li>
+              <li><strong>Brand:</strong> WD VelociRaptor is common example</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 15,000 RPM -->
+        <div class="speed-card">
+          <h3>15,000 RPM</h3>
+          <div class="simple-box">
+            <p>
+              <strong>Most Common Use:</strong> Enterprise servers, data centers
+            </p>
+            <ul>
+              <li><strong>Speed:</strong> Fastest HDD speed</li>
+              <li><strong>Interface:</strong> Usually SAS (not SATA)</li>
+              <li><strong>Form Factor:</strong> 2.5" drives</li>
+              <li><strong>Power/Heat:</strong> Very high power and heat</li>
+              <li><strong>Cost:</strong> Very expensive per GB</li>
+              <li>
+                <strong>Capacity:</strong> Lower capacities (300GB - 900GB
+                typical)
+              </li>
+              <li>
+                <strong>Best for:</strong> Mission-critical enterprise
+                applications
+              </li>
+              <li>
+                <strong>Note:</strong> Being replaced by SSDs in modern systems
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Quick Comparison Table</h2>
+
+        <table>
+          <tr>
+            <th>RPM</th>
+            <th>Speed</th>
+            <th>Power</th>
+            <th>Heat/Noise</th>
+            <th>Common Use</th>
+          </tr>
+          <tr>
+            <td><strong>5400 RPM</strong></td>
+            <td>Slower</td>
+            <td>Low</td>
+            <td>Cool/Quiet</td>
+            <td>Laptops, storage</td>
+          </tr>
+          <tr>
+            <td><strong>7200 RPM</strong></td>
+            <td>Fast</td>
+            <td>Medium</td>
+            <td>Warm/Moderate</td>
+            <td>Desktops, gaming</td>
+          </tr>
+          <tr>
+            <td><strong>10,000 RPM</strong></td>
+            <td>Very Fast</td>
+            <td>High</td>
+            <td>Hot/Loud</td>
+            <td>Enterprise, workstations</td>
+          </tr>
+          <tr>
+            <td><strong>15,000 RPM</strong></td>
+            <td>Fastest HDD</td>
+            <td>Very High</td>
+            <td>Very Hot/Loud</td>
+            <td>Data centers, enterprise</td>
+          </tr>
+        </table>
+
+        <h2>Important Concepts</h2>
+
+        <h3>Speed vs Capacity Trade-off</h3>
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>5400/7200 RPM:</strong> Available in very large capacities
+              (up to 20+ TB)
+            </li>
+            <li><strong>10,000 RPM:</strong> Maximum ~1.8 TB typically</li>
+            <li><strong>15,000 RPM:</strong> Maximum ~900 GB typically</li>
+            <li>Faster speeds = lower capacities available</li>
+          </ul>
+        </div>
+
+        <h3>Form Factor Relationship</h3>
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>3.5" drives:</strong> Usually 5400 or 7200 RPM
+              (desktop/storage)
+            </li>
+            <li>
+              <strong>2.5" drives:</strong> Usually 5400 RPM (laptops) or
+              10,000/15,000 RPM (enterprise)
+            </li>
+            <li>Smaller platters can spin faster more easily</li>
+          </ul>
+        </div>
+
+        <h3>Modern Context</h3>
+        <div class="highlight-box">
+          <p><strong>SSDs vs HDDs:</strong></p>
+          <ul>
+            <li>SSDs have NO spindle speed (no moving parts)</li>
+            <li>SSDs are much faster than even 15,000 RPM HDDs</li>
+            <li>10,000 and 15,000 RPM drives being phased out</li>
+            <li>
+              For performance, buy SSD; for capacity, buy HDD (5400/7200 RPM)
+            </li>
+            <li>Exam may still test on all RPM speeds</li>
+          </ul>
+        </div>
+
+        <h2>Exam Tips</h2>
+
+        <div class="highlight-box">
+          <h3>What to Memorize:</h3>
+          <ul>
+            <li>
+              <strong>5400 RPM:</strong> Laptops, lower power, cooler, quieter
+            </li>
+            <li><strong>7200 RPM:</strong> Desktops, standard performance</li>
+            <li><strong>10,000 RPM:</strong> Enterprise, high performance</li>
+            <li><strong>15,000 RPM:</strong> Enterprise only, fastest HDD</li>
+            <li>Higher RPM = faster but more heat/power/noise</li>
+            <li>SSDs have no RPM (no moving parts)</li>
+          </ul>
+        </div>
+
+        <h2>Common Scenarios</h2>
+
+        <table>
+          <tr>
+            <th>Scenario</th>
+            <th>Best Choice</th>
+            <th>Why</th>
+          </tr>
+          <tr>
+            <td>Laptop boot drive</td>
+            <td>SSD or 5400 RPM HDD</td>
+            <td>Low power, better battery life</td>
+          </tr>
+          <tr>
+            <td>Desktop boot drive</td>
+            <td>SSD or 7200 RPM HDD</td>
+            <td>Better performance, power not critical</td>
+          </tr>
+          <tr>
+            <td>Mass storage (media files)</td>
+            <td>5400 or 7200 RPM large HDD</td>
+            <td>High capacity, speed less important</td>
+          </tr>
+          <tr>
+            <td>Gaming PC</td>
+            <td>7200 RPM HDD or SSD</td>
+            <td>Fast loading times</td>
+          </tr>
+          <tr>
+            <td>Database server</td>
+            <td>SSD or 10,000/15,000 RPM HDD</td>
+            <td>High IOPS, fast access needed</td>
+          </tr>
+        </table>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Click an answer to get immediate feedback!</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. What is the most common HDD spindle speed for laptop hard
+              drives?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'a')">
+                A) 5400 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'b')">
+                B) 7200 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'c')">
+                C) 10,000 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'd')">
+                D) 15,000 RPM
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q1">
+              <strong>✓ Correct!</strong> 5400 RPM is most common in laptops
+              because it uses less power (better battery life), runs cooler, and
+              is quieter than faster speeds.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. Which HDD spindle speed is standard for desktop computers?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'a')">
+                A) 5400 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'b')">
+                B) 7200 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'c')">
+                C) 10,000 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'd')">
+                D) 15,000 RPM
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q2">
+              <strong>✓ Correct!</strong> 7200 RPM is the standard desktop HDD
+              speed. It offers good performance for general computing and gaming
+              without the extreme power/heat of higher speeds.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. What is the FASTEST spindle speed available for HDDs?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'a')">
+                A) 7200 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'b')">
+                B) 10,000 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'c')">
+                C) 15,000 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'd')">
+                D) 20,000 RPM
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q3">
+              <strong>✓ Correct!</strong> 15,000 RPM is the fastest HDD spindle
+              speed available. These drives are used in enterprise servers and
+              data centers where maximum HDD performance is needed.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. A user needs better battery life on their laptop. Which HDD
+              speed should they choose?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'a')">
+                A) 5400 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'b')">
+                B) 7200 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'c')">
+                C) 10,000 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'd')">
+                D) 15,000 RPM
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q4">
+              <strong>✓ Correct!</strong> 5400 RPM drives consume less power
+              than higher RPM drives, which directly translates to longer
+              battery life. They also run cooler and quieter.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. Which spindle speed is commonly used in enterprise servers
+              requiring high performance?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'a')">
+                A) 5400 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'b')">
+                B) 7200 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'c')">
+                C) 10,000 or 15,000 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'd')">
+                D) Enterprise servers don't use HDDs
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q5">
+              <strong>✓ Correct!</strong> Enterprise servers requiring high HDD
+              performance use 10,000 or 15,000 RPM drives. However, SSDs are
+              increasingly replacing these in modern servers.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. What happens when HDD spindle speed increases?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'a')">
+                A) Performance increases but so does heat and power consumption
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'b')">
+                B) Performance increases and power consumption decreases
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'c')">
+                C) Performance decreases but heat decreases
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'd')">
+                D) No effect on performance or power
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q6">
+              <strong>✓ Correct!</strong> Higher RPM = faster performance BUT
+              also more heat, more power consumption, and more noise. It's
+              always a trade-off.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. Do SSDs have a spindle speed rating?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'a')">
+                A) Yes, SSDs typically run at 20,000 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'b')">
+                B) No, SSDs have no moving parts so no RPM rating
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'c')">
+                C) Yes, SSDs use 7200 RPM
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'd')">
+                D) Only NVMe SSDs have RPM ratings
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q7">
+              <strong>✓ Correct!</strong> SSDs have NO spindle speed because
+              they have no moving parts. They use flash memory chips instead of
+              spinning platters. RPM only applies to traditional HDDs.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. A gaming PC needs fast game loading times but doesn't need
+              massive storage. What's the best option?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'a')">
+                A) 5400 RPM HDD
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'b')">
+                B) 7200 RPM HDD or SSD
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'c')">
+                C) 15,000 RPM HDD
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'd')">
+                D) Any speed is fine for gaming
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q8">
+              <strong>✓ Correct!</strong> For gaming, 7200 RPM HDD minimum or
+              preferably an SSD. 5400 RPM is too slow for game loading. 15,000
+              RPM drives are overkill and expensive. SSDs provide the best
+              gaming experience.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              9. Which statement about 15,000 RPM drives is TRUE?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'a')">
+                A) They are the cheapest HDD option
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'b')">
+                B) They are commonly used in laptops
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'c')">
+                C) They typically have lower capacity than slower drives
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'd')">
+                D) They use less power than 7200 RPM drives
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q9">
+              <strong>✓ Correct!</strong> 15,000 RPM drives have lower
+              capacities (typically 300-900 GB) compared to 5400/7200 RPM drives
+              that can reach 20+ TB. Faster spinning = engineering challenges
+              for larger capacities.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              10. What is the primary advantage of a 7200 RPM drive over a 5400
+              RPM drive?
+            </div>
+            <div class="quiz-options">
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'a')"
+              >
+                A) Lower cost
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'b')"
+              >
+                B) Better battery life
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'c')"
+              >
+                C) Faster data access and transfer speeds
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'd')"
+              >
+                D) Runs cooler and quieter
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q10">
+              <strong>✓ Correct!</strong> The primary advantage of 7200 RPM is
+              faster performance - faster boot times, faster file access, faster
+              data transfers. The trade-off is more heat, noise, and power
+              consumption.
+            </div>
+          </div>
+
+          <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>5400 RPM:</strong> Laptops, low power, cool, quiet, better
+              battery life
+            </li>
+            <li>
+              <strong>7200 RPM:</strong> Desktops, standard performance, most
+              common desktop speed
+            </li>
+            <li>
+              <strong>10,000 RPM:</strong> Enterprise/workstations, high
+              performance, 2.5" drives
+            </li>
+            <li>
+              <strong>15,000 RPM:</strong> Enterprise only, fastest HDD speed,
+              SAS interface typically
+            </li>
+            <li>
+              <strong>Higher RPM = Faster performance</strong> but more heat,
+              power, and noise
+            </li>
+            <li>
+              <strong>Lower RPM = Better battery life</strong> (important for
+              laptops)
+            </li>
+            <li>
+              <strong>SSDs have NO RPM</strong> - no moving parts, faster than
+              any HDD
+            </li>
+            <li>
+              <strong>Speed vs Capacity:</strong> Faster drives (10K/15K) have
+              lower capacities
+            </li>
+            <li>
+              <strong>Form factors:</strong> 3.5" usually 5400/7200; 2.5" can be
+              any speed
+            </li>
+            <li>
+              <strong>Modern trend:</strong> 10K/15K RPM being replaced by SSDs
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "a",
+        q2: "b",
+        q3: "c",
+        q4: "a",
+        q5: "c",
+        q6: "a",
+        q7: "b",
+        q8: "b",
+        q9: "c",
+        q10: "c",
+      };
+
+      let score = 0;
+      let totalAnswered = 0;
+
+      function checkAnswer(element, questionId, selectedAnswer) {
+        if (element.classList.contains("disabled")) {
+          return;
+        }
+
+        const feedback = document.getElementById("feedback-" + questionId);
+        const allOptions =
+          element.parentElement.querySelectorAll(".quiz-option");
+        const correctAnswer = answers[questionId];
+
+        allOptions.forEach((opt) => opt.classList.add("disabled"));
+
+        if (selectedAnswer === correctAnswer) {
+          element.classList.add("correct");
+          feedback.classList.remove("wrong");
+          score++;
+        } else {
+          element.classList.add("incorrect");
+          feedback.classList.add("wrong");
+          feedback.innerHTML =
+            `<strong>✗ Incorrect.</strong> The correct answer is option ${correctAnswer.toUpperCase()}. ` +
+            feedback.innerHTML.split("</strong>")[1];
+
+          allOptions.forEach((opt) => {
+            const optionLetter = opt.textContent.trim().charAt(0).toLowerCase();
+            if (optionLetter === correctAnswer) {
+              opt.classList.add("correct");
+            }
+          });
+        }
+
+        feedback.classList.add("show");
+        totalAnswered++;
+
+        if (totalAnswered === 10) {
+          const percentage = Math.round((score / 10) * 100);
+          const scoreDisplay = document.getElementById("scoreDisplay");
+          let message = "";
+
+          if (percentage >= 90) {
+            message = "🏆 Excellent! You know your RPM speeds!";
+          } else if (percentage >= 75) {
+            message = "👍 Good job! Review the incorrect answers.";
+          } else if (percentage >= 60) {
+            message = "📚 Keep studying. Review the speeds.";
+          } else {
+            message = "📖 More practice needed. Focus on each RPM.";
+          }
+
+          scoreDisplay.innerHTML = `
+                    <div>Your Score: ${score} / 10 (${percentage}%)</div>
+                    <div>${message}</div>
+                `;
+          scoreDisplay.classList.add("show");
+          scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      function resetQuiz() {
+        score = 0;
+        totalAnswered = 0;
+
+        const allOptions = document.querySelectorAll(".quiz-option");
+        allOptions.forEach((opt) => {
+          opt.classList.remove("correct", "incorrect", "disabled");
+        });
+
+        const allFeedback = document.querySelectorAll(".feedback");
+        allFeedback.forEach((fb) => {
+          fb.classList.remove("show", "wrong");
+        });
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

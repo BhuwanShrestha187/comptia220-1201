@@ -1,0 +1,1 @@
+# This is a new README.md file.\n\nWelcome to the project!\n\nInstructions:\n*   Make sure you have Python installed.\n*   Clone this repository.\n*   Run the main script.\n```

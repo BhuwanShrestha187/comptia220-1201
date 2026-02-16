@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motherboard Form Factors Cheatsheet - CompTIA A+ 220-1101</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .print-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            color: #2c3e50;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .print-btn:hover {
+            background: #ecf0f1;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .form-factor-card {
+            border: 3px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        .form-factor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .form-factor-card.atx {
+            border-color: #e74c3c;
+        }
+        
+        .form-factor-card.microatx {
+            border-color: #f39c12;
+        }
+        
+        .form-factor-card.itx {
+            border-color: #27ae60;
+        }
+        
+        .card-header {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .card-header.atx {
+            color: #e74c3c;
+        }
+        
+        .card-header.microatx {
+            color: #f39c12;
+        }
+        
+        .card-header.itx {
+            color: #27ae60;
+        }
+        
+        .spec-item {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .spec-label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 3px;
+        }
+        
+        .spec-value {
+            color: #555;
+            font-size: 0.95em;
+        }
+        
+        .quick-reference {
+            background: #fff3cd;
+            border: 3px solid #ffc107;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .quick-reference h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .quick-reference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .quick-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .compatibility-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .compatibility-table th {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .compatibility-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .compatibility-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .yes {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .yes::before {
+            content: "✓ ";
+        }
+        
+        .no {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .no::before {
+            content: "✗ ";
+        }
+        
+        .exam-tips {
+            background: #d4edda;
+            border: 3px solid #28a745;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .exam-tips h3 {
+            color: #155724;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .tip-list {
+            list-style: none;
+        }
+        
+        .tip-list li {
+            padding: 10px 10px 10px 35px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .tip-list li::before {
+            content: "💡";
+            position: absolute;
+            left: 10px;
+        }
+        
+        .memory-aid {
+            background: #d1ecf1;
+            border: 3px solid #17a2b8;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .memory-aid h3 {
+            color: #0c5460;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .mnemonic {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 1.1em;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .visual-comparison {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            margin: 30px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .size-box {
+            text-align: center;
+        }
+        
+        .box-visual {
+            border: 3px solid #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: inline-block;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .box-visual.atx {
+            width: 305px;
+            height: 244px;
+        }
+        
+        .box-visual.microatx {
+            width: 244px;
+            height: 244px;
+        }
+        
+        .box-visual.itx {
+            width: 170px;
+            height: 170px;
+        }
+        
+        .box-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .size-text {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 10px;
+        }
+        
+        .tricky-questions {
+            background: #f8d7da;
+            border: 3px solid #dc3545;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .tricky-questions h3 {
+            color: #721c24;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .tricky-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #dc3545;
+        }
+        
+        .tricky-q {
+            font-weight: bold;
+            color: #721c24;
+            margin-bottom: 8px;
+        }
+        
+        .tricky-a {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-reference-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .visual-comparison {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .size-box {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+            <h1>📋 Motherboard Form Factors</h1>
+            <p>Quick Reference Cheatsheet - CompTIA A+ 220-1101</p>
+        </div>
+        
+        <div class="content">
+            <!-- Main Comparison Cards -->
+            <div class="section">
+                <div class="section-title">📏 Form Factor Specifications</div>
+                
+                <div class="comparison-grid">
+                    <!-- ATX Card -->
+                    <div class="form-factor-card atx">
+                        <div class="card-header atx">ATX</div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions</span>
+                            <span class="spec-value">12" × 9.6"<br>(305mm × 244mm)</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Expansion Slots</span>
+                            <span class="spec-value">7 slots maximum</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">RAM Slots</span>
+                            <span class="spec-value">Typically 4 DIMM</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Power Connector</span>
+                            <span class="spec-value">24-pin + 4/8-pin CPU</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Mounting Holes</span>
+                            <span class="spec-value">9 mounting points</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Gaming, Workstations, Servers, Multi-GPU systems</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Introduced</span>
+                            <span class="spec-value">1995 by Intel</span>
+                        </div>
+                    </div>
+                    
+                    <!-- microATX Card -->
+                    <div class="form-factor-card microatx">
+                        <div class="card-header microatx">microATX</div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions</span>
+                            <span class="spec-value">9.6" × 9.6"<br>(244mm × 244mm)</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Expansion Slots</span>
+                            <span class="spec-value">4 slots maximum</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">RAM Slots</span>
+                            <span class="spec-value">Typically 2-4 DIMM</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Power Connector</span>
+                            <span class="spec-value">24-pin + 4/8-pin CPU</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Mounting Holes</span>
+                            <span class="spec-value">6-9 points (ATX subset)</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">Budget builds, Home/Office PCs, Media centers</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Shape</span>
+                            <span class="spec-value">Square (both dimensions equal)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Mini-ITX Card -->
+                    <div class="form-factor-card itx">
+                        <div class="card-header itx">Mini-ITX</div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions</span>
+                            <span class="spec-value">6.7" × 6.7"<br>(170mm × 170mm)</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Expansion Slots</span>
+                            <span class="spec-value">1 slot only (PCIe x16)</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">RAM Slots</span>
+                            <span class="spec-value">Typically 2 DIMM</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Power Connector</span>
+                            <span class="spec-value">24-pin + 4/8-pin CPU</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Mounting Holes</span>
+                            <span class="spec-value">4 mounting points</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Best For</span>
+                            <span class="spec-value">HTPCs, SFF gaming, Compact builds</span>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <span class="spec-label">Introduced</span>
+                            <span class="spec-value">2001 by VIA Technologies</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Visual Size Comparison -->
+            <div class="section">
+                <div class="section-title">👁️ Visual Size Comparison (to scale)</div>
+                
+                <div class="visual-comparison">
+                    <div class="size-box">
+                        <div class="box-visual atx" style="transform: scale(0.5);">
+                            <div class="box-label">ATX</div>
+                        </div>
+                        <div class="size-text">12" × 9.6"</div>
+                    </div>
+                    
+                    <div class="size-box">
+                        <div class="box-visual microatx" style="transform: scale(0.5);">
+                            <div class="box-label">microATX</div>
+                        </div>
+                        <div class="size-text">9.6" × 9.6"</div>
+                    </div>
+                    
+                    <div class="size-box">
+                        <div class="box-visual itx" style="transform: scale(0.5);">
+                            <div class="box-label">Mini-ITX</div>
+                        </div>
+                        <div class="size-text">6.7" × 6.7"</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Reference Table -->
+            <div class="section">
+                <div class="section-title">⚡ Quick Reference Table</div>
+                
+                <table class="compatibility-table">
+                    <thead>
+                        <tr>
+                            <th>Specification</th>
+                            <th>ATX</th>
+                            <th>microATX</th>
+                            <th>Mini-ITX</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Dimensions (inches)</strong></td>
+                            <td>12 × 9.6</td>
+                            <td>9.6 × 9.6</td>
+                            <td>6.7 × 6.7</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dimensions (mm)</strong></td>
+                            <td>305 × 244</td>
+                            <td>244 × 244</td>
+                            <td>170 × 170</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Max Expansion Slots</strong></td>
+                            <td>7</td>
+                            <td>4</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Typical RAM Slots</strong></td>
+                            <td>4</td>
+                            <td>2-4</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Main Power</strong></td>
+                            <td>24-pin</td>
+                            <td>24-pin</td>
+                            <td>24-pin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CPU Power</strong></td>
+                            <td>4/8-pin</td>
+                            <td>4/8-pin</td>
+                            <td>4/8-pin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mounting Points</strong></td>
+                            <td>9</td>
+                            <td>6-9</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relative Cost</strong></td>
+                            <td>Higher</td>
+                            <td>Moderate</td>
+                            <td>Variable</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Case Compatibility Matrix -->
+            <div class="section">
+                <div class="section-title">🔧 Case Compatibility Matrix</div>
+                
+                <table class="compatibility-table">
+                    <thead>
+                        <tr>
+                            <th>Motherboard ➡️<br>Case ⬇️</th>
+                            <th>ATX Board</th>
+                            <th>microATX Board</th>
+                            <th>Mini-ITX Board</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ATX Case</strong></td>
+                            <td class="yes">Compatible</td>
+                            <td class="yes">Compatible</td>
+                            <td class="yes">Compatible</td>
+                        </tr>
+                        <tr>
+                            <td><strong>microATX Case</strong></td>
+                            <td class="no">Too Large</td>
+                            <td class="yes">Compatible</td>
+                            <td class="yes">Compatible</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mini-ITX Case</strong></td>
+                            <td class="no">Too Large</td>
+                            <td class="no">Too Large</td>
+                            <td class="yes">Compatible</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 20px; padding: 15px; background: #e9ecef; border-radius: 8px;">
+                    <strong>Rule:</strong> Smaller motherboards fit in larger cases, but larger motherboards do NOT fit in smaller cases.
+                </div>
+            </div>
+            
+            <!-- Memory Aid -->
+            <div class="memory-aid">
+                <h3>🧠 Memory Aids & Mnemonics</h3>
+                
+                <div class="mnemonic">
+                    <strong>Expansion Slots (7-4-1):</strong><br>
+                    "Seven ATE Four, leaving one" → ATX (7), microATX (4), Mini-ITX (1)
+                </div>
+                
+                <div class="mnemonic">
+                    <strong>Dimensions Pattern:</strong><br>
+                    ATX: Think "12 pack" → 12 inches wide<br>
+                    microATX: "Square and fair" → 9.6 × 9.6 (both same)<br>
+                    Mini-ITX: "Lucky 7" → 6.7 × 6.7
+                </div>
+                
+                <div class="mnemonic">
+                    <strong>Power Connectors:</strong><br>
+                    All three use identical connectors: "24 for all" (24-pin main) + "4 or 8 for CPU"
+                </div>
+                
+                <div class="mnemonic">
+                    <strong>Backwards Compatibility:</strong><br>
+                    "Big cases swallow small boards" → Larger cases can fit smaller motherboards
+                </div>
+            </div>
+            
+            <!-- Exam Tips -->
+            <div class="exam-tips">
+                <h3>🎯 CompTIA A+ Exam Tips</h3>
+                
+                <ul class="tip-list">
+                    <li><strong>Know exact dimensions:</strong> Be able to identify form factors by their measurements (memorize all three)</li>
+                    <li><strong>Expansion slot progression:</strong> 7 → 4 → 1 (ATX → microATX → Mini-ITX)</li>
+                    <li><strong>Power connectors are universal:</strong> All use 24-pin + 4/8-pin CPU power</li>
+                    <li><strong>Case compatibility flows downward:</strong> Larger cases accept smaller boards, never the reverse</li>
+                    <li><strong>Mini-ITX PSU consideration:</strong> May need SFX/smaller PSU for physical fit (not electrical compatibility)</li>
+                    <li><strong>ATX = Maximum expansion:</strong> Always recommend for multi-card systems</li>
+                    <li><strong>microATX = Cost-effective:</strong> Best for budget builds with moderate needs</li>
+                    <li><strong>Mini-ITX = Space saver:</strong> One expansion slot limits use cases</li>
+                    <li><strong>Thermal concerns scale down:</strong> Smaller = more thermal challenges</li>
+                    <li><strong>Remember the years:</strong> ATX (1995 by Intel), Mini-ITX (2001 by VIA)</li>
+                </ul>
+            </div>
+            
+            <!-- Quick Reference Box -->
+            <div class="quick-reference">
+                <h3>⚡ Must Memorize for Exam</h3>
+                
+                <div class="quick-reference-grid">
+                    <div class="quick-item">
+                        <strong>ATX:</strong> 12" × 9.6" (305 × 244mm)<br>
+                        <strong>Slots:</strong> 7 expansion
+                    </div>
+                    
+                    <div class="quick-item">
+                        <strong>microATX:</strong> 9.6" × 9.6" (244 × 244mm)<br>
+                        <strong>Slots:</strong> 4 expansion
+                    </div>
+                    
+                    <div class="quick-item">
+                        <strong>Mini-ITX:</strong> 6.7" × 6.7" (170 × 170mm)<br>
+                        <strong>Slots:</strong> 1 expansion
+                    </div>
+                    
+                    <div class="quick-item">
+                        <strong>All Forms:</strong> 24-pin + 4/8-pin CPU<br>
+                        <strong>Rule:</strong> Same power connectors
+                    </div>
+                    
+                    <div class="quick-item">
+                        <strong>ATX Creator:</strong> Intel (1995)<br>
+                        <strong>Purpose:</strong> Replace AT standard
+                    </div>
+                    
+                    <div class="quick-item">
+                        <strong>ITX Creator:</strong> VIA Technologies (2001)<br>
+                        <strong>Purpose:</strong> Compact computing
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tricky Exam Questions -->
+            <div class="tricky-questions">
+                <h3>⚠️ Common Tricky Exam Scenarios</h3>
+                
+                <div class="tricky-item">
+                    <div class="tricky-q">Q: Can you use an ATX power supply with a Mini-ITX board?</div>
+                    <div class="tricky-a">A: YES, electrically compatible (same connectors), but it may not physically fit in a Mini-ITX case. The question tests if you know the difference between electrical compatibility and physical fit.</div>
+                </div>
+                
+                <div class="tricky-item">
+                    <div class="tricky-q">Q: A customer needs dual GPUs. Which form factor?</div>
+                    <div class="tricky-a">A: ATX only. Mini-ITX has 1 slot (impossible), microATX has 4 slots (but dual GPUs need spacing, usually requiring more slots). ATX's 7 slots is the safe answer.</div>
+                </div>
+                
+                <div class="tricky-item">
+                    <div class="tricky-q">Q: Which boards fit in a microATX case?</div>
+                    <div class="tricky-a">A: microATX and Mini-ITX only. ATX is too large. Remember: cases accept their size and smaller.</div>
+                </div>
+                
+                <div class="tricky-item">
+                    <div class="tricky-q">Q: Why choose microATX over ATX?</div>
+                    <div class="tricky-a">A: Lower cost (smaller PCB) and smaller footprint. Don't say "better performance" – that's not form factor dependent.</div>
+                </div>
+                
+                <div class="tricky-item">
+                    <div class="tricky-q">Q: Customer wants smallest HTPC with full-size GPU. Which form?</div>
+                    <div class="tricky-a">A: Mini-ITX. Despite small size, it has one PCIe x16 slot that supports full-length cards (case must have clearance).</div>
+                </div>
+            </div>
+            
+            <!-- Use Case Selector -->
+            <div class="section">
+                <div class="section-title">🎯 Form Factor Selection Guide</div>
+                
+                <table class="compatibility-table">
+                    <thead>
+                        <tr>
+                            <th>Use Case</th>
+                            <th>Recommended Form Factor</th>
+                            <th>Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gaming PC with SLI/CrossFire</td>
+                            <td>ATX</td>
+                            <td>Multiple PCIe slots needed for dual GPUs</td>
+                        </tr>
+                        <tr>
+                            <td>Budget Office Workstation</td>
+                            <td>microATX</td>
+                            <td>Lower cost, adequate expansion for office needs</td>
+                        </tr>
+                        <tr>
+                            <td>Home Theater PC (HTPC)</td>
+                            <td>Mini-ITX</td>
+                            <td>Compact size fits entertainment centers</td>
+                        </tr>
+                        <tr>
+                            <td>Video Editing Workstation</td>
+                            <td>ATX</td>
+                            <td>Multiple cards (GPU, capture, storage controller)</td>
+                        </tr>
+                        <tr>
+                            <td>Basic Web Browsing PC</td>
+                            <td>microATX or Mini-ITX</td>
+                            <td>Minimal expansion needs, cost-effective</td>
+                        </tr>
+                        <tr>
+                            <td>Small Form Factor Gaming</td>
+                            <td>Mini-ITX</td>
+                            <td>One GPU sufficient, compact design</td>
+                        </tr>
+                        <tr>
+                            <td>Server with RAID Cards</td>
+                            <td>ATX</td>
+                            <td>Multiple expansion cards for storage/networking</td>
+                        </tr>
+                        <tr>
+                            <td>General Purpose Home PC</td>
+                            <td>microATX</td>
+                            <td>Best balance of cost, size, and expandability</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Key Differences Summary -->
+            <div class="section">
+                <div class="section-title">🔑 Key Differences Summary</div>
+                
+                <table class="compatibility-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Impact on Selection</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Size Progression</strong></td>
+                            <td>ATX (largest) → microATX (medium) → Mini-ITX (smallest)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Expansion Capability</strong></td>
+                            <td>Decreases with size: 7 → 4 → 1 slots</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cost</strong></td>
+                            <td>Generally: microATX lowest, ATX moderate, Mini-ITX variable (premium for small size)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cooling</strong></td>
+                            <td>Easier with larger boards (more space = better airflow)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable Management</strong></td>
+                            <td>More challenging as size decreases</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Component Clearance</strong></td>
+                            <td>Mini-ITX often requires low-profile coolers and careful planning</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Future Upgradeability</strong></td>
+                            <td>ATX offers most flexibility, Mini-ITX least</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Power Requirements</strong></td>
+                            <td>Connectors identical, but Mini-ITX cases may need SFX PSU</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Final Exam Checklist -->
+            <div class="exam-tips" style="background: #cce5ff; border-color: #004085;">
+                <h3 style="color: #004085;">✅ Pre-Exam Checklist</h3>
+                
+                <ul class="tip-list">
+                    <li>I can recite dimensions for all three form factors in both inches and millimeters</li>
+                    <li>I know the expansion slot counts: 7, 4, 1</li>
+                    <li>I understand that all three use the same power connectors (24-pin + 4/8-pin CPU)</li>
+                    <li>I can explain case compatibility (smaller boards fit in larger cases)</li>
+                    <li>I know when to recommend each form factor based on use case</li>
+                    <li>I remember ATX was by Intel (1995) and Mini-ITX by VIA (2001)</li>
+                    <li>I understand thermal and physical space considerations for Mini-ITX</li>
+                    <li>I can identify that microATX is square (9.6 × 9.6)</li>
+                    <li>I know ATX has 9 mounting holes, microATX has 6-9, Mini-ITX has 4</li>
+                    <li>I can distinguish between electrical compatibility and physical fit</li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

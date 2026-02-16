@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: M.2 Form Factor (SSDs)</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #764ba2;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #764ba2;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #764ba2;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #667eea;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #764ba2;
+      }
+
+      /* Quiz Section with Immediate Feedback */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #764ba2;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #667eea;
+      }
+
+      .score-display {
+        background: #667eea;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #764ba2;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover:not(.disabled) {
+        background: #e9ecef;
+        border-color: #764ba2;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>⚡ M.2 Form Factor (SSDs)</h1>
+        <p>CompTIA A+ 220-1101 - Storage Interfaces & Form Factors</p>
+      </header>
+
+      <div class="content">
+        <h2>What is M.2?</h2>
+        <div class="simple-box">
+          <p><strong>M.2</strong> (formerly Next Generation Form Factor - NGFF) is a specification for internally mounted computer expansion cards and connectors. It replaces the older mSATA standard and is widely used for high-performance SSDs, Wi-Fi cards, and other devices. M.2 SSDs connect directly to the motherboard without cables, saving space and enabling faster speeds.</p>
+        </div>
+
+        <h2>M.2 Key Types & Sockets</h2>
+        <table>
+          <tr>
+            <th>Key</th>
+            <th>Notch Position</th>
+            <th>Common Interfaces</th>
+            <th>Typical Use</th>
+          </tr>
+          <tr>
+            <td><strong>B key</strong></td>
+            <td>Notch on left (pins 12-19)</td>
+            <td>SATA, PCIe x2</td>
+            <td>Lower-cost SSDs, WWAN, Wi-Fi (legacy)</td>
+          </tr>
+          <tr>
+            <td><strong>M key</strong></td>
+            <td>Notch on right (pins 59-66)</td>
+            <td>PCIe x4, NVMe, SATA (some)</td>
+            <td>High-performance NVMe SSDs</td>
+          </tr>
+          <tr>
+            <td><strong>B+M key</strong></td>
+            <td>Both notches</td>
+            <td>SATA or PCIe x2</td>
+            <td>Compatibility with both sockets (usually SATA)</td>
+          </tr>
+        </table>
+        <p><strong>Important:</strong> The key must match the motherboard slot. M-key SSDs only fit M-key slots; B+M key SSDs fit either but may run at slower speeds.</p>
+
+        <h2>M.2 SSD Interfaces: SATA vs NVMe</h2>
+        <table>
+          <tr>
+            <th>Interface</th>
+            <th>Protocol</th>
+            <th>Max Theoretical Speed</th>
+            <th>Typical Real-World</th>
+            <th>Key</th>
+          </tr>
+          <tr>
+            <td><strong>SATA M.2</strong></td>
+            <td>AHCI</td>
+            <td>600 MB/s (SATA III)</td>
+            <td>500–550 MB/s</td>
+            <td>B, M, B+M</td>
+          </tr>
+          <tr>
+            <td><strong>NVMe PCIe 3.0 x4</strong></td>
+            <td>NVMe</td>
+            <td>~4 GB/s (32 Gbit/s)</td>
+            <td>Up to 3.5 GB/s</td>
+            <td>M key</td>
+          </tr>
+          <tr>
+            <td><strong>NVMe PCIe 4.0 x4</strong></td>
+            <td>NVMe</td>
+            <td>~8 GB/s (64 Gbit/s)</td>
+            <td>Up to 7 GB/s</td>
+            <td>M key</td>
+          </tr>
+          <tr>
+            <td><strong>NVMe PCIe 5.0 x4</strong></td>
+            <td>NVMe</td>
+            <td>~16 GB/s (128 Gbit/s)</td>
+            <td>Up to 14 GB/s</td>
+            <td>M key</td>
+          </tr>
+        </table>
+
+        <h2>M.2 Lengths (Form Factors)</h2>
+        <div class="simple-box">
+          <p>M.2 drives are identified by their width (always 22mm) and length. Common lengths:</p>
+          <ul>
+            <li><strong>2230:</strong> 22mm wide, 30mm long (often for Wi-Fi cards or small embedded)</li>
+            <li><strong>2242:</strong> 22mm x 42mm (some older SSDs)</li>
+            <li><strong>2260:</strong> 22mm x 60mm (less common)</li>
+            <li><strong>2280:</strong> 22mm x 80mm (<strong>most common</strong> for desktops/laptops)</li>
+            <li><strong>22110:</strong> 22mm x 110mm (enterprise/server SSDs)</li>
+          </ul>
+          <p>Motherboards have mounting points for various lengths. Always check supported lengths before buying.</p>
+        </div>
+
+        <h2>M.2 vs mSATA vs 2.5" SATA</h2>
+        <table>
+          <tr>
+            <th>Form Factor</th>
+            <th>Size</th>
+            <th>Cables</th>
+            <th>Max Speed</th>
+            <th>Hot-swap</th>
+          </tr>
+          <tr>
+            <td><strong>M.2 NVMe</strong></td>
+            <td>Tiny (22x80mm)</td>
+            <td>None (direct slot)</td>
+            <td>Up to 16 GB/s</td>
+            <td>No (usually)</td>
+          </tr>
+          <tr>
+            <td><strong>M.2 SATA</strong></td>
+            <td>Tiny (22x80mm)</td>
+            <td>None</td>
+            <td>550 MB/s</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><strong>mSATA</strong></td>
+            <td>51x30mm</td>
+            <td>None</td>
+            <td>550 MB/s</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td><strong>2.5" SATA</strong></td>
+            <td>2.5" (100x70x7mm)</td>
+            <td>SATA data + power</td>
+            <td>550 MB/s</td>
+            <td>Some support</td>
+          </tr>
+        </table>
+
+        <h2>Key Advantages of M.2</h2>
+        <div class="simple-box">
+          <ul>
+            <li><strong>Small footprint:</strong> Saves space for thinner laptops and compact desktops.</li>
+            <li><strong>High performance:</strong> NVMe M.2 drives dramatically outperform SATA SSDs.</li>
+            <li><strong>No cables:</strong> Direct motherboard connection reduces clutter and improves airflow.</li>
+            <li><strong>Multi-function:</strong> Same slot can support SSDs, Wi-Fi, Bluetooth, or WWAN cards.</li>
+            <li><strong>Lower latency:</strong> NVMe protocol is optimized for SSDs with parallel I/O.</li>
+          </ul>
+        </div>
+
+        <h2>Motherboard Compatibility</h2>
+        <div class="simple-box">
+          <h3>Checklist before buying M.2 SSD:</h3>
+          <ul>
+            <li><strong>Key type:</strong> Does the slot accept M-key, B-key, or both?</li>
+            <li><strong>Interface support:</strong> Does the slot support NVMe (PCIe) or only SATA? (Many older slots are SATA-only.)</li>
+            <li><strong>PCIe generation:</strong> PCIe 3.0, 4.0, or 5.0? Backward compatible but slower.</li>
+            <li><strong>Physical length:</strong> Does your board have standoffs for 2280? (most do)</li>
+            <li><strong>BIOS/UEFI:</strong> NVMe drives may need UEFI and sometimes a BIOS update for boot.</li>
+            <li><strong>Shared lanes:</strong> Some M.2 slots share bandwidth with SATA ports or PCIe slots – check motherboard manual.</li>
+          </ul>
+        </div>
+
+        <h2>Installation Tips</h2>
+        <table>
+          <tr>
+            <th>Step</th>
+            <th>Detail</th>
+          </tr>
+          <tr>
+            <td><strong>1. Locate M.2 slot</strong></td>
+            <td>Usually near CPU or chipset; may have a heatsink (especially PCIe 4.0/5.0).</td>
+          </tr>
+          <tr>
+            <td><strong>2. Remove standoff</strong></td>
+            <td>Move the small screw/standoff to match your drive length (e.g., 2280).</td>
+          </tr>
+          <tr>
+            <td><strong>3. Insert at angle</strong></td>
+            <td>Insert drive at ~30-degree angle, gold fingers first, then press down.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Secure with screw</strong></td>
+            <td>Use the tiny screw provided with motherboard (don't overtighten).</td>
+          </tr>
+          <tr>
+            <td><strong>5. Attach heatsink (if any)</strong></td>
+            <td>High-end NVMe drives generate heat; some boards include thermal pads.</td>
+          </tr>
+        </table>
+
+        <h2>Troubleshooting M.2 SSDs</h2>
+        <table>
+          <tr>
+            <th>Issue</th>
+            <th>Possible Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Drive not detected in BIOS</td>
+            <td>Incompatible key, SATA mode vs NVMe, not seated fully</td>
+            <td>Reseat drive; check BIOS settings (enable NVMe or disable CSM); verify key compatibility</td>
+          </tr>
+          <tr>
+            <td>Drive detected but slow</td>
+            <td>Running in SATA mode, PCIe lane limitations, old driver</td>
+            <td>Check if slot is PCIe or SATA; update NVMe driver; verify PCIe link speed</td>
+          </tr>
+          <tr>
+            <td>Overheating/throttling</td>
+            <td>Lack of airflow or heatsink</td>
+            <td>Add M.2 heatsink; ensure case airflow; monitor temps with tools</td>
+          </tr>
+          <tr>
+            <td>Cannot boot from drive</td>
+            <td>BIOS not set to UEFI, partition table (MBR vs GPT)</td>
+            <td>Switch to UEFI boot; use GPT partition; enable NVMe in boot order</td>
+          </tr>
+          <tr>
+            <td>Drive drops out randomly</td>
+            <td>Power management settings, loose connection</td>
+            <td>Reseat drive; update BIOS; disable PCIe link state power management</td>
+          </tr>
+        </table>
+
+        <h2>M.2 Beyond SSDs</h2>
+        <div class="simple-box">
+          <ul>
+            <li><strong>Wi-Fi / Bluetooth cards:</strong> Usually key E or A+E, smaller size (2230).</li>
+            <li><strong>WWAN / Cellular modems:</strong> Often B-key or E-key.</li>
+            <li><strong>NVMe to PCIe adapters:</strong> Some M.2 slots can be adapted for other devices.</li>
+            <li><strong>Intel Optane Memory:</strong> Used as cache (requires specific chipset).</li>
+          </ul>
+        </div>
+
+        <h2>M.2 Generations Comparison</h2>
+        <table>
+          <tr>
+            <th>PCIe Generation</th>
+            <th>Per-lane Speed (x4)</th>
+            <th>Typical Release</th>
+          </tr>
+          <tr>
+            <td><strong>PCIe 3.0</strong></td>
+            <td>~4 GB/s</td>
+            <td>~2010 (widespread in 2015+)</td>
+          </tr>
+          <tr>
+            <td><strong>PCIe 4.0</strong></td>
+            <td>~8 GB/s</td>
+            <td>2019 (AMD Ryzen 3000+, Intel 11th gen+)</td>
+          </tr>
+          <tr>
+            <td><strong>PCIe 5.0</strong></td>
+            <td>~16 GB/s</td>
+            <td>2022 (Intel 12th/13th gen, AMD 600 series)</td>
+          </tr>
+        </table>
+
+        <h2>Important A+ Exam Tips</h2>
+        <div class="simple-box">
+          <ul>
+            <li>Know the difference between <strong>SATA M.2</strong> and <strong>NVMe M.2</strong> – they are physically similar but use different protocols.</li>
+            <li>Recognize that <strong>M key</strong> is typically for NVMe (PCIe x4), while <strong>B key</strong> is often SATA or PCIe x2.</li>
+            <li>Remember common length: <strong>2280</strong> is the most popular for SSDs.</li>
+            <li>Understand that M.2 slots can support multiple functions, but you must check motherboard specs.</li>
+            <li>NVMe = Non-Volatile Memory Express (optimized for SSDs, lower latency).</li>
+            <li>Older motherboards may have M.2 slots that are <strong>SATA only</strong> – NVMe drives won't work.</li>
+          </ul>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION (M.2) -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 M.2 Form Factor Practice Quiz</h2>
+            <p>Click an answer to get immediate feedback!</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <!-- Question 1 -->
+          <div class="question-card">
+            <div class="question-text">
+              1. What is the most common length for M.2 SSDs in desktops and laptops?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'a')">A) 2242</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'b')">B) 2260</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'c')">C) 2280</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'd')">D) 22110</label>
+            </div>
+            <div class="feedback" id="feedback-q1">
+              <strong>✓ Correct!</strong> 2280 (22mm wide, 80mm long) is the standard length for most consumer M.2 SSDs.
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="question-card">
+            <div class="question-text">
+              2. Which M.2 key is typically used for high-performance NVMe PCIe x4 SSDs?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'a')">A) A key</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'b')">B) B key</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'c')">C) E key</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'd')">D) M key</label>
+            </div>
+            <div class="feedback" id="feedback-q2">
+              <strong>✓ Correct!</strong> M key (notch on right) supports PCIe x4 NVMe drives, offering the highest speeds.
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="question-card">
+            <div class="question-text">
+              3. What is the maximum theoretical speed of a PCIe 4.0 x4 NVMe M.2 SSD?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'a')">A) ~600 MB/s</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'b')">B) ~4 GB/s</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'c')">C) ~8 GB/s</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'd')">D) ~16 GB/s</label>
+            </div>
+            <div class="feedback" id="feedback-q3">
+              <strong>✓ Correct!</strong> PCIe 4.0 x4 delivers up to ~8 GB/s (64 Gbit/s). PCIe 3.0 x4 is ~4 GB/s, PCIe 5.0 x4 is ~16 GB/s.
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="question-card">
+            <div class="question-text">
+              4. Which interface do NVMe M.2 SSDs use?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'a')">A) SATA</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'b')">B) PATA</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'c')">C) PCIe</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'd')">D) USB</label>
+            </div>
+            <div class="feedback" id="feedback-q4">
+              <strong>✓ Correct!</strong> NVMe drives use the PCIe interface. SATA M.2 drives use the SATA interface and are slower.
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="question-card">
+            <div class="question-text">
+              5. Can a B+M key M.2 SATA SSD fit into an M key slot?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'a')">A) No, never</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'b')">B) Yes, but it will only run at SATA speeds</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'c')">C) Yes, and it will run at NVMe speeds</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'd')">D) Only if the slot is also B key</label>
+            </div>
+            <div class="feedback" id="feedback-q5">
+              <strong>✓ Correct!</strong> B+M key drives fit in both B and M slots physically, but the slot must support SATA protocol electrically. It won't become NVMe.
+            </div>
+          </div>
+
+          <!-- Question 6 -->
+          <div class="question-card">
+            <div class="question-text">
+              6. What does NVMe stand for?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'a')">A) Non-Volatile Memory Express</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'b')">B) New Virtual Memory Extension</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'c')">C) Next-Gen Volatile Memory Engine</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'd')">D) Non-Volatile Media Extension</label>
+            </div>
+            <div class="feedback" id="feedback-q6">
+              <strong>✓ Correct!</strong> NVMe = Non-Volatile Memory Express, a protocol designed for SSDs to reduce latency.
+            </div>
+          </div>
+
+          <!-- Question 7 -->
+          <div class="question-card">
+            <div class="question-text">
+              7. Which of the following is a common issue when an M.2 NVMe drive is not detected in BIOS?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'a')">A) Drive is too long</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'b')">B) BIOS set to legacy/CSM mode instead of UEFI</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'c')">C) Drive needs external power</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'd')">D) SATA cable is loose</label>
+            </div>
+            <div class="feedback" id="feedback-q7">
+              <strong>✓ Correct!</strong> Many NVMe drives require UEFI boot mode. Legacy/CSM may hide the drive. Also check seating and compatibility.
+            </div>
+          </div>
+
+          <!-- Question 8 -->
+          <div class="question-card">
+            <div class="question-text">
+              8. Approximately how fast is a SATA-based M.2 SSD?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'a')">A) 150 MB/s</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'b')">B) 550 MB/s</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'c')">C) 3500 MB/s</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'd')">D) 7000 MB/s</label>
+            </div>
+            <div class="feedback" id="feedback-q8">
+              <strong>✓ Correct!</strong> SATA III tops out around 550 MB/s. NVMe drives are much faster.
+            </div>
+          </div>
+
+          <!-- Question 9 -->
+          <div class="question-card">
+            <div class="question-text">
+              9. What was the predecessor to M.2 for small-form-factor SSDs?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'a')">A) mSATA</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'b')">B) IDE</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'c')">C) SCSI</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'd')">D) CFast</label>
+            </div>
+            <div class="feedback" id="feedback-q9">
+              <strong>✓ Correct!</strong> mSATA (mini-SATA) was common before M.2, but it's now largely replaced by M.2.
+            </div>
+          </div>
+
+          <!-- Question 10 -->
+          <div class="question-card">
+            <div class="question-text">
+              10. If a motherboard's M.2 slot supports PCIe 3.0 x4, what happens if you install a PCIe 4.0 NVMe drive?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q10', 'a')">A) It won't work at all</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q10', 'b')">B) It runs at PCIe 3.0 speeds</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q10', 'c')">C) It runs at PCIe 2.0 speeds</label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q10', 'd')">D) It runs at full PCIe 4.0 speed</label>
+            </div>
+            <div class="feedback" id="feedback-q10">
+              <strong>✓ Correct!</strong> PCIe is backward compatible. The drive will operate at PCIe 3.0 speeds (around 4 GB/s) in a 3.0 slot.
+            </div>
+          </div>
+
+          <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🔑 Key M.2 Points for the A+ Exam</h2>
+          <ul>
+            <li><strong>M.2 form factor:</strong> 22mm wide, varies in length (most common 2280).</li>
+            <li><strong>Keys:</strong> M key (NVMe, PCIe x4), B key (SATA or PCIe x2), B+M (universal, often SATA).</li>
+            <li><strong>NVMe vs SATA:</strong> NVMe uses PCIe, much faster (GB/s). SATA M.2 tops at ~550 MB/s.</li>
+            <li><strong>PCIe generations:</strong> 3.0 (~4 GB/s), 4.0 (~8 GB/s), 5.0 (~16 GB/s) – backward compatible.</li>
+            <li><strong>Installation:</strong> Insert at angle, secure with standoff screw; check motherboard for supported lengths.</li>
+            <li><strong>Compatibility:</strong> Slot key must match drive key; some slots support only SATA, some only NVMe.</li>
+            <li><strong>Boot:</strong> NVMe drives typically require UEFI mode (not legacy BIOS).</li>
+            <li><strong>Cooling:</strong> High-performance NVMe drives may need heatsinks to prevent throttling.</li>
+            <li><strong>Uses:</strong> SSDs, Wi-Fi, Bluetooth, WWAN – not just storage.</li>
+            <li><strong>mSATA:</strong> Older standard; M.2 replaced it.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Answer key for M.2 quiz
+      const answers = {
+        q1: "c",
+        q2: "d",
+        q3: "c",
+        q4: "c",
+        q5: "b",
+        q6: "a",
+        q7: "b",
+        q8: "b",
+        q9: "a",
+        q10: "b",
+      };
+
+      let score = 0;
+      let totalAnswered = 0;
+
+      function checkAnswer(element, questionId, selectedAnswer) {
+        if (element.classList.contains("disabled")) {
+          return;
+        }
+
+        const feedback = document.getElementById("feedback-" + questionId);
+        const allOptions = element.parentElement.querySelectorAll(".quiz-option");
+        const correctAnswer = answers[questionId];
+
+        allOptions.forEach((opt) => opt.classList.add("disabled"));
+
+        if (selectedAnswer === correctAnswer) {
+          element.classList.add("correct");
+          feedback.classList.remove("wrong");
+          score++;
+        } else {
+          element.classList.add("incorrect");
+          feedback.classList.add("wrong");
+          // Prepend incorrect message, keep original explanation
+          const originalHTML = feedback.innerHTML;
+          feedback.innerHTML =
+            `<strong>✗ Incorrect.</strong> The correct answer is option ${correctAnswer.toUpperCase()}. ` +
+            (originalHTML.split("</strong>")[1] || "");
+
+          // Highlight correct answer for learning
+          allOptions.forEach((opt) => {
+            const optionLetter = opt.textContent.trim().charAt(0).toLowerCase();
+            if (optionLetter === correctAnswer) {
+              opt.classList.add("correct");
+            }
+          });
+        }
+
+        feedback.classList.add("show");
+        totalAnswered++;
+
+        if (totalAnswered === 10) {
+          const percentage = Math.round((score / 10) * 100);
+          const scoreDisplay = document.getElementById("scoreDisplay");
+          let message = "";
+
+          if (percentage >= 90) {
+            message = "🏆 M.2 Master! Excellent!";
+          } else if (percentage >= 75) {
+            message = "👍 Good job – review key types.";
+          } else if (percentage >= 60) {
+            message = "📚 Keep studying: focus on NVMe vs SATA.";
+          } else {
+            message = "📖 More practice needed –

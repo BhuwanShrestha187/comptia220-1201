@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIC Cards / Network Interface Cards – CompTIA A+ 220-1201 (Simple Exam Notes)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid #2980b9;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #e8f4fd;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+        .key-point {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-left: 5px solid #2980b9;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-top: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<h1>NIC Cards / Network Interface Cards – CompTIA A+ 220-1201</h1>
+
+<h2>What is a NIC Card?</h2>
+
+<p>A **NIC** (Network Interface Card) connects your computer to a network (usually wired Ethernet). Every device on a network needs one to send/receive data.</p>
+
+<ul>
+    <li>Has a unique **MAC address** (hardware address) burned in</li>
+    <li>Handles converting data to signals for the cable</li>
+    <li>Found in PCs, laptops, servers, printers — everywhere networked</li>
+</ul>
+
+<div class="key-point">
+    <strong>Exam Tip:</strong> NICs are expansion cards in Domain 3.0 Hardware (same as sound/video/capture cards). Also mentioned in Domain 2.0 Networking hardware.
+</div>
+
+<img src="https://m.media-amazon.com/images/I/61TLzqhCj5L._AC_UF894,1000_QL80_.jpg" alt="PCIe NIC card with RJ45 port">
+<div class="caption">Typical PCIe NIC card (single RJ45 Ethernet port)</div>
+
+<img src="https://www.lifewire.com/thmb/3MUFuc6UqUvVYgjGk7zBpNakYXw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-620725222-8ea61f13db054d0ba7ac7d06d0684443.jpg" alt="Network interface card example">
+<div class="caption">Standard desktop NIC card showing RJ45 connector</div>
+
+<h2>Two Main Types</h2>
+
+<p><strong>Integrated / Onboard NIC</strong></p>
+<ul>
+    <li>Built into the motherboard (most common today)</li>
+    <li>Port on the back I/O panel</li>
+    <li>Good for normal use: home/office, internet, file sharing</li>
+    <li>Common speeds: 1 Gbps (Gigabit), now often 2.5 Gbps or 5 Gbps</li>
+</ul>
+
+<p><strong>Discrete / Expansion NIC</strong></p>
+<ul>
+    <li>Separate card plugged into PCIe slot (usually x1)</li>
+    <li>Used when: onboard fails, need faster speed, more ports, or server/multi-NIC setup</li>
+    <li>Can have 1, 2, 4+ ports (multi-port for servers)</li>
+    <li>Supports higher speeds like 10 Gbps in some cases</li>
+</ul>
+
+<img src="https://media.rs-online.com/image/upload/v1482270799/F6733093-01.jpg" alt="Onboard motherboard Ethernet port">
+<div class="caption">Onboard integrated NIC port (RJ45 on motherboard I/O panel)</div>
+
+<img src="https://m.media-amazon.com/images/I/71JFre96cZL._AC_UF894,1000_QL80_.jpg" alt="Multi-port PCIe NIC card">
+<div class="caption">Multi-port discrete NIC (4x RJ45 for servers)</div>
+
+<h2>How It Connects – Slots / Interfaces</h2>
+
+<p>Discrete NICs use **PCIe x1** slot (short slot, enough bandwidth for network speeds).</p>
+
+<div class="key-point">
+    <strong>Exam Tip:</strong> Plug Ethernet cable into the NIC's RJ45 port. For discrete card, use the card's port (not motherboard if replacing faulty onboard).
+</div>
+
+<img src="https://i.ytimg.com/vi/7UlOIsRoV74/maxresdefault.jpg" alt="Installing PCIe NIC card">
+<div class="caption">Installing a PCIe NIC card into x1 slot</div>
+
+<h2>Common Port / Connector</h2>
+
+<ul>
+    <li><strong>RJ45</strong> → The standard Ethernet port (looks like big phone jack, 8 pins)</li>
+    <li>Used with twisted-pair cables (Cat5e, Cat6, etc.)</li>
+    <li>LEDs on port: Green/amber lights show link and activity/speed</li>
+</ul>
+
+<div class="key-point">
+    <strong>Exam loves this:</strong> RJ45 is the main wired NIC port. Know it's for Ethernet (not phone RJ11). LEDs help troubleshoot connection.
+</div>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Network_card.jpg" alt="RJ45 port close-up on NIC">
+<div class="caption">Close-up of RJ45 Ethernet port on a NIC card</div>
+
+<h2>Installing a NIC Card (Simple Steps)</h2>
+<ul>
+    <li>Power off PC, unplug.</li>
+    <li>Open case, insert into PCIe x1 slot until it clicks.</li>
+    <li>Secure bracket to case.</li>
+    <li>Close case, plug Ethernet cable into **new NIC port**.</li>
+    <li>Boot up → install drivers (from manufacturer or Windows usually auto-detects).</li>
+</ul>
+
+<h2>Troubleshooting NIC Issues</h2>
+<ul>
+    <li>No connection → Check cable/link lights, wrong port used, drivers missing/bad, cable damaged.</li>
+    <li>Slow speed → Wrong cable (e.g., old Cat5 instead of Cat6), duplex/speed mismatch, faulty NIC.</li>
+    <li>No link light → Bad cable, port issue, power problem, or NIC dead.</li>
+    <li>After install no network → Plugged into old onboard port instead of new card, disable onboard in BIOS if conflicting.</li>
+</ul>
+
+<h2>Quick Exam Cheat Sheet</h2>
+<div class="key-point">
+    <ul>
+        <li>Integrated = built into motherboard, basic Gigabit/2.5G</li>
+        <li>Discrete = PCIe x1 card, for extra ports/speed/failover</li>
+        <li>Main port = RJ45 (Ethernet)</li>
+        <li>MAC address = unique hardware ID on every NIC</li>
+        <li>Install → PCIe slot + cable to card + drivers</li>
+        <li>Troubleshoot: Link lights/cable/drivers first</li>
+    </ul>
+</div>
+
+<footer>For CompTIA A+ Core 1 (220-1201) – Hardware (expansion cards) + Networking domains. Good luck with your exam prep, Nischal! You're building a solid set of notes. 🚀</footer>
+
+</body>
+</html>

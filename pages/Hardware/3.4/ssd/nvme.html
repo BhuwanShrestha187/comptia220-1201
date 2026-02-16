@@ -1,0 +1,1074 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: NVMe for SSDs</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #764ba2;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #764ba2;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #764ba2;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .highlight-box {
+        background: #d1ecf1;
+        border-left: 4px solid #0c5460;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .important-box {
+        background: #fff3cd;
+        border-left: 4px solid #856404;
+        padding: 15px;
+        margin: 15px 0;
+        font-weight: 500;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #667eea;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #764ba2;
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .comparison-card {
+        background: #f8f9fa;
+        border: 3px solid #764ba2;
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .comparison-card h4 {
+        color: #667eea;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+      }
+
+      /* Quiz Section with Immediate Feedback */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #764ba2;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #667eea;
+      }
+
+      .score-display {
+        background: #667eea;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #764ba2;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover:not(.disabled) {
+        background: #e9ecef;
+        border-color: #764ba2;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>⚡ NVMe for SSDs</h1>
+        <p>CompTIA A+ 220-1101 - NVMe Protocol Essentials</p>
+      </header>
+
+      <div class="content">
+        <h2>What is NVMe?</h2>
+
+        <div class="simple-box">
+          <p><strong>NVMe = Non-Volatile Memory Express</strong></p>
+          <ul>
+            <li>
+              A <strong>communication protocol</strong> (not a physical
+              connector)
+            </li>
+            <li>Designed specifically for SSDs</li>
+            <li>Uses PCIe lanes for data transfer</li>
+            <li>Much faster than SATA</li>
+            <li>Replaces older AHCI protocol</li>
+          </ul>
+        </div>
+
+        <div class="important-box">
+          <strong>⚠️ CRITICAL CONCEPT:</strong> NVMe is NOT a form factor. It's
+          a protocol. An M.2 drive can use either SATA or NVMe protocol. M.2 is
+          the physical size; NVMe is how it communicates.
+        </div>
+
+        <h2>NVMe vs SATA Comparison</h2>
+
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>SATA III</th>
+            <th>NVMe (PCIe 3.0 x4)</th>
+            <th>NVMe (PCIe 4.0 x4)</th>
+          </tr>
+          <tr>
+            <td><strong>Max Speed</strong></td>
+            <td>~550 MB/s</td>
+            <td>~3,500 MB/s</td>
+            <td>~7,000 MB/s</td>
+          </tr>
+          <tr>
+            <td><strong>Interface</strong></td>
+            <td>SATA cable</td>
+            <td>PCIe lanes</td>
+            <td>PCIe lanes</td>
+          </tr>
+          <tr>
+            <td><strong>Queue Depth</strong></td>
+            <td>32 commands</td>
+            <td>64K commands</td>
+            <td>64K commands</td>
+          </tr>
+          <tr>
+            <td><strong>Latency</strong></td>
+            <td>Higher</td>
+            <td>Much lower</td>
+            <td>Much lower</td>
+          </tr>
+          <tr>
+            <td><strong>Cost</strong></td>
+            <td>Cheaper</td>
+            <td>More expensive</td>
+            <td>Most expensive</td>
+          </tr>
+          <tr>
+            <td><strong>Common Form</strong></td>
+            <td>2.5" or M.2</td>
+            <td>M.2</td>
+            <td>M.2</td>
+          </tr>
+        </table>
+
+        <h2>How NVMe Works</h2>
+
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h4>SATA SSDs</h4>
+            <ul>
+              <li>Uses SATA interface</li>
+              <li>Limited to ~550 MB/s</li>
+              <li>Goes through SATA controller</li>
+              <li>Higher latency</li>
+              <li>Bottlenecked by SATA protocol</li>
+            </ul>
+          </div>
+
+          <div class="comparison-card">
+            <h4>NVMe SSDs</h4>
+            <ul>
+              <li>Uses PCIe lanes directly</li>
+              <li>Up to 3,500-7,000 MB/s</li>
+              <li>Direct CPU connection</li>
+              <li>Much lower latency</li>
+              <li>Designed for flash memory</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>PCIe Generations & Speeds</h2>
+
+        <table>
+          <tr>
+            <th>PCIe Generation</th>
+            <th>Speed per Lane</th>
+            <th>x4 Total Speed</th>
+            <th>Real-World SSD Speed</th>
+          </tr>
+          <tr>
+            <td><strong>PCIe 3.0</strong></td>
+            <td>~1 GB/s</td>
+            <td>~4 GB/s</td>
+            <td>~3,500 MB/s</td>
+          </tr>
+          <tr>
+            <td><strong>PCIe 4.0</strong></td>
+            <td>~2 GB/s</td>
+            <td>~8 GB/s</td>
+            <td>~7,000 MB/s</td>
+          </tr>
+          <tr>
+            <td><strong>PCIe 5.0</strong></td>
+            <td>~4 GB/s</td>
+            <td>~16 GB/s</td>
+            <td>~14,000 MB/s (future)</td>
+          </tr>
+        </table>
+
+        <div class="simple-box">
+          <p>
+            <strong>Note:</strong> Most NVMe drives use 4 PCIe lanes (x4). The
+            generation determines speed.
+          </p>
+        </div>
+
+        <h2>M.2 NVMe Drives</h2>
+
+        <h3>Physical Specifications</h3>
+        <div class="simple-box">
+          <ul>
+            <li><strong>Form Factor:</strong> M.2 (most common for NVMe)</li>
+            <li><strong>Size:</strong> Usually 2280 (22mm wide, 80mm long)</li>
+            <li><strong>Key Type:</strong> M key (for NVMe)</li>
+            <li>
+              <strong>Connection:</strong> Plugs directly into M.2 slot on
+              motherboard
+            </li>
+            <li>
+              <strong>Installation:</strong> Insert at 30° angle, press flat,
+              secure with screw
+            </li>
+          </ul>
+        </div>
+
+        <h3>M.2 Key Types</h3>
+        <div class="highlight-box">
+          <p><strong>Important Distinction:</strong></p>
+          <ul>
+            <li><strong>M Key:</strong> NVMe SSDs (PCIe interface) - FAST</li>
+            <li><strong>B Key:</strong> SATA SSDs or PCIe x2</li>
+            <li><strong>B+M Key:</strong> SATA SSDs (fits both slots)</li>
+          </ul>
+          <p>
+            The physical notch determines compatibility with the motherboard
+            slot.
+          </p>
+        </div>
+
+        <h2>NVMe Requirements</h2>
+
+        <div class="simple-box">
+          <h3>What You Need:</h3>
+          <ul>
+            <li>
+              <strong>Motherboard support:</strong> Must have M.2 slot with NVMe
+              support (not all M.2 slots support NVMe)
+            </li>
+            <li>
+              <strong>PCIe lanes:</strong> Typically requires PCIe 3.0 x4 or
+              better
+            </li>
+            <li>
+              <strong>BIOS/UEFI support:</strong> Older systems may not boot
+              from NVMe
+            </li>
+            <li>
+              <strong>Operating System:</strong> Windows 8.1+, Linux kernel
+              3.3+, macOS support varies
+            </li>
+            <li>
+              <strong>Drivers:</strong> Usually built into modern OS (Windows
+              10/11 has native NVMe support)
+            </li>
+          </ul>
+        </div>
+
+        <h2>Benefits of NVMe</h2>
+
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h4>Speed</h4>
+            <ul>
+              <li>6-12x faster than SATA SSD</li>
+              <li>Faster boot times</li>
+              <li>Faster app loading</li>
+              <li>Faster file transfers</li>
+            </ul>
+          </div>
+
+          <div class="comparison-card">
+            <h4>Efficiency</h4>
+            <ul>
+              <li>Lower latency</li>
+              <li>Better power efficiency</li>
+              <li>Handles more operations</li>
+              <li>Better for multitasking</li>
+            </ul>
+          </div>
+
+          <div class="comparison-card">
+            <h4>Design</h4>
+            <ul>
+              <li>No cables needed</li>
+              <li>Small form factor</li>
+              <li>Direct motherboard connection</li>
+              <li>Saves space</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Common Uses for NVMe</h2>
+
+        <table>
+          <tr>
+            <th>Use Case</th>
+            <th>Why NVMe?</th>
+          </tr>
+          <tr>
+            <td><strong>OS Boot Drive</strong></td>
+            <td>Fastest possible boot times, instant application launches</td>
+          </tr>
+          <tr>
+            <td><strong>Gaming</strong></td>
+            <td>Fast game loading, minimal texture pop-in</td>
+          </tr>
+          <tr>
+            <td><strong>Video Editing</strong></td>
+            <td>Handle large 4K/8K video files smoothly</td>
+          </tr>
+          <tr>
+            <td><strong>3D Rendering</strong></td>
+            <td>Fast access to large project files and assets</td>
+          </tr>
+          <tr>
+            <td><strong>Virtual Machines</strong></td>
+            <td>Better I/O performance for multiple VMs</td>
+          </tr>
+          <tr>
+            <td><strong>Database Servers</strong></td>
+            <td>High IOPS (Input/Output Operations Per Second)</td>
+          </tr>
+        </table>
+
+        <h2>Important Concepts</h2>
+
+        <h3>Heat Management</h3>
+        <div class="simple-box">
+          <ul>
+            <li>NVMe drives can get hot under heavy load</li>
+            <li>Many come with heatsinks or thermal pads</li>
+            <li>Some motherboards include M.2 heatsinks</li>
+            <li>Thermal throttling can reduce performance if too hot</li>
+            <li>Ensure adequate airflow in case</li>
+          </ul>
+        </div>
+
+        <h3>Backward Compatibility</h3>
+        <div class="simple-box">
+          <ul>
+            <li>PCIe 4.0 drives work in PCIe 3.0 slots (but at 3.0 speeds)</li>
+            <li>PCIe 5.0 drives work in 4.0/3.0 slots (but at lower speeds)</li>
+            <li>NVMe drive won't work in SATA-only M.2 slot</li>
+            <li>Check motherboard specifications for slot support</li>
+          </ul>
+        </div>
+
+        <h3>When SATA SSD is Still Good Enough</h3>
+        <div class="highlight-box">
+          <p>NVMe isn't always necessary:</p>
+          <ul>
+            <li>General office work and web browsing</li>
+            <li>Budget builds</li>
+            <li>When motherboard doesn't support NVMe</li>
+            <li>Secondary storage drives</li>
+          </ul>
+          <p>
+            SATA SSDs are still MUCH faster than HDDs and sufficient for most
+            users.
+          </p>
+        </div>
+
+        <h2>Troubleshooting NVMe</h2>
+
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Possible Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Drive not detected in BIOS</td>
+            <td>Not seated properly, wrong M.2 slot</td>
+            <td>
+              Reseat drive, check motherboard manual for NVMe-capable slots
+            </td>
+          </tr>
+          <tr>
+            <td>Slow performance</td>
+            <td>Thermal throttling, PCIe 3.0 in 4.0 drive</td>
+            <td>Add heatsink, check slot PCIe generation</td>
+          </tr>
+          <tr>
+            <td>Can't boot from NVMe</td>
+            <td>Old BIOS, CSM/Legacy mode enabled</td>
+            <td>Update BIOS, enable UEFI mode, disable CSM</td>
+          </tr>
+          <tr>
+            <td>Drive disappears under load</td>
+            <td>Overheating</td>
+            <td>Improve cooling, add heatsink or thermal pad</td>
+          </tr>
+        </table>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Click an answer to get immediate feedback!</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">1. What does NVMe stand for?</div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'a')">
+                A) New Virtual Memory Express
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'b')">
+                B) Non-Volatile Memory Express
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'c')">
+                C) Next-gen Video Memory Express
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'd')">
+                D) Network Volatile Memory Express
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q1">
+              <strong>✓ Correct!</strong> NVMe stands for Non-Volatile Memory
+              Express. It's a communication protocol designed specifically for
+              SSDs to communicate over PCIe lanes.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. What is the maximum speed of a SATA III SSD?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'a')">
+                A) ~550 MB/s
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'b')">
+                B) ~3,500 MB/s
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'c')">
+                C) ~7,000 MB/s
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'd')">
+                D) ~1,000 MB/s
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q2">
+              <strong>✓ Correct!</strong> SATA III maxes out at around 550 MB/s.
+              NVMe drives using PCIe 3.0 can reach ~3,500 MB/s, and PCIe 4.0 can
+              reach ~7,000 MB/s.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. NVMe is a _____ not a form factor.
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'a')">
+                A) Brand name
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'b')">
+                B) Communication protocol
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'c')">
+                C) Type of connector
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'd')">
+                D) Storage capacity
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q3">
+              <strong>✓ Correct!</strong> NVMe is a communication protocol, NOT
+              a form factor. M.2 is the form factor. An M.2 drive can use either
+              SATA or NVMe protocol. This is a critical distinction for the
+              exam!
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. What interface does NVMe use to communicate with the CPU?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'a')">
+                A) SATA
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'b')">
+                B) USB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'c')">
+                C) PCIe
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'd')">
+                D) Thunderbolt
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q4">
+              <strong>✓ Correct!</strong> NVMe uses PCIe (PCI Express) lanes to
+              communicate directly with the CPU. This is why it's so much faster
+              than SATA, which goes through the SATA controller.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. What is the approximate speed of an NVMe SSD using PCIe 3.0 x4?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'a')">
+                A) ~550 MB/s
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'b')">
+                B) ~1,500 MB/s
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'c')">
+                C) ~3,500 MB/s
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'd')">
+                D) ~7,000 MB/s
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q5">
+              <strong>✓ Correct!</strong> PCIe 3.0 x4 NVMe drives reach
+              approximately 3,500 MB/s. PCIe 4.0 drives can reach ~7,000 MB/s.
+              SATA is limited to ~550 MB/s.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. Which M.2 key type is used for NVMe SSDs?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'a')">
+                A) B Key
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'b')">
+                B) M Key
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'c')">
+                C) B+M Key
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'd')">
+                D) E Key
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q6">
+              <strong>✓ Correct!</strong> M Key is used for NVMe SSDs (PCIe
+              interface). B Key is for SATA SSDs or older PCIe x2 drives. B+M
+              Key is for SATA SSDs that fit both slots.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. Will a PCIe 4.0 NVMe drive work in a PCIe 3.0 M.2 slot?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'a')">
+                A) No, it's incompatible
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'b')">
+                B) Yes, but it will run at PCIe 3.0 speeds
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'c')">
+                C) Yes, and it will still run at 4.0 speeds
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'd')">
+                D) Only if the motherboard is updated
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q7">
+              <strong>✓ Correct!</strong> PCIe is backward compatible. A PCIe
+              4.0 drive will work in a 3.0 slot, but it will be limited to PCIe
+              3.0 speeds (~3,500 MB/s instead of ~7,000 MB/s).
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. What can cause an NVMe drive to throttle performance?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'a')">
+                A) Too much available storage space
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'b')">
+                B) Overheating
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'c')">
+                C) Too few files
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'd')">
+                D) Low humidity
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q8">
+              <strong>✓ Correct!</strong> NVMe drives can get very hot under
+              sustained load. When they overheat, they thermally throttle
+              (reduce speed) to prevent damage. Adding a heatsink can help
+              prevent this.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              9. Which operating systems have native NVMe support?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'a')">
+                A) Only Windows 11
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'b')">
+                B) Windows 8.1+, modern Linux, and macOS
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'c')">
+                C) Only Linux
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'd')">
+                D) None, requires special drivers
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q9">
+              <strong>✓ Correct!</strong> Modern operating systems (Windows
+              8.1+, recent Linux kernels, and macOS) have built-in NVMe support.
+              No special drivers needed in most cases.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              10. What is the PRIMARY advantage of NVMe over SATA SSDs?
+            </div>
+            <div class="quiz-options">
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'a')"
+              >
+                A) Cheaper price
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'b')"
+              >
+                B) Much faster speed (6-12x faster)
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'c')"
+              >
+                C) Longer lifespan
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'd')"
+              >
+                D) Works in older computers
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q10">
+              <strong>✓ Correct!</strong> The primary advantage of NVMe is
+              speed. NVMe SSDs are 6-12x faster than SATA SSDs, with speeds
+              ranging from 3,500 MB/s (PCIe 3.0) to 7,000 MB/s (PCIe 4.0)
+              compared to SATA's ~550 MB/s limit.
+            </div>
+          </div>
+
+          <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>NVMe = Protocol, NOT form factor</strong> (M.2 is the form
+              factor)
+            </li>
+            <li>
+              <strong>NVMe uses PCIe lanes</strong> to communicate directly with
+              CPU
+            </li>
+            <li><strong>SATA max speed:</strong> ~550 MB/s</li>
+            <li>
+              <strong>NVMe PCIe 3.0 speed:</strong> ~3,500 MB/s (6x faster than
+              SATA)
+            </li>
+            <li>
+              <strong>NVMe PCIe 4.0 speed:</strong> ~7,000 MB/s (12x faster than
+              SATA)
+            </li>
+            <li>
+              <strong>M Key:</strong> Used for NVMe SSDs (M.2 connector type)
+            </li>
+            <li><strong>B+M Key:</strong> Used for SATA M.2 SSDs</li>
+            <li>
+              <strong>Backward compatible:</strong> PCIe 4.0 drives work in 3.0
+              slots (at 3.0 speeds)
+            </li>
+            <li>
+              <strong>Heat issue:</strong> NVMe drives can overheat and thermal
+              throttle
+            </li>
+            <li>
+              <strong>Requirements:</strong> Motherboard M.2 slot with NVMe
+              support, UEFI BIOS
+            </li>
+            <li>
+              <strong>Common use:</strong> OS boot drives, gaming, video
+              editing, high-performance tasks
+            </li>
+            <li>
+              <strong>Native OS support:</strong> Windows 8.1+, modern Linux,
+              macOS
+            </li>
+            <li>
+              <strong>Installation:</strong> Insert at 30° angle, press flat,
+              secure with screw
+            </li>
+            <li>
+              <strong>Not always needed:</strong> SATA SSDs fine for general
+              use/budget builds
+            </li>
+            <li>
+              <strong>Lower latency:</strong> NVMe has much lower latency than
+              SATA (better responsiveness)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "a",
+        q3: "b",
+        q4: "c",
+        q5: "c",
+        q6: "b",
+        q7: "b",
+        q8: "b",
+        q9: "b",
+        q10: "b",
+      };
+
+      let score = 0;
+      let totalAnswered = 0;
+
+      function checkAnswer(element, questionId, selectedAnswer) {
+        if (element.classList.contains("disabled")) {
+          return;
+        }
+
+        const feedback = document.getElementById("feedback-" + questionId);
+        const allOptions =
+          element.parentElement.querySelectorAll(".quiz-option");
+        const correctAnswer = answers[questionId];
+
+        allOptions.forEach((opt) => opt.classList.add("disabled"));
+
+        if (selectedAnswer === correctAnswer) {
+          element.classList.add("correct");
+          feedback.classList.remove("wrong");
+          score++;
+        } else {
+          element.classList.add("incorrect");
+          feedback.classList.add("wrong");
+          feedback.innerHTML =
+            `<strong>✗ Incorrect.</strong> The correct answer is option ${correctAnswer.toUpperCase()}. ` +
+            feedback.innerHTML.split("</strong>")[1];
+
+          allOptions.forEach((opt) => {
+            const optionLetter = opt.textContent.trim().charAt(0).toLowerCase();
+            if (optionLetter === correctAnswer) {
+              opt.classList.add("correct");
+            }
+          });
+        }
+
+        feedback.classList.add("show");
+        totalAnswered++;
+
+        if (totalAnswered === 10) {
+          const percentage = Math.round((score / 10) * 100);
+          const scoreDisplay = document.getElementById("scoreDisplay");
+          let message = "";
+
+          if (percentage >= 90) {
+            message = "🏆 Excellent! You understand NVMe!";
+          } else if (percentage >= 75) {
+            message = "👍 Good job! Review the incorrect answers.";
+          } else if (percentage >= 60) {
+            message = "📚 Keep studying. Review NVMe vs SATA.";
+          } else {
+            message = "📖 More practice needed. Focus on the basics.";
+          }
+
+          scoreDisplay.innerHTML = `
+                    <div>Your Score: ${score} / 10 (${percentage}%)</div>
+                    <div>${message}</div>
+                `;
+          scoreDisplay.classList.add("show");
+          scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      function resetQuiz() {
+        score = 0;
+        totalAnswered = 0;
+
+        const allOptions = document.querySelectorAll(".quiz-option");
+        allOptions.forEach((opt) => {
+          opt.classList.remove("correct", "incorrect", "disabled");
+        });
+
+        const allFeedback = document.querySelectorAll(".feedback");
+        allFeedback.forEach((fb) => {
+          fb.classList.remove("show", "wrong");
+        });
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1201: mSATA</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #203a43;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #2c5364;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #2c5364;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #2c5364;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border: 2px solid #2c5364;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card h4 {
+        color: #203a43;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #203a43;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      /* Quiz Section */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #2c5364;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #203a43;
+      }
+
+      .score-display {
+        background: #203a43;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #2c5364;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover {
+        background: #e9ecef;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.selected {
+        background: #d1ecf1;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .submit-btn {
+        background: #2c5364;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #203a43;
+      }
+
+      .submit-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: none;
+      }
+
+      .reset-btn.show {
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      strong {
+        color: #2c5364;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🛠️ mSATA</h1>
+        <p>CompTIA A+ 220-1201 Core 1 Exam – Domain 3.4 Storage Devices</p>
+      </header>
+
+      <div class="content">
+        <h2>What is mSATA?</h2>
+
+        <div class="simple-box">
+          <p>
+            <strong>mSATA (mini-SATA)</strong> is a legacy SSD form factor
+            introduced around 2009–2010.
+          </p>
+          <ul>
+            <li>Physically uses the same connector as mini PCIe (mPCIe)</li>
+            <li>Electrically uses SATA interface (SATA II or III)</li>
+            <li>Size: ≈30.95 mm × 50.95 mm (very small)</li>
+            <li>Max speed: ~550–600 MB/s (limited by SATA III)</li>
+            <li>
+              Mostly found in older ultrabooks, thin laptops, and some
+              industrial systems
+            </li>
+          </ul>
+        </div>
+
+        <h2>mSATA vs Other Form Factors</h2>
+
+        <table>
+          <tr>
+            <th>Form Factor</th>
+            <th>Interface</th>
+            <th>Typical Devices</th>
+            <th>Still Common?</th>
+            <th>Max Speed</th>
+          </tr>
+          <tr>
+            <td>mSATA</td>
+            <td>SATA III</td>
+            <td>Older ultrabooks (2010–2015)</td>
+            <td>Rare / legacy</td>
+            <td>~550 MB/s</td>
+          </tr>
+          <tr>
+            <td>M.2</td>
+            <td>SATA or NVMe/PCIe</td>
+            <td>Modern laptops/desktops</td>
+            <td>Very common</td>
+            <td>~7–14 GB/s (NVMe)</td>
+          </tr>
+          <tr>
+            <td>2.5-inch</td>
+            <td>SATA III</td>
+            <td>Laptops, desktops, externals</td>
+            <td>Still used</td>
+            <td>~550 MB/s</td>
+          </tr>
+          <tr>
+            <td>mini PCIe (mPCIe)</td>
+            <td>PCIe (for Wi-Fi cards)</td>
+            <td>Older laptops</td>
+            <td>Legacy</td>
+            <td>N/A (not for storage)</td>
+          </tr>
+        </table>
+
+        <h2>Key Characteristics & Compatibility</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>Advantages (at the time)</h4>
+            <ul>
+              <li>Very small size → fit in thin laptops</li>
+              <li>SATA interface → easy upgrade from HDD</li>
+              <li>Used same slot as mPCIe → multi-purpose</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Disadvantages & Why Replaced by M.2</h4>
+            <ul>
+              <li>Limited to SATA speeds (no PCIe/NVMe support)</li>
+              <li>Small capacity compared to modern M.2 SSDs</li>
+              <li>No backward/forward compatibility with M.2 slots</li>
+              <li>M.2 offers both SATA and NVMe + smaller/larger options</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>mSATA Troubleshooting & Replacement Notes</h3>
+        <div class="simple-box">
+          <p><strong>Common Issues:</strong></p>
+          <ul>
+            <li>Not detected → check BIOS SATA mode (AHCI), reseat card</li>
+            <li>Slow performance → limited by SATA III cap</li>
+            <li>
+              No slot available → mSATA slots are rare on post-2015 systems
+            </li>
+          </ul>
+
+          <p><strong>Replacement:</strong></p>
+          <ul>
+            <li>Power off → ESD protection → remove bottom cover</li>
+            <li>Unscrew mSATA card → lift at ~30° angle → pull out</li>
+            <li>Insert new card → press down → secure screw</li>
+            <li>
+              Modern replacement → use M.2 SSD + adapter (if slot supports)
+            </li>
+          </ul>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Test your knowledge! Select your answers and click Submit.</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">1. What interface does mSATA use?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a" /> PCIe
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b" /> SATA
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c" /> USB
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d" /> Thunderbolt
+              </label>
+            </div>
+            <div class="feedback" id="feedback1">
+              <strong>Correct!</strong> mSATA uses the SATA interface
+              (electrically), even though it physically shares the mini PCIe
+              connector shape.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. Which form factor replaced mSATA in most modern systems?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a" /> 2.5-inch SATA
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b" /> M.2
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c" /> 3.5-inch
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d" /> U.2
+              </label>
+            </div>
+            <div class="feedback" id="feedback2">
+              <strong>Correct!</strong> M.2 replaced mSATA because it supports
+              both SATA and faster NVMe/PCIe, and offers more size options.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. Physically, what connector does mSATA share with?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a" /> SATA data cable
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b" /> mini PCIe
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c" /> USB Type-C
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d" /> M.2 slot
+              </label>
+            </div>
+            <div class="feedback" id="feedback3">
+              <strong>Correct!</strong> mSATA uses the same physical connector
+              as mini PCIe (mPCIe), but electrically it is SATA.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. What is the maximum realistic speed of an mSATA SSD?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a" /> ~3.5 GB/s
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b" /> ~550–600 MB/s
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c" /> ~14 GB/s
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d" /> ~1.5 GB/s
+              </label>
+            </div>
+            <div class="feedback" id="feedback4">
+              <strong>Correct!</strong> mSATA is limited to SATA III speeds
+              (~550–600 MB/s), unlike M.2 NVMe which can reach multi-GB/s.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. In which type of devices was mSATA most commonly found?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a" /> Modern gaming
+                desktops
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b" /> Older ultrabooks
+                (2010–2015)
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c" /> Current smartphones
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d" /> Enterprise servers
+              </label>
+            </div>
+            <div class="feedback" id="feedback5">
+              <strong>Correct!</strong> mSATA was popular in thin-and-light
+              ultrabooks and some older laptops from ~2010–2015 before M.2 took
+              over.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. Can an mSATA SSD be used in a modern M.2 slot?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a" /> Yes, directly
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="b" /> No – different
+                connector and keying
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c" /> Yes, with adapter
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d" /> Only in SATA mode
+              </label>
+            </div>
+            <div class="feedback" id="feedback6">
+              <strong>Correct!</strong> mSATA and M.2 use different physical
+              connectors and keying — no direct compatibility. Adapters exist
+              but are rare and not always reliable.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. Which interface is NOT supported by mSATA?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a" /> SATA
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="b" /> PCIe/NVMe
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c" /> USB
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d" /> Both B and C
+              </label>
+            </div>
+            <div class="feedback" id="feedback7">
+              <strong>Correct!</strong> mSATA is SATA-only — it does not support
+              PCIe/NVMe speeds like modern M.2 SSDs.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. Why did M.2 largely replace mSATA in newer laptops?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a" /> M.2 supports both
+                SATA and faster NVMe
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="b" /> mSATA was too
+                expensive
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c" /> M.2 is larger
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="d" /> mSATA used USB
+              </label>
+            </div>
+            <div class="feedback" id="feedback8">
+              <strong>Correct!</strong> M.2 supports both SATA and PCIe/NVMe
+              (much faster), plus more size options, making it more versatile
+              and future-proof.
+            </div>
+          </div>
+
+          <button class="submit-btn" id="submitBtn" onclick="submitQuiz()">
+            Submit Quiz
+          </button>
+          <button class="reset-btn" id="resetBtn" onclick="resetQuiz()">
+            Try Again
+          </button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>mSATA</strong> = mini-SATA – legacy SSD form factor
+              (~2010–2015)
+            </li>
+            <li>
+              <strong>Physical connector</strong> = same as mini PCIe (mPCIe)
+            </li>
+            <li>
+              <strong>Interface</strong> = SATA only (SATA II/III, max ~550–600
+              MB/s)
+            </li>
+            <li><strong>Size</strong> ≈ 30.95 mm × 50.95 mm – very small</li>
+            <li>
+              <strong>Common in</strong> older ultrabooks, thin laptops, some
+              industrial systems
+            </li>
+            <li>
+              <strong>No compatibility</strong> with modern M.2 slots –
+              different connector/keying
+            </li>
+            <li>
+              <strong>Replaced by</strong> M.2 (supports SATA + NVMe/PCIe,
+              faster, more flexible)
+            </li>
+            <li>
+              <strong>Troubleshooting</strong> – check BIOS SATA mode (AHCI),
+              reseat card, verify slot support
+            </li>
+            <li>
+              <strong>Exam context</strong> – know mSATA as legacy, compare to
+              M.2 and 2.5-inch SATA
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "b",
+        q3: "b",
+        q4: "b",
+        q5: "b",
+        q6: "b",
+        q7: "b",
+        q8: "a",
+      };
+
+      function submitQuiz() {
+        let score = 0;
+        let answered = 0;
+        const totalQuestions = 8;
+
+        for (let i = 1; i <= totalQuestions; i++) {
+          const selected = document.querySelector(
+            `input[name="q${i}"]:checked`,
+          );
+          const feedback = document.getElementById(`feedback${i}`);
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+
+          if (selected) {
+            answered++;
+            const parentLabel = selected.parentElement;
+
+            options.forEach((opt) => {
+              opt.disabled = true;
+              opt.parentElement.classList.add("disabled");
+            });
+
+            if (selected.value === answers[`q${i}`]) {
+              score++;
+              parentLabel.classList.add("correct");
+              feedback.classList.add("show");
+            } else {
+              parentLabel.classList.add("incorrect");
+              feedback.classList.add("show", "wrong");
+              feedback.innerHTML =
+                `<strong>Incorrect.</strong> The correct answer is option ${answers[`q${i}`].toUpperCase()}. ` +
+                feedback.innerHTML.split("</strong>")[1];
+
+              options.forEach((opt) => {
+                if (opt.value === answers[`q${i}`]) {
+                  opt.parentElement.classList.add("correct");
+                }
+              });
+            }
+          }
+        }
+
+        if (answered < totalQuestions) {
+          alert(
+            `Please answer all questions. You've answered ${answered} out of ${totalQuestions}.`,
+          );
+          return;
+        }
+
+        const percentage = Math.round((score / totalQuestions) * 100);
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        let message = "";
+
+        if (percentage >= 90) {
+          message = "🏆 Excellent! You're ready for the exam!";
+        } else if (percentage >= 75) {
+          message = "👍 Good job! Review the incorrect answers.";
+        } else if (percentage >= 60) {
+          message = "📚 Keep studying. Review the material again.";
+        } else {
+          message = "📖 More practice needed. Review all topics.";
+        }
+
+        scoreDisplay.innerHTML = `
+                <div>Your Score: ${score} / ${totalQuestions} (${percentage}%)</div>
+                <div>${message}</div>
+            `;
+        scoreDisplay.classList.add("show");
+
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("resetBtn").classList.add("show");
+
+        scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function resetQuiz() {
+        for (let i = 1; i <= 8; i++) {
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+          const feedback = document.getElementById(`feedback${i}`);
+
+          options.forEach((opt) => {
+            opt.checked = false;
+            opt.disabled = false;
+            opt.parentElement.classList.remove(
+              "selected",
+              "correct",
+              "incorrect",
+              "disabled",
+            );
+          });
+
+          feedback.classList.remove("show", "wrong");
+        }
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("resetBtn").classList.remove("show");
+
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      document.querySelectorAll(".quiz-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const radio = this.querySelector('input[type="radio"]');
+          if (!radio.disabled) {
+            const name = radio.name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+              r.parentElement.classList.remove("selected");
+            });
+            this.classList.add("selected");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

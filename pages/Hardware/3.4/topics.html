@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.4 - Hardware Topics</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        background-color: #f4f0e8;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .header {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 16px;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .header h1 {
+        color: #2d2d2d;
+        font-size: 2em;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .header p {
+        color: #6b6b6b;
+        font-size: 1em;
+      }
+
+      .topic-list {
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .topic-section {
+        margin-bottom: 32px;
+      }
+
+      .topic-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .topic-section h2 {
+        color: #2d2d2d;
+        font-size: 1.3em;
+        margin-bottom: 16px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .topic-icon {
+        font-size: 1.2em;
+      }
+
+      .subtopic-list {
+        list-style: none;
+      }
+
+      .subtopic-list li {
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .subtopic-list li:last-child {
+        border-bottom: none;
+      }
+
+      .subtopic-list a {
+        color: #2d2d2d;
+        text-decoration: none;
+        display: block;
+        padding: 14px 20px;
+        transition: background-color 0.2s;
+        border-radius: 8px;
+      }
+
+      .subtopic-list a:hover {
+        background-color: #f8f6f3;
+        color: #000;
+      }
+
+      .back-button {
+        display: inline-block;
+        background: #fff;
+        color: #2d2d2d;
+        padding: 12px 24px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+
+      .back-button:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        transform: translateY(-1px);
+      }
+
+      .back-button::before {
+        content: "← ";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🔧 3.4 Hardware Components</h1>
+        <p>
+          Select a topic to learn more about hardware installation and
+          configuration
+        </p>
+      </div>
+
+      <div class="topic-list">
+        <!-- Expansion Cards -->
+        <div class="topic-section">
+          <h2><span class="topic-icon">🎴</span>Expansion Cards</h2>
+          <ul class="subtopic-list">
+            <li><a href="expansion_cards/video_cards.html">Video Cards</a></li>
+            <li><a href="expansion_cards/sound_cards.html">Sound Cards</a></li>
+            <li>
+              <a href="expansion_cards/network_cards.html">Network Cards</a>
+            </li>
+            <li>
+              <a href="expansion_cards/video_capture_cards.html"
+                >Video Capture Cards</a
+              >
+            </li>
+            <li>
+              <a href="expansion_cards/input_output.html">Input/Output</a>
+            </li>
+            <li>
+              <a href="expansion_cards/configuring_cards.html"
+                >Configuring Cards</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Storage Devices -->
+        <div class="topic-section">
+          <h2><span class="topic-icon">💾</span>Storage Devices</h2>
+          <ul class="subtopic-list">
+            <li><a href="hard_drives/hard_drives.html">Hard Drives</a></li>
+            <li>
+              <a href="storage_devices/solid_state_drives.html"
+                >Solid-State Drives</a
+              >
+            </li>
+            <li>
+              <a href="storage_devices/drive_configurations.html"
+                >Drive Configurations (RAID)</a
+              >
+            </li>
+            <li>
+              <a href="storage_devices/removable_storage.html"
+                >Removable Storage</a
+              >
+            </li>
+            <li>
+              <a href="storage_devices/optical_drives.html">Optical Drives</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Hard Drives Details -->
+        <div class="topic-section">
+          <h2><span class="topic-icon">💿</span>Hard Drive Types</h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="hard_drives/spindle_speeds.html">Spindle Speeds</a>
+            </li>
+            <li>
+              <a href="hard_drives/form_factors.html"
+                >Form Factors (2.5-inch, 3.5-inch)</a
+              >
+            </li>
+            <li>
+              <a href="hard_drives/pcie_drives.html"
+                >Peripheral Component Interconnect Express (PCIe)</a
+              >
+            </li>
+            <li>
+              <a href="hard_drives/sas_drives.html"
+                >Serial Attached SCSI (SAS)</a
+              >
+            </li>
+            <li>
+              <a href="hard_drives/msata.html">Mini-serial ATA (mSATA)</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SSD Communications -->
+        <div class="topic-section">
+          <h2><span class="topic-icon">⚡</span>SSD Communications</h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="ssd/nvme.html">Non-volatile Memory Express (NVMe)</a>
+            </li>
+            <li><a href="ssd/sata.html">SATA Interface</a></li>
+            <li><a href="ssd/m2_form_factor.html">M.2 Form Factor</a></li>
+          </ul>
+        </div>
+
+        <!-- RAID Configurations -->
+        <div class="topic-section">
+          <h2><span class="topic-icon">🔄</span>RAID Configurations</h2>
+          <ul class="subtopic-list">
+            <li><a href="storage_devices/drive_configurations.html">All about RAID Configurations</a></li>
+        </div>
+
+        <!-- Removable Storage -->
+        <div class="topic-section">
+          <h2><span class="topic-icon">🔌</span>Removable Storage</h2>
+          <ul class="subtopic-list">
+            <li><a href="removable_storage/flash_drives.html">Flash Drives</a></li>
+            <li><a href="removable_storage/memory_cards.html">Memory Cards</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="../index.html" class="back-button">Back to Main Topics</a>
+    </div>
+  </body>
+</html>

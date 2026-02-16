@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: Keyboards & Keys</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #203a43;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #2c5364;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #2c5364;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #2c5364;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border: 2px solid #2c5364;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card h4 {
+        color: #203a43;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #203a43;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      /* Quiz Section */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #2c5364;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #203a43;
+      }
+
+      .score-display {
+        background: #203a43;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #2c5364;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover {
+        background: #e9ecef;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.selected {
+        background: #d1ecf1;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .submit-btn {
+        background: #2c5364;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #203a43;
+      }
+
+      .submit-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: none;
+      }
+
+      .reset-btn.show {
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      strong {
+        color: #2c5364;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>⌨️ Keyboards & Keys</h1>
+        <p>CompTIA A+ 220-1101 Core 1 Exam</p>
+      </header>
+
+      <div class="content">
+        <h2>Keyboard Types</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>Wired Keyboards</h4>
+            <ul>
+              <li><strong>USB:</strong> Most common connection type</li>
+              <li>
+                <strong>PS/2:</strong> Legacy purple connector (rare on modern
+                systems)
+              </li>
+              <li>More reliable than wireless</li>
+              <li>No battery needed</li>
+              <li>Preferred for BIOS/firmware updates</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Wireless Keyboards</h4>
+            <ul>
+              <li>
+                <strong>Bluetooth:</strong> Built into most laptops/tablets
+              </li>
+              <li>
+                <strong>RF (Radio Frequency):</strong> USB dongle receiver
+              </li>
+              <li>Requires batteries or charging</li>
+              <li>Can have connectivity issues</li>
+              <li>Won't work in BIOS (most systems)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Mobile Device Keyboards</h2>
+
+        <h3>Virtual/On-Screen Keyboards</h3>
+        <div class="simple-box">
+          <p>
+            Standard on smartphones and tablets. No physical keys. Types on
+            touchscreen.
+          </p>
+          <ul>
+            <li>Autocorrect and predictive text features</li>
+            <li>Swipe typing capability</li>
+            <li>Multiple language support</li>
+            <li>Can be hidden to maximize screen space</li>
+          </ul>
+        </div>
+
+        <h3>Physical Mobile Keyboards</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Bluetooth Keyboards</h4>
+            <ul>
+              <li>External keyboard connects wirelessly</li>
+              <li>Must be paired with device</li>
+              <li>Requires battery or charging</li>
+              <li>Full-size typing experience</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Laptop Keyboards</h4>
+            <ul>
+              <li>Built into the device</li>
+              <li>Smaller keys than desktop</li>
+              <li>Fn (Function) key for special features</li>
+              <li>Often lacks numeric keypad</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Special Keys & Function Keys</h2>
+
+        <table>
+          <tr>
+            <th>Key/Key Combo</th>
+            <th>Function</th>
+          </tr>
+          <tr>
+            <td><strong>Fn (Function)</strong></td>
+            <td>
+              Used with other keys for special functions (brightness, volume,
+              etc.)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Fn + F keys</strong></td>
+            <td>
+              Screen brightness, volume, Wi-Fi toggle, airplane mode, keyboard
+              backlight
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Fn + Arrow Keys</strong></td>
+            <td>Often controls Home, End, Page Up, Page Down</td>
+          </tr>
+          <tr>
+            <td><strong>Ctrl + Alt + Del</strong></td>
+            <td>Windows security screen, Task Manager access</td>
+          </tr>
+          <tr>
+            <td><strong>Windows Key</strong></td>
+            <td>Opens Start menu, used in many shortcuts</td>
+          </tr>
+          <tr>
+            <td><strong>Num Lock</strong></td>
+            <td>Toggles numeric keypad on/off</td>
+          </tr>
+          <tr>
+            <td><strong>Caps Lock</strong></td>
+            <td>Toggles all caps typing</td>
+          </tr>
+          <tr>
+            <td><strong>Scroll Lock</strong></td>
+            <td>Legacy key, rarely used today</td>
+          </tr>
+        </table>
+
+        <h2>Laptop Keyboard Issues</h2>
+
+        <h3>Keys Not Working</h3>
+        <div class="simple-box">
+          <p><strong>Common Causes:</strong></p>
+          <ul>
+            <li>Debris under keys (food, dust, liquid)</li>
+            <li>Damaged keyboard cable inside laptop</li>
+            <li>Driver issues (update keyboard drivers)</li>
+            <li>Physical damage to keyboard</li>
+            <li>
+              Num Lock accidentally enabled (on laptops without numeric keypad)
+            </li>
+          </ul>
+
+          <p><strong>Solutions:</strong></p>
+          <ul>
+            <li>Clean keyboard with compressed air</li>
+            <li>Test with external USB keyboard to isolate problem</li>
+            <li>Check if Fn lock or Num Lock is activated</li>
+            <li>Update keyboard drivers in Device Manager</li>
+            <li>Replace keyboard if hardware failure</li>
+          </ul>
+        </div>
+
+        <h3>Sticky Keys</h3>
+        <div class="simple-box">
+          <p>
+            <strong>Physical Sticky:</strong> Keys stick when pressed due to
+            liquid spill or debris
+          </p>
+          <ul>
+            <li>Power off device immediately if liquid spilled</li>
+            <li>Clean with compressed air and isopropyl alcohol</li>
+            <li>May require key cap removal or keyboard replacement</li>
+          </ul>
+
+          <p>
+            <strong>Sticky Keys Feature:</strong> Windows accessibility feature
+          </p>
+          <ul>
+            <li>Activated by pressing Shift 5 times</li>
+            <li>Allows one-key-at-a-time pressing of key combos</li>
+            <li>Can be disabled in Accessibility settings</li>
+          </ul>
+        </div>
+
+        <h3>Laptop Keyboard Replacement</h3>
+        <div class="simple-box">
+          <ul>
+            <li>Usually requires partial disassembly of laptop</li>
+            <li>Keyboard connects via ribbon cable to motherboard</li>
+            <li>Must match exact model for proper fit</li>
+            <li>
+              Some laptops have keyboards riveted (very difficult to replace)
+            </li>
+            <li>External USB keyboard is quick workaround</li>
+          </ul>
+        </div>
+
+        <h2>Keyboard Connectivity Issues</h2>
+
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Wireless keyboard not responding</td>
+            <td>
+              Check batteries, re-pair Bluetooth, check USB dongle connection
+            </td>
+          </tr>
+          <tr>
+            <td>Keyboard not recognized in BIOS</td>
+            <td>
+              Use wired USB keyboard (wireless often doesn't work in BIOS)
+            </td>
+          </tr>
+          <tr>
+            <td>Some keys type wrong characters</td>
+            <td>Check keyboard language settings in OS</td>
+          </tr>
+          <tr>
+            <td>Keyboard works but trackpad doesn't</td>
+            <td>Fn key may have disabled trackpad (check Fn + touchpad key)</td>
+          </tr>
+          <tr>
+            <td>Bluetooth keyboard won't pair</td>
+            <td>
+              Put keyboard in pairing mode, remove old pairing, check Bluetooth
+              is on
+            </td>
+          </tr>
+        </table>
+
+        <h2>Mobile Device Keyboard Features</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>Touchscreen Keyboard Settings</h4>
+            <ul>
+              <li>Haptic feedback (vibration)</li>
+              <li>Key press sounds</li>
+              <li>Autocorrect on/off</li>
+              <li>Predictive text</li>
+              <li>Swipe/gesture typing</li>
+              <li>Multiple language keyboards</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Common Issues</h4>
+            <ul>
+              <li>
+                <strong>Keyboard won't appear:</strong> Restart app or device
+              </li>
+              <li>
+                <strong>Wrong language:</strong> Change input method in settings
+              </li>
+              <li>
+                <strong>Autocorrect errors:</strong> Adjust or disable in
+                settings
+              </li>
+              <li>
+                <strong>Slow response:</strong> Clear cache or restart device
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Test your knowledge! Select your answers and click Submit.</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. A user reports their laptop keyboard is not working, but an
+              external USB keyboard works fine. What is the MOST likely cause?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a" /> Operating system
+                corruption
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b" /> Failed internal
+                keyboard or loose ribbon cable
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c" /> Motherboard failure
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d" /> Power supply issue
+              </label>
+            </div>
+            <div class="feedback" id="feedback1">
+              <strong>Correct!</strong> If an external keyboard works but the
+              internal doesn't, the problem is isolated to the laptop keyboard
+              itself or its connection (ribbon cable) to the motherboard. The
+              USB controller works (proven by external keyboard), so it's a
+              hardware issue specific to the internal keyboard.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. Which keyboard connection type will NOT work when accessing
+              BIOS/UEFI on most systems?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a" /> USB wired keyboard
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b" /> PS/2 keyboard
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c" /> Bluetooth wireless
+                keyboard
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d" /> USB keyboard with
+                PS/2 adapter
+              </label>
+            </div>
+            <div class="feedback" id="feedback2">
+              <strong>Correct!</strong> Bluetooth keyboards require the
+              operating system to be loaded for the Bluetooth drivers to work.
+              In BIOS/UEFI (pre-boot environment), these drivers aren't loaded,
+              so Bluetooth keyboards won't function. Use wired USB or PS/2
+              keyboards for BIOS access.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. A user accidentally pressed Shift 5 times and now modifier keys
+              behave strangely. What feature was activated?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a" /> Filter Keys
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b" /> Sticky Keys
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c" /> Toggle Keys
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d" /> Mouse Keys
+              </label>
+            </div>
+            <div class="feedback" id="feedback3">
+              <strong>Correct!</strong> Sticky Keys is a Windows accessibility
+              feature activated by pressing Shift 5 times rapidly. It allows
+              users to press key combinations one key at a time instead of
+              simultaneously. You can disable it in Accessibility settings or by
+              pressing Shift 5 times again.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. On a laptop, what key is typically used in combination with
+              function keys to adjust screen brightness or volume?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a" /> Ctrl
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b" /> Alt
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c" /> Fn
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d" /> Windows
+              </label>
+            </div>
+            <div class="feedback" id="feedback4">
+              <strong>Correct!</strong> The Fn (Function) key is used on laptops
+              to activate secondary functions of keys, including adjusting
+              brightness, volume, Wi-Fi, airplane mode, and keyboard
+              backlighting. It's typically pressed in combination with F keys or
+              other special keys.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. A technician spills coffee on a laptop keyboard. What should be
+              done FIRST?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a" /> Use a hair dryer to
+                dry the keyboard
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b" /> Power off the laptop
+                immediately
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c" /> Continue working and
+                let it dry naturally
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d" /> Run keyboard
+                diagnostics
+              </label>
+            </div>
+            <div class="feedback" id="feedback5">
+              <strong>Correct!</strong> Power off immediately to prevent
+              electrical shorts and component damage. Then disconnect power and
+              remove the battery if possible. Liquid damage can cause shorts
+              that destroy components if power is applied. After powering off,
+              clean and dry thoroughly before attempting to use again.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. A user's wireless keyboard suddenly stops working. What should
+              be checked FIRST?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a" /> Replace the keyboard
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="b" /> Reinstall the
+                operating system
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c" /> Check the batteries
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d" /> Update the BIOS
+              </label>
+            </div>
+            <div class="feedback" id="feedback6">
+              <strong>Correct!</strong> Batteries are the most common failure
+              point for wireless keyboards and the easiest to check. Dead or low
+              batteries are the #1 cause of wireless keyboard failure. Always
+              start with the simplest and most likely solution before moving to
+              more complex troubleshooting.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. What type of keyboard is standard on smartphones and tablets?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a" /> Mechanical keyboard
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="b" /> Virtual/On-screen
+                keyboard
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c" /> Physical QWERTY
+                keyboard
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d" /> PS/2 keyboard
+              </label>
+            </div>
+            <div class="feedback" id="feedback7">
+              <strong>Correct!</strong> Virtual or on-screen keyboards are
+              standard on modern touchscreen devices like smartphones and
+              tablets. They appear on the screen when text input is needed and
+              can be hidden when not in use. They support features like
+              autocorrect, predictive text, and swipe typing.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. Some keys on a laptop are typing the wrong characters. What
+              should be checked?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a" /> Keyboard
+                language/region settings
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="b" /> Display resolution
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c" /> Hard drive space
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="d" /> RAM capacity
+              </label>
+            </div>
+            <div class="feedback" id="feedback8">
+              <strong>Correct!</strong> When keys type incorrect characters, the
+              keyboard language or region settings are likely set incorrectly.
+              Different keyboard layouts (US, UK, International) have different
+              character mappings. Check and change the input language in the
+              operating system settings.
+            </div>
+          </div>
+
+          <button class="submit-btn" id="submitBtn" onclick="submitQuiz()">
+            Submit Quiz
+          </button>
+          <button class="reset-btn" id="resetBtn" onclick="resetQuiz()">
+            Try Again
+          </button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>Wired keyboards (USB, PS/2)</strong> are more reliable and
+              work in BIOS; <strong>wireless (Bluetooth, RF)</strong> require
+              batteries and usually don't work in BIOS
+            </li>
+            <li>
+              <strong>Fn (Function) key</strong> on laptops activates secondary
+              functions like brightness, volume, Wi-Fi toggle
+            </li>
+            <li>
+              <strong>Virtual/on-screen keyboards</strong> are standard on
+              smartphones and tablets
+            </li>
+            <li>
+              <strong>Bluetooth keyboards</strong> must be paired with mobile
+              devices and require charging/batteries
+            </li>
+            <li>
+              <strong>Sticky Keys</strong> = Windows accessibility feature
+              activated by pressing Shift 5 times
+            </li>
+            <li>
+              <strong>Liquid spills:</strong> Power off immediately, disconnect
+              power, remove battery, dry thoroughly
+            </li>
+            <li>
+              <strong>Wireless keyboard not working:</strong> Check batteries
+              FIRST (most common cause)
+            </li>
+            <li>
+              <strong>Keys typing wrong characters:</strong> Check keyboard
+              language/region settings
+            </li>
+            <li>
+              <strong>Laptop keyboard replacement:</strong> Requires
+              disassembly, ribbon cable connection, model-specific part
+            </li>
+            <li>
+              <strong>External USB keyboard</strong> is quick troubleshooting
+              tool and workaround for failed laptop keyboard
+            </li>
+            <li>
+              <strong>Num Lock</strong> can cause issues on laptops without
+              numeric keypads
+            </li>
+            <li>
+              <strong>PS/2 connector:</strong> Purple (keyboard) or green
+              (mouse), legacy technology
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "c",
+        q3: "b",
+        q4: "c",
+        q5: "b",
+        q6: "c",
+        q7: "b",
+        q8: "a",
+      };
+
+      function submitQuiz() {
+        let score = 0;
+        let answered = 0;
+        const totalQuestions = 8;
+
+        // Check all answers
+        for (let i = 1; i <= totalQuestions; i++) {
+          const selected = document.querySelector(
+            `input[name="q${i}"]:checked`,
+          );
+          const feedback = document.getElementById(`feedback${i}`);
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+
+          if (selected) {
+            answered++;
+            const parentLabel = selected.parentElement;
+
+            // Disable all options
+            options.forEach((opt) => {
+              opt.disabled = true;
+              opt.parentElement.classList.add("disabled");
+            });
+
+            if (selected.value === answers[`q${i}`]) {
+              score++;
+              parentLabel.classList.add("correct");
+              feedback.classList.add("show");
+            } else {
+              parentLabel.classList.add("incorrect");
+              feedback.classList.add("show", "wrong");
+              feedback.innerHTML =
+                `<strong>Incorrect.</strong> The correct answer is option ${answers[`q${i}`].toUpperCase()}. ` +
+                feedback.innerHTML.split("</strong>")[1];
+
+              // Show correct answer
+              options.forEach((opt) => {
+                if (opt.value === answers[`q${i}`]) {
+                  opt.parentElement.classList.add("correct");
+                }
+              });
+            }
+          }
+        }
+
+        if (answered < totalQuestions) {
+          alert(
+            `Please answer all questions. You've answered ${answered} out of ${totalQuestions}.`,
+          );
+          return;
+        }
+
+        // Display score
+        const percentage = Math.round((score / totalQuestions) * 100);
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        let message = "";
+
+        if (percentage >= 90) {
+          message = "🏆 Excellent! You're ready for the exam!";
+        } else if (percentage >= 75) {
+          message = "👍 Good job! Review the incorrect answers.";
+        } else if (percentage >= 60) {
+          message = "📚 Keep studying. Review the material again.";
+        } else {
+          message = "📖 More practice needed. Review all topics.";
+        }
+
+        scoreDisplay.innerHTML = `
+                <div>Your Score: ${score} / ${totalQuestions} (${percentage}%)</div>
+                <div>${message}</div>
+            `;
+        scoreDisplay.classList.add("show");
+
+        // Disable submit button, show reset
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("resetBtn").classList.add("show");
+
+        // Scroll to score
+        scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function resetQuiz() {
+        // Reset all selections and feedback
+        for (let i = 1; i <= 8; i++) {
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+          const feedback = document.getElementById(`feedback${i}`);
+
+          options.forEach((opt) => {
+            opt.checked = false;
+            opt.disabled = false;
+            opt.parentElement.classList.remove(
+              "selected",
+              "correct",
+              "incorrect",
+              "disabled",
+            );
+          });
+
+          feedback.classList.remove("show", "wrong");
+        }
+
+        // Hide score and reset buttons
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("resetBtn").classList.remove("show");
+
+        // Scroll to quiz top
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Add click handlers for option selection visual feedback
+      document.querySelectorAll(".quiz-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const radio = this.querySelector('input[type="radio"]');
+          if (!radio.disabled) {
+            // Remove selected class from siblings
+            const name = radio.name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+              r.parentElement.classList.remove("selected");
+            });
+            // Add selected class to clicked option
+            this.classList.add("selected");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

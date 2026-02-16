@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.1 - Mobile Device Hardware & Replacement</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        background-color: #f4f0e8;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .header {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 16px;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .header h1 {
+        color: #2d2d2d;
+        font-size: 2em;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .header p {
+        color: #6b6b6b;
+        font-size: 1em;
+      }
+
+      .topic-list {
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .topic-section {
+        margin-bottom: 32px;
+      }
+
+      .topic-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .topic-section h2 {
+        color: #2d2d2d;
+        font-size: 1.3em;
+        margin-bottom: 16px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .topic-icon {
+        font-size: 1.2em;
+      }
+
+      .subtopic-list {
+        list-style: none;
+      }
+
+      .subtopic-list li {
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .subtopic-list li:last-child {
+        border-bottom: none;
+      }
+
+      .subtopic-list a {
+        color: #2d2d2d;
+        text-decoration: none;
+        display: block;
+        padding: 14px 20px;
+        transition: background-color 0.2s;
+        border-radius: 8px;
+      }
+
+      .subtopic-list a:hover {
+        background-color: #f8f6f3;
+        color: #000;
+      }
+
+      .back-button {
+        display: inline-block;
+        background: #fff;
+        color: #2d2d2d;
+        padding: 12px 24px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+
+      .back-button:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        transform: translateY(-1px);
+      }
+
+      .back-button::before {
+        content: "← ";
+      }
+
+      @media (max-width: 600px) {
+        .header {
+          padding: 24px 20px;
+        }
+        .container {
+          padding: 0 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🛠️ 1.1 Mobile Device Hardware & Replacement</h1>
+        <p>
+          Select a component to learn monitoring signs, failure symptoms, and
+          appropriate replacement techniques
+        </p>
+      </div>
+
+      <div class="topic-list">
+        <div class="topic-section">
+          <h2><span class="topic-icon">🔋</span>Battery</h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="Battery/Battery.html"
+                >Monitoring & replacement techniques</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="topic-section">
+          <h2><span class="topic-icon">⌨️</span>Keyboard/keys</h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="Keyboards/keyboards.html"
+                >Monitoring & replacement techniques</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="topic-section">
+          <h2><span class="topic-icon">🧠</span>Random-access memory (RAM)</h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="RAMs.html">Monitoring & replacement techniques</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="topic-section">
+          <h2>
+            <span class="topic-icon">💾</span>Hard disk drive (HDD)/solid-state
+            drive (SSD)
+          </h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="HDDs.html">Monitoring & replacement techniques</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="topic-section">
+          <h2><span class="topic-icon">📡</span>Wireless cards</h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="wireless_cards.html"
+                >Monitoring & replacement techniques</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="topic-section">
+          <h2>
+            <span class="topic-icon">📶</span>Wi-Fi antenna connector/placement
+          </h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="wifi-anteena.html"
+                >Monitoring & replacement techniques and all Microphone and
+                Camera is explained in this page</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="topic-section">
+          <h2><span class="topic-icon">🎥</span>Camera/webcam</h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="camera/overview.html"
+                >Monitoring & replacement techniques</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="topic-section">
+          <h2><span class="topic-icon">🎤</span>Microphone</h2>
+          <ul class="subtopic-list">
+            <li>
+              <a href="microphone/overview.html"
+                >Monitoring & replacement techniques</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Only this section has sub-bullets in the picture -->
+        <div class="topic-section">
+          <h2>
+            <span class="topic-icon">🔒</span>Physical privacy and security
+            components
+          </h2>
+          <ul class="subtopic-list">
+            <li><a href="NFCs.html">Biometrics</a></li>
+            <li>
+              <a href="NFCs.html">Near-field scanner features</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <a href="../mobile-devices.html" class="back-button"
+        >Back to Mobile Devices Overview</a
+      >
+    </div>
+  </body>
+</html>

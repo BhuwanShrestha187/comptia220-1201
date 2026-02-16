@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1201: Flash Drives</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #203a43;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #2c5364;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #2c5364;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #2c5364;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border: 2px solid #2c5364;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card h4 {
+        color: #203a43;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #203a43;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      /* Quiz Section */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #2c5364;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #203a43;
+      }
+
+      .score-display {
+        background: #203a43;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #2c5364;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover {
+        background: #e9ecef;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.selected {
+        background: #d1ecf1;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .submit-btn {
+        background: #2c5364;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #203a43;
+      }
+
+      .submit-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: none;
+      }
+
+      .reset-btn.show {
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      strong {
+        color: #2c5364;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>📲 Flash Drives</h1>
+        <p>CompTIA A+ 220-1201 Core 1 Exam – Domain 3.4 Storage Devices</p>
+      </header>
+
+      <div class="content">
+        <h2>Flash Drive Basics</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>USB Flash Drives (Thumb Drives)</h4>
+            <ul>
+              <li>Most common portable flash storage</li>
+              <li>
+                Capacities: 8 GB – 2 TB+ (consumer models up to 1–2 TB common)
+              </li>
+              <li>Interfaces: USB-A, USB-C, USB 2.0 → USB 3.2 Gen 2 → USB4</li>
+              <li>
+                Common uses: data transfer, bootable OS media, portable apps,
+                backups
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Key Features & Variants</h4>
+            <ul>
+              <li>
+                Hardware-encrypted models (IronKey, Kingston DataTraveler
+                Locker)
+              </li>
+              <li>OTG (On-The-Go) support for phones/tablets</li>
+              <li>Write-protect switch (some models)</li>
+              <li>Durable / rugged versions (metal, waterproof, shockproof)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Flash Drive Performance & Standards</h2>
+
+        <table>
+          <tr>
+            <th>USB Version</th>
+            <th>Max Theoretical Speed</th>
+            <th>Common Real-World Speed</th>
+            <th>Connector Types</th>
+            <th>Exam Note</th>
+          </tr>
+          <tr>
+            <td>USB 2.0</td>
+            <td>480 Mbps (~60 MB/s)</td>
+            <td>20–35 MB/s</td>
+            <td>USB-A</td>
+            <td>Legacy – very slow today</td>
+          </tr>
+          <tr>
+            <td>USB 3.0 / 3.1 Gen 1</td>
+            <td>5 Gbps (~625 MB/s)</td>
+            <td>100–400 MB/s</td>
+            <td>USB-A, USB-C</td>
+            <td>Most common flash drive standard</td>
+          </tr>
+          <tr>
+            <td>USB 3.1 Gen 2 / 3.2 Gen 2</td>
+            <td>10 Gbps (~1.25 GB/s)</td>
+            <td>500–1000 MB/s</td>
+            <td>USB-C mostly</td>
+            <td>High-performance flash drives</td>
+          </tr>
+          <tr>
+            <td>USB4</td>
+            <td>20–40 Gbps</td>
+            <td>Up to 2–4 GB/s</td>
+            <td>USB-C</td>
+            <td>Rare on flash drives (2025+)</td>
+          </tr>
+        </table>
+
+        <h2>Common Issues & Troubleshooting Flash Drives</h2>
+
+        <div class="simple-box">
+          <p><strong>Frequent Problems:</strong></p>
+          <ul>
+            <li>
+              Not recognized → bad USB port/cable, driver issue, dead drive
+            </li>
+            <li>
+              Write-protected → physical switch (rare), virus, registry
+              corruption
+            </li>
+            <li>Slow speeds → using USB 2.0 port on 3.0+ drive</li>
+            <li>
+              Data corruption → unsafe removal, bad sectors, fake capacity
+              drives
+            </li>
+            <li>
+              "Please insert disk" or RAW file system → failed controller or
+              NAND
+            </li>
+          </ul>
+
+          <p><strong>Troubleshooting Steps (Exam Order):</strong></p>
+          <ol>
+            <li>Try different USB port / computer</li>
+            <li>Check Disk Management → assign drive letter if missing</li>
+            <li>Update USB / chipset drivers</li>
+            <li>Run chkdsk /f or manufacturer diagnostic tool</li>
+            <li>Test for fake capacity (H2testw, FakeFlashTest)</li>
+          </ol>
+        </div>
+
+        <h2>Best Practices & Security</h2>
+
+        <div class="simple-box">
+          <p><strong>Exam Must-Knows:</strong></p>
+          <ul>
+            <li>Always safely eject (prevents corruption)</li>
+            <li>Use exFAT for large files/cross-platform compatibility</li>
+            <li>
+              Avoid cheap/generic drives for important data (high fake/failure
+              rate)
+            </li>
+            <li>Enable BitLocker To Go (Windows) or similar for encryption</li>
+            <li>Scan for malware before opening on new systems</li>
+            <li>
+              Format new drives before use (removes factory bloat partitions)
+            </li>
+          </ul>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Test your knowledge! Select your answers and click Submit.</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. Which file system is best for a large USB flash drive that
+              needs to store files over 4 GB and work on both Windows and macOS?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a" /> FAT32
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b" /> exFAT
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c" /> NTFS
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d" /> ext4
+              </label>
+            </div>
+            <div class="feedback" id="feedback1">
+              <strong>Correct!</strong> exFAT supports large files (>4 GB) and
+              has excellent cross-platform support (Windows, macOS, many
+              devices).
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. A USB flash drive is not detected on any computer. What should
+              be tried FIRST?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a" /> Format it immediately
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b" /> Try different USB
+                ports and another computer
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c" /> Update the BIOS
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d" /> Run full disk
+                encryption
+              </label>
+            </div>
+            <div class="feedback" id="feedback2">
+              <strong>Correct!</strong> Rule out host-side issues (port, cable,
+              computer) first — most "dead" flash drives are actually connection
+              problems.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. A user cannot copy a 6 GB file to a USB drive. What is the MOST
+              likely cause?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a" /> Drive is full
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b" /> Drive is formatted as
+                FAT32
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c" /> USB port is 2.0 only
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d" /> Drive is
+                write-protected
+              </label>
+            </div>
+            <div class="feedback" id="feedback3">
+              <strong>Correct!</strong> FAT32 has a maximum file size of 4 GB.
+              Reformatting to exFAT or NTFS resolves this.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. What should ALWAYS be done before unplugging a USB flash drive?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a" /> Run defragmentation
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b" /> Safely eject / safely
+                remove hardware
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c" /> Format the drive
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d" /> Scan for malware
+              </label>
+            </div>
+            <div class="feedback" id="feedback4">
+              <strong>Correct!</strong> Safe ejection prevents data corruption
+              from interrupting active write operations.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. Which feature allows a USB flash drive to be used securely for
+              sensitive data?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a" /> BitLocker To Go or
+                hardware encryption
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b" /> USB 2.0 compatibility
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c" /> FAT32 formatting
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d" /> Leaving it plugged in
+                permanently
+              </label>
+            </div>
+            <div class="feedback" id="feedback5">
+              <strong>Correct!</strong> BitLocker To Go (Windows) or
+              hardware-encrypted drives (e.g., IronKey) provide strong
+              protection for sensitive data on removable media.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. A flash drive shows as "RAW" in Disk Management and is
+              inaccessible. What is a likely cause?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a" /> Unsafe removal or bad
+                sectors
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="b" /> USB 3.0 port only
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c" /> Drive is too new
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d" /> File too large
+              </label>
+            </div>
+            <div class="feedback" id="feedback6">
+              <strong>Correct!</strong> RAW file system usually results from
+              corruption due to unsafe removal, power loss, or failing NAND
+              flash.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. Why should cheap no-name USB flash drives be avoided for
+              important data?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a" /> They often have fake
+                capacity and high failure rates
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="b" /> They only work on USB
+                2.0
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c" /> They cannot be
+                formatted
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d" /> They are always
+                write-protected
+              </label>
+            </div>
+            <div class="feedback" id="feedback7">
+              <strong>Correct!</strong> Many cheap drives lie about capacity
+              (e.g., 1 TB that is really 8 GB) and have poor-quality NAND that
+              fails quickly.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. Which TWO are best practices when using flash drives? (select
+              2)
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a" /> Always safely eject
+                before removal
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="b" /> Use FAT32 for all
+                drives regardless of size
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c" /> Format new drives
+                before heavy use
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="d" /> Store them in extreme
+                heat
+              </label>
+            </div>
+            <div class="feedback" id="feedback8">
+              <strong>Correct!</strong> A and C — safe ejection prevents
+              corruption, and formatting new drives removes factory junk
+              partitions and ensures a clean file system.
+            </div>
+          </div>
+
+          <button class="submit-btn" id="submitBtn" onclick="submitQuiz()">
+            Submit Quiz
+          </button>
+          <button class="reset-btn" id="resetBtn" onclick="resetQuiz()">
+            Try Again
+          </button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>USB flash drives</strong> – capacities 32 GB–2 TB+, USB
+              3.0/3.2 most common
+            </li>
+            <li>
+              <strong>exFAT</strong> – best for large files (>4 GB) and
+              cross-platform (Windows/macOS/devices)
+            </li>
+            <li>
+              <strong>FAT32</strong> – max compatibility but 4 GB file size
+              limit
+            </li>
+            <li>
+              <strong>Safe removal</strong> – always eject properly (prevents
+              corruption)
+            </li>
+            <li>
+              <strong>Write protection</strong> – physical switch (rare), virus,
+              or registry corruption
+            </li>
+            <li>
+              <strong>Troubleshooting order</strong> → different port/computer →
+              Disk Management → drivers → chkdsk
+            </li>
+            <li>
+              <strong>Avoid cheap drives</strong> – high rate of fake capacity
+              and early failure
+            </li>
+            <li>
+              <strong>Encryption</strong> – BitLocker To Go or
+              hardware-encrypted models for sensitive data
+            </li>
+            <li>
+              <strong>Format new drives</strong> – removes factory bloat,
+              ensures clean file system
+            </li>
+            <li>
+              <strong>Slow speeds</strong> – often caused by USB 2.0 port/cable
+              on 3.0+ drive
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "b",
+        q3: "b",
+        q4: "b",
+        q5: "a",
+        q6: "a",
+        q7: "a",
+        q8: "a,c",
+      };
+
+      function submitQuiz() {
+        let score = 0;
+        let answered = 0;
+        const totalQuestions = 8;
+
+        for (let i = 1; i <= totalQuestions; i++) {
+          const selected = document.querySelectorAll(
+            `input[name="q${i}"]:checked`,
+          );
+          const feedback = document.getElementById(`feedback${i}`);
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+
+          if (selected.length > 0) {
+            answered++;
+            let isCorrect = false;
+
+            if (i === 8) {
+              const selectedValues = Array.from(selected)
+                .map((opt) => opt.value)
+                .sort()
+                .join(",");
+              const correctValues = answers[`q${i}`]
+                .split(",")
+                .sort()
+                .join(",");
+              isCorrect = selectedValues === correctValues;
+            } else {
+              isCorrect = selected[0].value === answers[`q${i}`];
+            }
+
+            options.forEach((opt) => {
+              opt.disabled = true;
+              opt.parentElement.classList.add("disabled");
+            });
+
+            if (isCorrect) {
+              score++;
+              selected.forEach((s) => s.parentElement.classList.add("correct"));
+              feedback.classList.add("show");
+            } else {
+              selected.forEach((s) =>
+                s.parentElement.classList.add("incorrect"),
+              );
+              feedback.classList.add("show", "wrong");
+              feedback.innerHTML =
+                `<strong>Incorrect.</strong> ${i === 8 ? "Correct answers are A and C." : "The correct answer is option " + answers[`q${i}`].toUpperCase() + "."} ` +
+                (feedback.innerHTML.split("</strong>")[1] || "");
+
+              options.forEach((opt) => {
+                if (
+                  (i === 8 && answers[`q${i}`].includes(opt.value)) ||
+                  (i !== 8 && opt.value === answers[`q${i}`])
+                ) {
+                  opt.parentElement.classList.add("correct");
+                }
+              });
+            }
+          }
+        }
+
+        if (answered < totalQuestions) {
+          alert(
+            `Please answer all questions. You've answered ${answered} out of ${totalQuestions}.`,
+          );
+          return;
+        }
+
+        const percentage = Math.round((score / totalQuestions) * 100);
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        let message = "";
+
+        if (percentage >= 90)
+          message = "🏆 Excellent! You're ready for the exam!";
+        else if (percentage >= 75)
+          message = "👍 Good job! Review the incorrect answers.";
+        else if (percentage >= 60)
+          message = "📚 Keep studying. Review the material again.";
+        else message = "📖 More practice needed. Review all topics.";
+
+        scoreDisplay.innerHTML = `
+                <div>Your Score: ${score} / ${totalQuestions} (${percentage}%)</div>
+                <div>${message}</div>
+            `;
+        scoreDisplay.classList.add("show");
+
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("resetBtn").classList.add("show");
+
+        scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function resetQuiz() {
+        for (let i = 1; i <= 8; i++) {
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+          const feedback = document.getElementById(`feedback${i}`);
+
+          options.forEach((opt) => {
+            opt.checked = false;
+            opt.disabled = false;
+            opt.parentElement.classList.remove(
+              "selected",
+              "correct",
+              "incorrect",
+              "disabled",
+            );
+          });
+
+          feedback.classList.remove("show", "wrong");
+        }
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("resetBtn").classList.remove("show");
+
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      document.querySelectorAll(".quiz-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const radio = this.querySelector('input[type="radio"]');
+          if (!radio.disabled) {
+            const name = radio.name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+              r.parentElement.classList.remove("selected");
+            });
+            this.classList.add("selected");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

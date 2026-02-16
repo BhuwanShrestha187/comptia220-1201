@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1201: Removable Storage</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #203a43;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #2c5364;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #2c5364;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #2c5364;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border: 2px solid #2c5364;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card h4 {
+        color: #203a43;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #203a43;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      /* Quiz Section */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #2c5364;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #203a43;
+      }
+
+      .score-display {
+        background: #203a43;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #2c5364;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover {
+        background: #e9ecef;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.selected {
+        background: #d1ecf1;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .submit-btn {
+        background: #2c5364;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #203a43;
+      }
+
+      .submit-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: none;
+      }
+
+      .reset-btn.show {
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      strong {
+        color: #2c5364;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🔌 Removable Storage</h1>
+        <p>CompTIA A+ 220-1201 Core 1 Exam – Domain 3.4 Storage Devices</p>
+      </header>
+
+      <div class="content">
+        <h2>Common Types of Removable Storage</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>USB Flash Drives (Thumb Drives)</h4>
+            <ul>
+              <li>USB 2.0, 3.0, 3.1, 3.2, USB4 / USB-C</li>
+              <li>Capacities: 8 GB – 2 TB+</li>
+              <li>Common uses: data transfer, OS bootable media, backups</li>
+              <li>
+                Encryption: BitLocker To Go, VeraCrypt, hardware-encrypted
+                models
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Memory Cards (SD, microSD, CFexpress, etc.)</h4>
+            <ul>
+              <li>SDHC, SDXC, microSDHC/XC</li>
+              <li>
+                Speed classes: UHS-I, UHS-II, Video Speed Class (V30, V90),
+                A1/A2 app performance
+              </li>
+              <li>Common in cameras, phones, drones, gaming devices</li>
+              <li>Adapters: microSD → SD, SD → USB reader</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Other Removable Media Types (Exam-Relevant)</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>Optical Discs (Less Common Now)</h4>
+            <ul>
+              <li>CD-R/RW, DVD±R/RW, Blu-ray</li>
+              <li>Capacities: CD 700 MB, DVD 4.7 GB, BD 25/50 GB</li>
+              <li>Still used for archiving, boot media in legacy systems</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>External Hard Drives / SSD Enclosures</h4>
+            <ul>
+              <li>USB-connected 2.5" or 3.5" HDD/SSD</li>
+              <li>Thunderbolt enclosures for high-speed NVMe</li>
+              <li>Used for backups, Time Machine, portable large storage</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Common Issues & Troubleshooting Removable Storage</h2>
+
+        <div class="simple-box">
+          <p><strong>Common Problems:</strong></p>
+          <ul>
+            <li>
+              Drive not recognized → try different USB port/cable, check Device
+              Manager
+            </li>
+            <li>
+              "Write Protected" or can't format → physical switch on SD card,
+              registry fix for USB
+            </li>
+            <li>
+              Slow transfer speeds → wrong USB version/port (USB 2.0
+              bottleneck), bad cable
+            </li>
+            <li>
+              Data corruption → unsafe removal, bad sectors on flash media
+            </li>
+            <li>
+              microSD card stuck in phone → use eject tool or adhesive tape
+              method
+            </li>
+          </ul>
+
+          <p><strong>Troubleshooting Steps:</strong></p>
+          <ul>
+            <li>Test on another computer/device</li>
+            <li>Check Disk Management (assign drive letter if missing)</li>
+            <li>Update USB drivers / chipset drivers</li>
+            <li>
+              Use manufacturer's diagnostic tool (SanDisk, Kingston, Samsung,
+              etc.)
+            </li>
+          </ul>
+        </div>
+
+        <h2>Safe Removal & Best Practices</h2>
+
+        <div class="simple-box">
+          <p><strong>Windows Safe Removal:</strong></p>
+          <ul>
+            <li>Right-click drive in File Explorer → Eject</li>
+            <li>System Tray → Safely Remove Hardware</li>
+            <li>Prevents data corruption from sudden disconnect</li>
+          </ul>
+
+          <p><strong>Exam Tips & Best Practices:</strong></p>
+          <ul>
+            <li>Always eject removable media before unplugging</li>
+            <li>
+              Use FAT32 for max compatibility (cross-platform), exFAT for large
+              files (>4 GB)
+            </li>
+            <li>
+              Avoid cheap no-name flash drives for important data (high failure
+              rate)
+            </li>
+            <li>
+              Format new drives before heavy use (quick format usually
+              sufficient)
+            </li>
+            <li>Enable write caching only when safe removal is always used</li>
+          </ul>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Test your knowledge! Select your answers and click Submit.</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. Which file system is most commonly recommended for large USB
+              flash drives to support files >4 GB?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a" /> FAT32
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b" /> exFAT
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c" /> NTFS
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d" /> ext4
+              </label>
+            </div>
+            <div class="feedback" id="feedback1">
+              <strong>Correct!</strong> exFAT supports files larger than 4 GB
+              and is widely compatible across Windows, macOS, and many devices
+              (unlike NTFS which has limited macOS write support).
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. A USB flash drive is not recognized on any computer. What
+              should be checked FIRST?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a" /> Format the drive
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b" /> Try a different USB
+                port and cable/computer
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c" /> Update BIOS
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d" /> Run chkdsk /f
+              </label>
+            </div>
+            <div class="feedback" id="feedback2">
+              <strong>Correct!</strong> Rule out port/cable/computer issues
+              first — most common cause of "dead" USB drives is actually a bad
+              connection or host-side problem.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. A user complains they cannot copy a 5 GB file to a USB drive.
+              What is the MOST likely cause?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a" /> Drive is full
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b" /> Drive is formatted as
+                FAT32
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c" /> USB 2.0 port only
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d" /> Drive is
+                write-protected
+              </label>
+            </div>
+            <div class="feedback" id="feedback3">
+              <strong>Correct!</strong> FAT32 has a 4 GB file size limit. The
+              drive needs to be reformatted to exFAT or NTFS to support larger
+              files.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. What should ALWAYS be done before unplugging removable storage?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a" /> Run defrag
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b" /> Safely eject / remove
+                hardware
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c" /> Format the drive
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d" /> Scan for viruses
+              </label>
+            </div>
+            <div class="feedback" id="feedback4">
+              <strong>Correct!</strong> Safe removal prevents data corruption
+              from sudden power loss during write operations.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. Which speed class is required for 4K video recording on most
+              modern cameras?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a" /> Class 10
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b" /> UHS Speed Class 3
+                (U3) or Video Speed Class V30+
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c" /> Class 4
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d" /> No speed class needed
+              </label>
+            </div>
+            <div class="feedback" id="feedback5">
+              <strong>Correct!</strong> 4K video typically requires UHS Speed
+              Class 3 (U3) or Video Speed Class V30 or higher to maintain
+              sustained write performance.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. A microSD card is physically stuck in a phone slot. What is a
+              safe method to remove it?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a" /> Use tweezers
+                forcefully
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="b" /> Use a thin piece of
+                tape or eject tool
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c" /> Heat the phone
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d" /> Leave it stuck
+              </label>
+            </div>
+            <div class="feedback" id="feedback6">
+              <strong>Correct!</strong> Use an eject tool (SIM tray tool) or
+              adhesive tape method — never force with metal tools that can
+              damage pins.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. Which removable storage format is most likely to be used in a
+              modern action camera or drone?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a" /> CompactFlash
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="b" /> microSDXC
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c" /> SDHC
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d" /> Memory Stick
+              </label>
+            </div>
+            <div class="feedback" id="feedback7">
+              <strong>Correct!</strong> microSDXC cards (with high speed
+              classes) are the standard for modern cameras, drones, action cams,
+              and phones due to size and performance.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. Which TWO are best practices for removable storage? (select 2)
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a" /> Always safely eject
+                before removal
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="b" /> Use cheap no-name
+                drives for backups
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c" /> Format new drives
+                before heavy use
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="d" /> Leave USB drives
+                plugged in permanently
+              </label>
+            </div>
+            <div class="feedback" id="feedback8">
+              <strong>Correct!</strong> A and C — safe ejection prevents
+              corruption, and formatting new drives ensures clean file system
+              and removes factory junk partitions.
+            </div>
+          </div>
+
+          <button class="submit-btn" id="submitBtn" onclick="submitQuiz()">
+            Submit Quiz
+          </button>
+          <button class="reset-btn" id="resetBtn" onclick="resetQuiz()">
+            Try Again
+          </button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>USB flash drives</strong> – common capacities 32 GB–1 TB+,
+              use exFAT for >4 GB files
+            </li>
+            <li>
+              <strong>microSD / SD cards</strong> – most common in phones,
+              cameras, drones; check speed class (U3/V30+ for 4K)
+            </li>
+            <li>
+              <strong>Safe removal</strong> – always eject properly to prevent
+              corruption
+            </li>
+            <li>
+              <strong>Write protection</strong> – physical switch on SD cards,
+              registry/virus on USB
+            </li>
+            <li>
+              <strong>exFAT vs FAT32</strong> – exFAT for large
+              files/cross-platform, FAT32 for max compatibility but 4 GB file
+              limit
+            </li>
+            <li>
+              <strong>Troubleshooting</strong> – try different ports/computers
+              first, check Device Manager, update drivers
+            </li>
+            <li>
+              <strong>Formatting new drives</strong> – quick format usually
+              fine, removes factory bloat
+            </li>
+            <li>
+              <strong>Avoid cheap drives</strong> – high failure rate for
+              important data
+            </li>
+            <li>
+              <strong>Encryption</strong> – BitLocker To Go (Windows),
+              hardware-encrypted USB drives for sensitive data
+            </li>
+            <li>
+              <strong>microSD stuck</strong> – use eject tool or tape method –
+              never force
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "b",
+        q3: "b",
+        q4: "b",
+        q5: "b",
+        q6: "b",
+        q7: "b",
+        q8: "a,c",
+      };
+
+      function submitQuiz() {
+        let score = 0;
+        let answered = 0;
+        const totalQuestions = 8;
+
+        for (let i = 1; i <= totalQuestions; i++) {
+          const selected = document.querySelectorAll(
+            `input[name="q${i}"]:checked`,
+          );
+          const feedback = document.getElementById(`feedback${i}`);
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+
+          if (selected.length > 0) {
+            answered++;
+            let isCorrect = false;
+
+            if (i === 8) {
+              // multi-select
+              const selectedValues = Array.from(selected)
+                .map((opt) => opt.value)
+                .sort()
+                .join(",");
+              const correctValues = answers[`q${i}`]
+                .split(",")
+                .sort()
+                .join(",");
+              isCorrect = selectedValues === correctValues;
+            } else {
+              isCorrect = selected[0].value === answers[`q${i}`];
+            }
+
+            options.forEach((opt) => {
+              opt.disabled = true;
+              opt.parentElement.classList.add("disabled");
+            });
+
+            if (isCorrect) {
+              score++;
+              selected.forEach((s) => s.parentElement.classList.add("correct"));
+              feedback.classList.add("show");
+            } else {
+              selected.forEach((s) =>
+                s.parentElement.classList.add("incorrect"),
+              );
+              feedback.classList.add("show", "wrong");
+              feedback.innerHTML =
+                `<strong>Incorrect.</strong> ${i === 8 ? "Correct answers are A and C." : "The correct answer is option " + answers[`q${i}`].toUpperCase() + "."} ` +
+                  feedback.innerHTML.split("</strong>")[1] || "";
+
+              // Highlight correct ones
+              options.forEach((opt) => {
+                if (
+                  (i === 8 && answers[`q${i}`].includes(opt.value)) ||
+                  (i !== 8 && opt.value === answers[`q${i}`])
+                ) {
+                  opt.parentElement.classList.add("correct");
+                }
+              });
+            }
+          }
+        }
+
+        if (answered < totalQuestions) {
+          alert(
+            `Please answer all questions. You've answered ${answered} out of ${totalQuestions}.`,
+          );
+          return;
+        }
+
+        const percentage = Math.round((score / totalQuestions) * 100);
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        let message = "";
+
+        if (percentage >= 90)
+          message = "🏆 Excellent! You're ready for the exam!";
+        else if (percentage >= 75)
+          message = "👍 Good job! Review the incorrect answers.";
+        else if (percentage >= 60)
+          message = "📚 Keep studying. Review the material again.";
+        else message = "📖 More practice needed. Review all topics.";
+
+        scoreDisplay.innerHTML = `
+                <div>Your Score: ${score} / ${totalQuestions} (${percentage}%)</div>
+                <div>${message}</div>
+            `;
+        scoreDisplay.classList.add("show");
+
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("resetBtn").classList.add("show");
+
+        scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function resetQuiz() {
+        for (let i = 1; i <= 8; i++) {
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+          const feedback = document.getElementById(`feedback${i}`);
+
+          options.forEach((opt) => {
+            opt.checked = false;
+            opt.disabled = false;
+            opt.parentElement.classList.remove(
+              "selected",
+              "correct",
+              "incorrect",
+              "disabled",
+            );
+          });
+
+          feedback.classList.remove("show", "wrong");
+        }
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("resetBtn").classList.remove("show");
+
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      document.querySelectorAll(".quiz-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const radio = this.querySelector('input[type="radio"]');
+          if (!radio.disabled) {
+            const name = radio.name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+              r.parentElement.classList.remove("selected");
+            });
+            this.classList.add("selected");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

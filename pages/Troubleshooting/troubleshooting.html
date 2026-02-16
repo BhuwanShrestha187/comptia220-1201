@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware and Network Troubleshooting - CompTIA A+ 220-1201</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1>CompTIA A+ 220-1201</h1>
+                    <p class="subtitle">Core 1 Exam Study Guide</p>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="../index.html#topics">Topics</a></li>
+                        <li><a href="#" class="active">Troubleshooting</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="topic-hero troubleshooting-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="topic-icon-large">🔧</div>
+                <h2>Domain 5: Hardware and Network Troubleshooting</h2>
+                <p class="topic-weight">28% of Exam</p>
+                <p>Master troubleshooting methodologies and solutions for hardware, network, mobile device, and printer issues.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="topic-content">
+        <div class="container">
+            <div class="content-navigation">
+                <a href="#motherboard-ram" class="content-nav-link">Motherboard/RAM</a>
+                <a href="#storage" class="content-nav-link">Storage/RAID</a>
+                <a href="#display" class="content-nav-link">Display</a>
+                <a href="#mobile" class="content-nav-link">Mobile</a>
+                <a href="#network" class="content-nav-link">Network</a>
+                <a href="#printers" class="content-nav-link">Printers</a>
+            </div>
+
+            <div id="motherboard-ram" class="content-section">
+                <h3>5.1 Troubleshooting Motherboards, RAM, CPUs, and Power</h3>
+                <p>System-level issues often involve the core components. Understanding symptoms and solutions is crucial for efficient troubleshooting.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>🖥️ Common Symptoms</h4>
+                        <ul>
+                            <li><strong>No Power:</strong></li>
+                            <li>• Dead PSU, loose power cable</li>
+                            <li>• Failed power button</li>
+                            <li>• Motherboard short</li>
+                            <li><strong>No Post/Blank Screen:</strong></li>
+                            <li>• Reseat RAM, GPU</li>
+                            <li>• Check monitor/cable</li>
+                            <li>• Clear CMOS</li>
+                            <li><strong>POST Beep Codes:</strong></li>
+                            <li>• 1 short: POST success</li>
+                            <li>• 2 short: Memory error</li>
+                            <li>• 3 short: Keyboard error</li>
+                            <li>• Continuous: RAM issue</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>❄️ Overheating Issues</h4>
+                        <ul>
+                            <li><strong>Symptoms:</strong></li>
+                            <li>• Unexpected shutdowns</li>
+                            <li>• Slow performance (throttling)</li>
+                            <li>• Burning smell</li>
+                            <li><strong>Causes:</strong></li>
+                            <li>• Dust buildup</li>
+                            <li>• Failed fan</li>
+                            <li>• Dried thermal paste</li>
+                            <li>• Blocked vents</li>
+                            <li><strong>Solutions:</strong></li>
+                            <li>• Clean dust</li>
+                            <li>• Replace thermal paste</li>
+                            <li>• Ensure airflow</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🔋 Power Issues</h4>
+                        <ul>
+                            <li><strong>Random Shutdowns:</strong></li>
+                            <li>• Overheating (most common)</li>
+                            <li>• Failing PSU</li>
+                            <li>• Power supply insufficient</li>
+                            <li><strong>Capacitor Swelling/Leaking:</strong></li>
+                            <li>• Visible bulge on top</li>
+                            <li>• Brown/green residue</li>
+                            <li>• Replace motherboard</li>
+                            <li><strong>Application Crashes:</strong></li>
+                            <li>• Run MemTest86</li>
+                            <li>• Update drivers</li>
+                            <li>• Check for overheating</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🔧 Troubleshooting Steps</h4>
+                        <ul>
+                            <li><strong>1. Identify Problem:</strong></li>
+                            <li>• Gather information</li>
+                            <li>• Reproduce issue</li>
+                            <li><strong>2. Theory of Probable Cause:</strong></li>
+                            <li>• Question obvious</li>
+                            <li>• Consider recent changes</li>
+                            <li><strong>3. Test Theory:</strong></li>
+                            <li>• Swap components</li>
+                            <li>• Use diagnostics</li>
+                            <li><strong>4. Implement Solution:</strong></li>
+                            <li>• Replace faulty part</li>
+                            <li>• Update drivers/BIOS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="storage" class="content-section">
+                <h3>5.2 Troubleshooting Drive and RAID Issues</h3>
+                <p>Storage issues can cause data loss and system instability. Understanding symptoms and recovery procedures is essential.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>💾 Hard Drive Symptoms</h4>
+                        <ul>
+                            <li><strong>Clicking/Grinding Noises:</strong></li>
+                            <li>• Head crash imminent</li>
+                            <li>• Back up immediately</li>
+                            <li>• Replace drive</li>
+                            <li><strong>S.M.A.R.T. Warnings:</strong></li>
+                            <li>• Run diagnostic</li>
+                            <li>• Plan replacement</li>
+                            <li>• Back up critical data</li>
+                            <li><strong>Bootable Device Not Found:</strong></li>
+                            <li>• Check boot order</li>
+                            <li>• Test cable/connection</li>
+                            <li>• Restore boot sector</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>⚡ SSD Issues</h4>
+                        <ul>
+                            <li><strong>Slow Performance:</strong></li>
+                            <li>• Check if SATA/NVMe bottleneck</li>
+                            <li>• Verify TRIM enabled</li>
+                            <li>• Update firmware</li>
+                            <li><strong>Drive Not Detected:</strong></li>
+                            <li>• Check BIOS detection</li>
+                            <li>• Try different port/cable</li>
+                            <li>• Initialize in Disk Management</li>
+                            <li><strong>Data Corruption:</strong></li>
+                            <li>• Run CHKDSK</li>
+                            <li>• Check for firmware updates</li>
+                            <li>• Consider replacement if recurring</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🔄 RAID Issues</h4>
+                        <ul>
+                            <li><strong>Array Missing/Degraded:</strong></li>
+                            <li>• Check cable connections</li>
+                            <li>• Replace failed drive</li>
+                            <li>• Rebuild array</li>
+                            <li><strong>Audible Alarms:</strong></li>
+                            <li>• Check controller status</li>
+                            <li>• Identify failed member</li>
+                            <li>• Replace per vendor procedure</li>
+                            <li><strong>Slow Performance:</strong></li>
+                            <li>• Check rebuild status</li>
+                            <li>• Verify controller load</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🔍 Data Recovery</h4>
+                        <ul>
+                            <li><strong>Do:</strong></li>
+                            <li>• Stop using drive immediately</li>
+                            <li>• Create disk image if possible</li>
+                            <li>• Use professional recovery services</li>
+                            <li><strong>Don't:</strong></li>
+                            <li>• Continue to write to drive</li>
+                            <li>• Open drive physically</li>
+                            <li>• Run chkdsk on failing drive</li>
+                            <li><strong>Prevention:</strong></li>
+                            <li>• Regular backups</li>
+                            <li>• Monitor S.M.A.R.T.</li>
+                            <li>• Test restore procedures</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="display" class="content-section">
+                <h3>5.3 Troubleshooting Video, Projector, and Display Issues</h3>
+                <p>Display issues range from simple cable problems to hardware failures. Systematic troubleshooting resolves most issues efficiently.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>🖥️ Monitor Issues</h4>
+                        <ul>
+                            <li><strong>No Display:</strong></li>
+                            <li>• Check power and cables</li>
+                            <li>• Try different input source</li>
+                            <li>• Test with different computer</li>
+                            <li><strong>Dim Image:</strong></li>
+                            <li>• Increase brightness/contrast</li>
+                            <li>• Check backlight (CCFL vs LED)</li>
+                            <li>• Replace inverter (CCFL)</li>
+                            <li><strong>Dead Pixels:</strong></li>
+                            <li>• Often covered under warranty</li>
+                            <li>• Pixel fixing software (sometimes works)</li>
+                            <li>• Replace if cluster or under warranty</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>📽️ Projector Issues</h4>
+                        <ul>
+                            <li><strong>No Image:</strong></li>
+                            <li>• Check input source selection</li>
+                            <li>• Verify cable connections</li>
+                            <li>• Check lamp status</li>
+                            <li><strong>Burnt-out Bulb:</strong></li>
+                            <li>• Replace lamp module</li>
+                            <li>• Reset lamp timer</li>
+                            <li>• Order correct replacement</li>
+                            <li><strong>Overheating/Shutdown:</strong></li>
+                            <li>• Clean air vents/filters</li>
+                            <li>• Ensure proper ventilation</li>
+                            <li>• Check fan operation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🎨 Color/Image Issues</h4>
+                        <ul>
+                            <li><strong>Incorrect Colors:</strong></li>
+                            <li>• Check cable quality</li>
+                            <li>• Calibrate display</li>
+                            <li>• Test different port</li>
+                            <li><strong>Fuzzy/Blurry Image:</strong></li>
+                            <li>• Check resolution match</li>
+<li>• Adjust sharpness</li>
+                            <li>• Replace cable if damaged</li>
+                            <li><strong>Flickering:</strong></li>
+                            <li>• Check refresh rate</li>
+                            <li>• Test different cable</li>
+                            <li>• Check for interference</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>📏 Sizing Issues</h4>
+                        <ul>
+                            <li><strong>Image Too Big/Small:</strong></li>
+                            <li>• Adjust resolution</li>
+                            <li>• Use auto-adjust feature</li>
+                            <li>• Check aspect ratio settings</li>
+                            <li><strong>Image Not Centered:</strong></li>
+                            <li>• Use auto-adjust</li>
+                            <li>• Check overscan settings</li>
+                            <li>• Manually adjust position</li>
+                            <li><strong>Partial Image:</strong></li>
+                            <li>• Check resolution settings</li>
+                            <li>• Verify input source format</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mobile" class="content-section">
+                <h3>5.4 Troubleshooting Common Mobile Device Issues</h3>
+                <p>Mobile devices have unique troubleshooting considerations due to their integrated design and battery systems.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>🔋 Battery Issues</h4>
+                        <ul>
+                            <li><strong>Poor Battery Health:</strong></li>
+                            <li>• Check battery health in settings</li>
+                            <li>• Reduce screen brightness</li>
+                            <li>• Close background apps</li>
+                            <li><strong>Swollen Battery:</strong></li>
+                            <li>• STOP USING IMMEDIATELY</li>
+                            <li>• Do not charge</li>
+                            <li>• Replace by professional</li>
+                            <li><strong>Overheating:</strong></li>
+                            <li>• Remove case while charging</li>
+                            <li>• Avoid direct sunlight</li>
+                            <li>• Close demanding apps</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>📱 Connectivity Issues</h4>
+                        <ul>
+                            <li><strong>Poor Wi-Fi:</strong></li>
+                            <li>• Forget/reconnect to network</li>
+                            <li>• Reset network settings</li>
+                            <li>• Check router distance</li>
+                            <li><strong>Bluetooth Pairing:</strong></li>
+                            <li>• Make device discoverable</li>
+                            <li>• Clear Bluetooth cache</li>
+                            <li>• Update device firmware</li>
+                            <li><strong>No Cellular:</strong></li>
+                            <li>• Toggle Airplane mode</li>
+                            <li>• Check SIM card</li>
+                            <li>• Reset network settings</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>📱 Screen/Touch Issues</h4>
+                        <ul>
+                            <li><strong>Unresponsive Touch:</strong></li>
+                            <li>• Restart device</li>
+                            <li>• Remove screen protector</li>
+                            <li>• Check for physical damage</li>
+                            <li><strong>Digitizer Issues:</strong></li>
+                            <li>• Recalibrate touchscreen</li>
+                            <li>• Update touch driver</li>
+                            <li>• Replace digitizer if hardware fault</li>
+                            <li><strong>Dead Zones:</strong></li>
+                            <li>• Physical damage likely</li>
+                            <li>• May need screen replacement</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>💧 Liquid Damage</h4>
+                        <ul>
+                            <li><strong>Immediate Actions:</strong></li>
+                            <li>• Power off immediately</li>
+                            <li>• Remove battery (if possible)</li>
+                            <li>• Do not charge</li>
+                            <li><strong>Drying:</strong></li>
+                            <li>• Place in rice (myth, but common)</li>
+                            <li>• Use silica gel packets</li>
+                            <li>• Wait 24-48 hours minimum</li>
+                            <li><strong>Professional:</strong></li>
+                            <li>• May need ultrasonic cleaning</li>
+                            <li>• Corrosion removal required</li>
+                            <li>• No guarantee of recovery</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>💾 Performance Issues</h4>
+                        <ul>
+                            <li><strong>Slow Device:</strong></li>
+                            <li>• Restart device</li>
+                            <li>• Clear app cache</li>
+                            <li>• Free up storage space</li>
+                            <li><strong>App Crashes:</strong></li>
+                            <li>• Update app</li>
+                            <li>• Clear app data</li>
+                            <li>• Reinstall app</li>
+                            <li><strong>Malware:</strong></li>
+                            <li>• Install security app</li>
+                            <li>• Scan for malware</li>
+                            <li>• Factory reset if needed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="network" class="content-section">
+                <h3>5.5 Troubleshooting Network Issues</h3>
+                <p>Network troubleshooting requires understanding protocols, connectivity, and using appropriate diagnostic tools.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>🌐 Connectivity Symptoms</h4>
+                        <ul>
+                            <li><strong>Limited/No Connectivity:</strong></li>
+                            <li>• Release/Renew DHCP lease</li>
+                            <li>• Check physical connections</li>
+                            <li>• Verify SSID/password</li>
+                            <li><strong>Port Flapping:</strong></li>
+                            <li>• Check cable quality</li>
+                            <li>• Verify switch port</li>
+                            <li>• Check for duplex mismatch</li>
+                            <li><strong>Intermittent Connectivity:</strong></li>
+                            <li>• Check for interference (wireless)</li>
+                            <li>• Test with different device</li>
+                            <li>• Check ISP status</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>📶 Wireless Issues</h4>
+                        <ul>
+                            <li><strong>Weak Signal:</strong></li>
+                            <li>• Move closer to access point</li>
+                            <li>• Check for obstacles</li>
+                            <li>• Use Wi-Fi analyzer</li>
+                            <li><strong>Slow Speeds:</strong></li>
+                            <li>• Check channel congestion</li>
+                            <li>• Verify band (2.4 vs 5 vs 6)</li>
+                            <li>• Check for bandwidth throttling</li>
+                            <li><strong>Authentication Failures:</strong></li>
+                            <li>• Verify password</li>
+                            <li>• Check certificate validity</li>
+                            <li>• Reset network profile</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>📊 Performance Issues</h4>
+                        <ul>
+                            <li><strong>High Latency:</strong></li>
+                            <li>• Run pathping/traceroute</li>
+                            <li>• Check for congestion</li>
+                            <li>• Test at different times</li>
+                            <li><strong>Slow Transfer Speeds:</strong></li>
+                            <li>• Check link speed</li>
+                            <li>• Test wired connection</li>
+                            <li>• Check for malware</li>
+                            <li><strong>VoIP Quality Issues:</strong></li>
+                            <li>• Check jitter</li>
+                            <li>• Verify QoS settings</li>
+                            <li>• Prioritize voice traffic</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🔍 Diagnostic Tools</h4>
+                        <ul>
+                            <li><strong>ping:</strong> Test basic connectivity</li>
+                            <li><strong>ipconfig/ifconfig:</strong> View IP settings</li>
+                            <li><strong>tracert/traceroute:</strong> Trace route path</li>
+                            <li><strong>nslookup/dig:</strong> DNS troubleshooting</li>
+                            <li><strong>netstat:</strong> View connections</li>
+                            <li><strong>Wi-Fi Analyzer:</strong> Signal analysis</li>
+                            <li><strong>Cable Tester:</strong> Physical cable test</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="printers" class="content-section">
+                <h3>5.6 Troubleshooting Printer Issues</h3>
+                <p>Printer troubleshooting requires understanding different printer technologies and their unique issues.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>🖨️ Print Quality Issues</h4>
+                        <ul>
+                            <li><strong>Faded Prints:</strong></li>
+                            <li>• Replace ink/toner</li>
+                            <li>• Clean print heads/drum</li>
+                            <li>• Check density settings</li>
+                            <li><strong>Lines Down Page:</strong></li>
+                            <li>• Clean printhead (inkjet)</li>
+                            <li>• Replace drum unit (laser)</li>
+                            <li>• Check for scratched roller</li>
+                            <li><strong>Garbled Text:</strong></li>
+                            <li>• Update/reinstall drivers</li>
+                            <li>• Check print spooler</li>
+                            <li>• Verify port settings</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>📄 Paper Handling</h4>
+                        <ul>
+                            <li><strong>Paper Jams:</strong></li>
+                            <li>• Open all access doors</li>
+                            <li>• Remove all paper fragments</li>
+                            <li>• Check paper quality/type</li>
+                            <li><strong>Multipage Misfeed:</strong></li>
+                            <li>• Check paper tray loading</li>
+                            <li>• Replace pickup roller</li>
+                            <li>• Use correct paper type</li>
+                            <li><strong>Tray Not Recognized:</strong></li>
+                            <li>• Reinstall tray</li>
+                            <li>• Check sensors</li>
+                            <li>• Update firmware</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🔊 Mechanical Issues</h4>
+                        <ul>
+                            <li><strong>Grinding Noise:</strong></li>
+                            <li>• Check for paper obstruction</li>
+                            <li>• Inspect gear train</li>
+                            <li>• Lubricate moving parts</li>
+                            <li><strong>Slow Printing:</strong></li>
+                            <li>• Lower quality settings</li>
+                            <li>• Clear print queue</li>
+                            <li>• Check driver settings</li>
+                            <li><strong>Frozen Print Queue:</strong></li>
+                            <li>• Restart spooler service</li>
+                            <li>• Cancel all documents</li>
+                            <li>• Clear spool files</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🔗 Connectivity Issues</h4>
+                        <ul>
+                            <li><strong>Not Found on Network:</strong></li>
+                            <li>• Verify IP address</li>
+                            <li>• Ping printer</li>
+                            <li>• Check firewall settings</li>
+                            <li><strong>USB Connection Issues:</strong></li>
+                            <li>• Try different USB port</li>
+                            <li>• Use different cable</li>
+                            <li>• Reinstall driver</li>
+                            <li><strong>Wireless Printing:</strong></li>
+                            <li>• Verify Wi-Fi connection</li>
+                            <li>• Check printer's IP</li>
+                            <li>• Re-add printer</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🖨️ Finishing Issues</h4>
+                        <ul>
+                            <li><strong>Staple Jams:</strong></li>
+                            <li>• Clear staple mechanism</li>
+                            <li>• Check staple cartridge</li>
+                            <li><strong>Hole Punch Problems:</strong></li>
+                            <li>• Clear punch waste bin</li>
+                            <li>• Check punch pins</li>
+                            <li><strong>Double/ Echo Images:</strong></li>
+                            <li>• Replace transfer roller</li>
+                            <li>• Clean corona wire</li>
+                            <li>• Check fuser unit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practice-section">
+                <h3>📝 Practice Questions</h3>
+                <div class="practice-question">
+                    <p><strong>Question 1:</strong> A computer beeps 3 times on startup and displays no video. What is the most likely cause?</p>
+                    <p class="answer"><strong>Answer:</strong> Memory (RAM) error. The 3-beep POST code typically indicates a keyboard or memory error, often caused by unseated or failed RAM.</p>
+                </div>
+                <div class="practice-question">
+                    <p><strong>Question 2:</strong> A user reports their smartphone battery has visibly swollen and is pushing the screen outward. What should you advise?</p>
+                    <p class="answer"><strong>Answer:</strong> Stop using the device immediately. Do not charge it. The swollen lithium battery is a safety hazard and should be replaced by a qualified technician. Dispose of properly at a recycling center.</p>
+                </div>
+                <div class="practice-question">
+                    <p><strong>Question 3:</strong> A laser printer is producing faint prints with white streaks. What is the most likely cause?</p>
+                    <p class="answer"><strong>Answer:</strong> Low toner or a dirty/worn drum unit. Try replacing the toner cartridge first. If the issue persists, the drum unit likely needs replacement.</p>
+                </div>
+            </div>
+
+            <div class="key-takeaways">
+                <h3>🎯 Key Takeaways</h3>
+                <ul>
+                    <li>POST beep codes: 1=success, 2=memory error, 3=keyboard error, continuous=RAM issue</li>
+                    <li>Storage: Clicking = imminent failure, back up immediately, replace drive</li>
+                    <li>Mobile: Swollen battery = safety hazard, stop using and replace professionally</li>
+                    <li>Network: Start with physical layer, then IP configuration, then application</li>
+                    <li>Printers: Paper jams = check for fragments, faded prints = check toner/drum</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CompTIA A+ 220-1201</h4>
+                    <p>Comprehensive study guide for the Core 1 exam.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="mobile-devices.html">Mobile Devices</a></li>
+                        <li><a href="networking.html">Networking</a></li>
+                        <li><a href="hardware.html">Hardware</a></li>
+                        <li><a href="virtualization.html">Virtualization</a></li>
+                        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Study Guide for CompTIA A+ 220-1201 Core 1 Exam</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

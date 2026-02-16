@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: Wi-Fi Antenna, Camera & Microphone</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #764ba2;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #764ba2;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #764ba2;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border: 2px solid #764ba2;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card h4 {
+        color: #667eea;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #667eea;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #764ba2;
+      }
+
+      /* Quiz Section */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #764ba2;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #667eea;
+      }
+
+      .score-display {
+        background: #667eea;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #764ba2;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover {
+        background: #e9ecef;
+        border-color: #764ba2;
+      }
+
+      .quiz-option.selected {
+        background: #d1ecf1;
+        border-color: #764ba2;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .submit-btn {
+        background: #764ba2;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #667eea;
+      }
+
+      .submit-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: none;
+      }
+
+      .reset-btn.show {
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>📡 Wi-Fi Antenna, Camera & Microphone</h1>
+        <p>CompTIA A+ 220-1101 - Mobile Device Components</p>
+      </header>
+
+      <div class="content">
+        <h2>📡 Wi-Fi Antenna Connector/Placement</h2>
+
+        <h3>Laptop Wi-Fi Antennas</h3>
+        <div class="simple-box">
+          <p>
+            <strong>Location:</strong> Antennas are typically built into the
+            laptop screen/display bezel
+          </p>
+          <ul>
+            <li>
+              Usually two antennas (for MIMO - Multiple Input Multiple Output)
+            </li>
+            <li>Wires run from Wi-Fi card through hinges to display area</li>
+            <li>Connected to Wi-Fi card with small snap-on connectors</li>
+            <li>Often labeled "Main" and "Aux" or numbered 1 and 2</li>
+            <li>Placed at top corners of screen for best reception</li>
+          </ul>
+        </div>
+
+        <h3>Wi-Fi Card Types</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>M.2 Wi-Fi Card (Most Common)</h4>
+            <ul>
+              <li>Small card plugs into M.2 slot on motherboard</li>
+              <li>Size: Usually 2230 (22mm x 30mm)</li>
+              <li>Key: A or E key slot</li>
+              <li>Two antenna connectors (U.FL or MHF4)</li>
+              <li>Easy to replace/upgrade</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Mini PCIe Wi-Fi Card (Older)</h4>
+            <ul>
+              <li>Half-height mini PCIe card</li>
+              <li>Found in older laptops</li>
+              <li>Two antenna connectors</li>
+              <li>Being phased out for M.2</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Antenna Connector Types</h3>
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>U.FL/IPEX connectors:</strong> Tiny snap-on connectors,
+              most common
+            </li>
+            <li>
+              <strong>MHF4 connectors:</strong> Newer, smaller, more secure
+            </li>
+            <li>
+              <strong>Color coding:</strong> Some use black/white or gray/black
+              wires
+            </li>
+            <li>
+              <strong>Connection:</strong> Press straight down to connect, pull
+              straight up to disconnect
+            </li>
+          </ul>
+        </div>
+
+        <h3>Common Wi-Fi Antenna Issues</h3>
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Weak Wi-Fi signal</td>
+            <td>Antenna cable disconnected, damaged antenna wire</td>
+            <td>
+              Reconnect antenna cables to Wi-Fi card, check for pinched wires
+            </td>
+          </tr>
+          <tr>
+            <td>No Wi-Fi detected</td>
+            <td>Both antennas disconnected, failed Wi-Fi card</td>
+            <td>Check antenna connections, replace Wi-Fi card if needed</td>
+          </tr>
+          <tr>
+            <td>Intermittent connection</td>
+            <td>Loose antenna connector, wire damage in hinge</td>
+            <td>Reseat connectors, inspect wires through hinge area</td>
+          </tr>
+          <tr>
+            <td>Signal worse after screen replacement</td>
+            <td>Antenna wires not reconnected or damaged during repair</td>
+            <td>Verify antenna wires properly routed and connected</td>
+          </tr>
+        </table>
+
+        <h3>Replacement Steps</h3>
+        <div class="simple-box">
+          <ol>
+            <li>Power off laptop and remove battery</li>
+            <li>Remove bottom cover to access Wi-Fi card</li>
+            <li>Disconnect both antenna cables (pull straight up gently)</li>
+            <li>Remove screw holding Wi-Fi card</li>
+            <li>Card will pop up at angle - pull straight out</li>
+            <li>Insert new card at 30-degree angle into slot</li>
+            <li>Press down and secure with screw</li>
+            <li>Reconnect antenna cables (Main/Aux or 1/2)</li>
+            <li>Reassemble and test</li>
+          </ol>
+        </div>
+
+        <div class="warning-box">
+          <strong>⚠️ Important:</strong>
+          <ul>
+            <li>Antenna connectors are fragile - handle carefully</li>
+            <li>Never pull on the wire - only the connector</li>
+            <li>Check antenna routing through hinges - avoid pinching</li>
+            <li>Install drivers after replacing Wi-Fi card</li>
+          </ul>
+        </div>
+
+        <h2>📷 Camera/Webcam</h2>
+
+        <h3>Laptop Webcam Location & Design</h3>
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>Location:</strong> Built into top center of display bezel
+            </li>
+            <li>
+              <strong>Connection:</strong> Small cable runs through hinge to
+              motherboard
+            </li>
+            <li>
+              <strong>Typical resolution:</strong> 720p (HD), 1080p (Full HD) on
+              newer models
+            </li>
+            <li>
+              <strong>Often includes:</strong> LED indicator light when camera
+              is active
+            </li>
+            <li>
+              <strong>Some laptops:</strong> Include physical privacy shutter
+            </li>
+          </ul>
+        </div>
+
+        <h3>Mobile Device Cameras</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Front Camera (Selfie)</h4>
+            <ul>
+              <li>Lower resolution (5-12 MP typical)</li>
+              <li>Fixed focus usually</li>
+              <li>Used for video calls, selfies</li>
+              <li>Top center of screen</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Rear Camera (Main)</h4>
+            <ul>
+              <li>Higher resolution (12-108 MP)</li>
+              <li>Autofocus, optical zoom on some</li>
+              <li>LED flash included</li>
+              <li>Multiple cameras on newer phones</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Camera Troubleshooting</h3>
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Camera not detected</td>
+            <td>Disabled in BIOS, privacy shutter closed, driver issue</td>
+            <td>
+              Enable in BIOS, check physical shutter, update/reinstall drivers
+            </td>
+          </tr>
+          <tr>
+            <td>Camera works but blurry</td>
+            <td>Dirty lens, focus issue</td>
+            <td>Clean lens with microfiber cloth, check focus settings</td>
+          </tr>
+          <tr>
+            <td>Camera shows black screen</td>
+            <td>Another app using camera, driver conflict</td>
+            <td>Close other apps, check Device Manager for conflicts</td>
+          </tr>
+          <tr>
+            <td>Camera stopped after screen replacement</td>
+            <td>Disconnected cable, damaged during repair</td>
+            <td>Check cable connection, verify camera module not damaged</td>
+          </tr>
+          <tr>
+            <td>Phone camera app crashes</td>
+            <td>Software bug, insufficient storage</td>
+            <td>Clear camera app cache, free up storage, update OS</td>
+          </tr>
+        </table>
+
+        <h3>Webcam Replacement</h3>
+        <div class="simple-box">
+          <ol>
+            <li>Power off laptop</li>
+            <li>Remove display bezel (usually snaps off with plastic tool)</li>
+            <li>Locate camera module at top center</li>
+            <li>Disconnect small ribbon cable or connector</li>
+            <li>Remove camera module (may be glued or clipped)</li>
+            <li>Install new camera module</li>
+            <li>Reconnect cable</li>
+            <li>Snap bezel back in place</li>
+            <li>Test camera in OS</li>
+          </ol>
+        </div>
+
+        <div class="warning-box">
+          <strong>⚠️ Privacy & Security:</strong>
+          <ul>
+            <li>Cover webcam when not in use (tape or physical shutter)</li>
+            <li>Check which apps have camera permissions</li>
+            <li>Webcam LED indicates when camera is active</li>
+            <li>Disable camera in BIOS if never used</li>
+          </ul>
+        </div>
+
+        <h2>🎤 Microphone</h2>
+
+        <h3>Laptop Microphone Types</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Built-in Microphone</h4>
+            <ul>
+              <li>Located near webcam in display bezel</li>
+              <li>Some laptops have dual mics for noise cancellation</li>
+              <li>Array microphones can focus on speaker direction</li>
+              <li>Connected to motherboard via cable</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>External Microphone</h4>
+            <ul>
+              <li>3.5mm jack (combo or separate mic jack)</li>
+              <li>USB microphones</li>
+              <li>Bluetooth headsets</li>
+              <li>Better quality than built-in</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Mobile Device Microphones</h3>
+        <div class="simple-box">
+          <ul>
+            <li><strong>Primary mic:</strong> Bottom of device for calls</li>
+            <li>
+              <strong>Secondary mic:</strong> Top or back for noise cancellation
+            </li>
+            <li>
+              <strong>Multiple mics:</strong> Modern phones have 2-4 microphones
+            </li>
+            <li>
+              <strong>Purpose:</strong> Noise reduction, beam forming, better
+              call quality
+            </li>
+          </ul>
+        </div>
+
+        <h3>Microphone Troubleshooting</h3>
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Microphone not detected</td>
+            <td>Disabled in settings, muted, driver issue</td>
+            <td>Check privacy settings, unmute, update audio drivers</td>
+          </tr>
+          <tr>
+            <td>Low volume/quiet mic</td>
+            <td>Volume too low, mic blocked/dirty</td>
+            <td>Increase mic boost in sound settings, clean mic opening</td>
+          </tr>
+          <tr>
+            <td>Mic works in one app but not another</td>
+            <td>App permissions, app-specific settings</td>
+            <td>Check app microphone permissions in OS settings</td>
+          </tr>
+          <tr>
+            <td>Echo or feedback</td>
+            <td>Speakers too loud, mic too sensitive</td>
+            <td>
+              Use headphones, reduce speaker volume, adjust mic sensitivity
+            </td>
+          </tr>
+          <tr>
+            <td>Phone mic not working during calls</td>
+            <td>Blocked by case, debris in mic hole</td>
+            <td>Remove case, clean mic opening with compressed air</td>
+          </tr>
+          <tr>
+            <td>External mic not working</td>
+            <td>Wrong jack, not selected as input device</td>
+            <td>
+              Check combo jack vs separate jacks, select mic in sound settings
+            </td>
+          </tr>
+        </table>
+
+        <h3>Microphone Settings (Windows)</h3>
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>Privacy settings:</strong> Settings > Privacy > Microphone
+              (allow apps to use mic)
+            </li>
+            <li>
+              <strong>Sound settings:</strong> Control Panel > Sound > Recording
+              tab
+            </li>
+            <li>
+              <strong>Set default:</strong> Right-click mic > Set as Default
+              Device
+            </li>
+            <li>
+              <strong>Adjust levels:</strong> Properties > Levels > adjust
+              volume and boost
+            </li>
+            <li>
+              <strong>Test microphone:</strong> Speak and watch green bars move
+            </li>
+          </ul>
+        </div>
+
+        <h3>Combo Jack vs Separate Jacks</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Combo Jack (TRRS)</h4>
+            <ul>
+              <li>One 3.5mm jack for both headphone + mic</li>
+              <li>Common on modern laptops</li>
+              <li>Icon shows headphones with mic</li>
+              <li>Requires TRRS headset (4-pole)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Separate Jacks</h4>
+            <ul>
+              <li>Pink = Microphone input</li>
+              <li>Green = Headphone/speaker output</li>
+              <li>Older laptops and desktops</li>
+              <li>Requires adapter for combo headsets</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Test your knowledge! Select your answers and click Submit.</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. Where are Wi-Fi antennas typically located in a laptop?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a" /> In the bottom case
+                near the battery
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b" /> Built into the
+                display bezel/screen area
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c" /> On the Wi-Fi card
+                itself
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d" /> External antennas
+                that stick out
+              </label>
+            </div>
+            <div class="feedback" id="feedback1">
+              <strong>Correct!</strong> Wi-Fi antennas are built into the laptop
+              display bezel, typically at the top corners of the screen for best
+              reception. Antenna wires run through the hinges from the Wi-Fi
+              card to the screen area.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. A user reports weak Wi-Fi signal after a screen replacement.
+              What should be checked FIRST?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a" /> Update Wi-Fi drivers
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b" /> Replace the Wi-Fi
+                card
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c" /> Check if antenna
+                cables are connected to Wi-Fi card
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d" /> Reset network
+                settings
+              </label>
+            </div>
+            <div class="feedback" id="feedback2">
+              <strong>Correct!</strong> After screen replacement, antenna cables
+              may have been disconnected or not properly reconnected. Check that
+              both antenna cables are securely attached to the Wi-Fi card. This
+              is the most common cause after display work.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. What is the most common form factor for modern laptop Wi-Fi
+              cards?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a" /> PCIe x1
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b" /> M.2
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c" /> USB dongle
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d" /> SATA
+              </label>
+            </div>
+            <div class="feedback" id="feedback3">
+              <strong>Correct!</strong> M.2 is the current standard for laptop
+              Wi-Fi cards (usually M.2 2230 size with A or E key). Mini PCIe was
+              used in older laptops but has been largely replaced by M.2.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. A laptop webcam is not detected in Windows. What should be
+              checked FIRST?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a" /> Replace the webcam
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b" /> Check if camera is
+                enabled in BIOS and privacy settings
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c" /> Reinstall Windows
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d" /> Update the display
+                driver
+              </label>
+            </div>
+            <div class="feedback" id="feedback4">
+              <strong>Correct!</strong> Many laptops allow disabling the camera
+              in BIOS for security. Also check Windows privacy settings
+              (Settings > Privacy > Camera) to ensure the camera is allowed.
+              These are simple software checks before assuming hardware failure.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. Where is the webcam typically located on a laptop?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a" /> Bottom of the screen
+                bezel
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b" /> Top center of the
+                display bezel
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c" /> On the keyboard deck
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d" /> External USB
+                connection only
+              </label>
+            </div>
+            <div class="feedback" id="feedback5">
+              <strong>Correct!</strong> The built-in webcam is located at the
+              top center of the display bezel, typically above the screen. This
+              provides the best angle for video calls and face recognition
+              features.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. A user's microphone is not working in video conferencing apps
+              but works in other programs. What is the MOST likely cause?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a" /> Failed microphone
+                hardware
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="b" /> App permissions or
+                app-specific settings
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c" /> Bad audio drivers
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d" /> Motherboard failure
+              </label>
+            </div>
+            <div class="feedback" id="feedback6">
+              <strong>Correct!</strong> If the microphone works in some apps but
+              not others, it's an app-specific issue. Check the app's microphone
+              permissions in Windows Privacy settings and verify the correct
+              input device is selected in the app's settings.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. What color is the microphone jack on laptops/desktops with
+              separate audio jacks?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a" /> Green
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="b" /> Blue
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c" /> Pink
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d" /> Black
+              </label>
+            </div>
+            <div class="feedback" id="feedback7">
+              <strong>Correct!</strong> Pink is the standard color for
+              microphone input jacks. Green is for headphone/speaker output.
+              Many modern laptops use a combo jack (TRRS) that handles both, but
+              separate jacks still follow this color coding.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. When disconnecting antenna cables from a Wi-Fi card, how should
+              you remove them?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a" /> Pull on the wire
+                itself
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="b" /> Twist and pull the
+                connector
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c" /> Pull straight up on
+                the connector only
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="d" /> Use pliers to grip
+                and remove
+              </label>
+            </div>
+            <div class="feedback" id="feedback8">
+              <strong>Correct!</strong> Antenna connectors (U.FL/MHF4) are
+              fragile. Always pull straight up on the connector itself, not the
+              wire. Pulling the wire can damage the cable. Press straight down
+              to reconnect.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              9. A smartphone's microphone works for calls but not for voice
+              recording apps. What should be checked?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="a" /> Replace the
+                microphone module
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="b" /> App permissions for
+                microphone access
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="c" /> Factory reset the
+                phone
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="d" /> Update the cellular
+                modem
+              </label>
+            </div>
+            <div class="feedback" id="feedback9">
+              <strong>Correct!</strong> If the mic works for calls but not apps,
+              it's a software/permissions issue. Check that the recording app
+              has permission to access the microphone in the phone's Settings >
+              Privacy/Permissions.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              10. What does a combo audio jack (TRRS) support?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="a" /> Only headphones
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="b" /> Only microphone
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="c" /> Both headphone and
+                microphone on one jack
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="d" /> Multiple speakers
+              </label>
+            </div>
+            <div class="feedback" id="feedback10">
+              <strong>Correct!</strong> TRRS (Tip-Ring-Ring-Sleeve) combo jacks
+              support both headphone output and microphone input on a single
+              3.5mm jack. Common on modern laptops and smartphones. Requires a
+              4-pole (TRRS) headset to use both functions.
+            </div>
+          </div>
+
+          <button class="submit-btn" id="submitBtn" onclick="submitQuiz()">
+            Submit Quiz
+          </button>
+          <button class="reset-btn" id="resetBtn" onclick="resetQuiz()">
+            Try Again
+          </button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>Wi-Fi antennas:</strong> Located in display bezel, wires
+              run through hinges to Wi-Fi card
+            </li>
+            <li>
+              <strong>M.2 Wi-Fi card:</strong> Most common modern form factor
+              (usually M.2 2230, A or E key)
+            </li>
+            <li>
+              <strong>Antenna connectors:</strong> U.FL or MHF4, pull straight
+              up on connector (not wire) to remove
+            </li>
+            <li>
+              <strong>Dual antennas:</strong> Laptops have two (Main/Aux or 1/2)
+              for MIMO technology
+            </li>
+            <li>
+              <strong>Weak Wi-Fi after repair:</strong> Check antenna cables are
+              connected to Wi-Fi card
+            </li>
+            <li>
+              <strong>Webcam location:</strong> Top center of display bezel
+            </li>
+            <li>
+              <strong>Webcam not detected:</strong> Check BIOS settings and
+              Windows privacy settings first
+            </li>
+            <li>
+              <strong>Privacy shutter:</strong> Some laptops have physical
+              camera covers
+            </li>
+            <li>
+              <strong>Built-in microphone:</strong> Usually near webcam in
+              display area
+            </li>
+            <li>
+              <strong>Pink jack = Microphone</strong> input; Green jack =
+              Headphone output (separate jacks)
+            </li>
+            <li>
+              <strong>Combo jack (TRRS):</strong> Single 3.5mm jack for both
+              headphone + mic (modern laptops)
+            </li>
+            <li>
+              <strong>Mic permissions:</strong> Check app has permission in
+              Windows/mobile OS privacy settings
+            </li>
+            <li>
+              <strong>Multiple mics in phones:</strong> Primary (bottom),
+              secondary (top/back) for noise cancellation
+            </li>
+            <li>
+              <strong>Microphone blocked:</strong> Clean mic opening, remove
+              case if blocking
+            </li>
+            <li>
+              <strong>Camera cable:</strong> Runs through hinge, can be
+              damaged/disconnected during screen repair
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "c",
+        q3: "b",
+        q4: "b",
+        q5: "b",
+        q6: "b",
+        q7: "c",
+        q8: "c",
+        q9: "b",
+        q10: "c",
+      };
+
+      function submitQuiz() {
+        let score = 0;
+        let answered = 0;
+        const totalQuestions = 10;
+
+        for (let i = 1; i <= totalQuestions; i++) {
+          const selected = document.querySelector(
+            `input[name="q${i}"]:checked`,
+          );
+          const feedback = document.getElementById(`feedback${i}`);
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+
+          if (selected) {
+            answered++;
+            const parentLabel = selected.parentElement;
+
+            options.forEach((opt) => {
+              opt.disabled = true;
+              opt.parentElement.classList.add("disabled");
+            });
+
+            if (selected.value === answers[`q${i}`]) {
+              score++;
+              parentLabel.classList.add("correct");
+              feedback.classList.add("show");
+            } else {
+              parentLabel.classList.add("incorrect");
+              feedback.classList.add("show", "wrong");
+              feedback.innerHTML =
+                `<strong>Incorrect.</strong> The correct answer is option ${answers[`q${i}`].toUpperCase()}. ` +
+                feedback.innerHTML.split("</strong>")[1];
+
+              options.forEach((opt) => {
+                if (opt.value === answers[`q${i}`]) {
+                  opt.parentElement.classList.add("correct");
+                }
+              });
+            }
+          }
+        }
+
+        if (answered < totalQuestions) {
+          alert(
+            `Please answer all questions. You've answered ${answered} out of ${totalQuestions}.`,
+          );
+          return;
+        }
+
+        const percentage = Math.round((score / totalQuestions) * 100);
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        let message = "";
+
+        if (percentage >= 90) {
+          message = "🏆 Excellent! You're ready for the exam!";
+        } else if (percentage >= 75) {
+          message = "👍 Good job! Review the incorrect answers.";
+        } else if (percentage >= 60) {
+          message = "📚 Keep studying. Review the material again.";
+        } else {
+          message = "📖 More practice needed. Review all topics.";
+        }
+
+        scoreDisplay.innerHTML = `
+                <div>Your Score: ${score} / ${totalQuestions} (${percentage}%)</div>
+                <div>${message}</div>
+            `;
+        scoreDisplay.classList.add("show");
+
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("resetBtn").classList.add("show");
+
+        scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function resetQuiz() {
+        for (let i = 1; i <= 10; i++) {
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+          const feedback = document.getElementById(`feedback${i}`);
+
+          options.forEach((opt) => {
+            opt.checked = false;
+            opt.disabled = false;
+            opt.parentElement.classList.remove(
+              "selected",
+              "correct",
+              "incorrect",
+              "disabled",
+            );
+          });
+
+          feedback.classList.remove("show", "wrong");
+        }
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("resetBtn").classList.remove("show");
+
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      document.querySelectorAll(".quiz-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const radio = this.querySelector('input[type="radio"]');
+          if (!radio.disabled) {
+            const name = radio.name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+              r.parentElement.classList.remove("selected");
+            });
+            this.classList.add("selected");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

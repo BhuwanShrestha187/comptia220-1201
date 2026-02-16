@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAM • 1.1 Mobile Devices - CompTIA A+ 220-1201</title>
+
+    <style>
+      /* ============================================
+     SAME MILKY-WHITE THEME AS ALL PREVIOUS PAGES
+     ============================================ */
+      :root {
+        --milky-white: #fdfcf8;
+        --milky-cream: #faf8f0;
+        --soft-white: #ffffff;
+        --warm-gray: #8b8680;
+        --light-gray: #e8e4dc;
+        --medium-gray: #c4bdb3;
+        --dark-gray: #4a4548;
+        --charcoal: #2d2a28;
+        --accent-blue: #5b8cb8;
+        --accent-green: #6b9e6b;
+        --accent-orange: #d4965b;
+        --accent-red: #c97064;
+        --accent-purple: #8b7b9e;
+        --text-primary: #3d3a36;
+        --text-secondary: #6b6560;
+        --border-color: #e0dcd4;
+        --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
+        --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.08);
+        --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.12);
+        --transition-fast: all 0.2s ease;
+        --border-radius: 12px;
+        --border-radius-sm: 8px;
+        --border-radius-lg: 16px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          "Segoe UI",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Roboto",
+          "Helvetica Neue",
+          Arial,
+          sans-serif;
+        background-color: var(--milky-white);
+        color: var(--text-primary);
+        line-height: 1.7;
+        font-size: 16px;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--charcoal);
+      }
+      h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.5px;
+      }
+      h2 {
+        font-size: 2rem;
+        margin: 2rem 0 1rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin: 1.5rem 0 0.75rem;
+      }
+      h4 {
+        font-size: 1.3rem;
+        margin: 1.2rem 0 0.6rem;
+        color: var(--accent-blue);
+      }
+      p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+      }
+
+      a {
+        color: var(--accent-blue);
+        text-decoration: none;
+        transition: var(--transition-fast);
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Header & Nav */
+      .main-header {
+        background: var(--soft-white);
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-soft);
+      }
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+      }
+      .logo-section h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0;
+        color: var(--charcoal);
+      }
+      .logo-section .subtitle {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+      .main-nav ul {
+        display: flex;
+        list-style: none;
+        gap: 8px;
+      }
+      .main-nav a {
+        display: block;
+        padding: 10px 20px;
+        color: var(--text-secondary);
+        border-radius: var(--border-radius-sm);
+        font-weight: 500;
+      }
+      .main-nav a:hover,
+      .main-nav a.active {
+        background: var(--milky-cream);
+        color: var(--accent-blue);
+      }
+
+      /* Hero */
+      .topic-hero {
+        padding: 80px 0 60px;
+        background: linear-gradient(
+          180deg,
+          var(--soft-white) 0%,
+          var(--milky-cream) 100%
+        );
+        text-align: center;
+      }
+      .hero-content .topic-icon-large {
+        font-size: 5.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .hero-content h2 {
+        font-size: 2.75rem;
+        margin-bottom: 1rem;
+        color: var(--charcoal);
+      }
+      .topic-weight {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent-blue);
+        margin-bottom: 1.5rem;
+      }
+
+      /* Content */
+      .topic-content {
+        padding: 40px 0 80px;
+      }
+      .content-card {
+        background: var(--soft-white);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-lg);
+        padding: 32px;
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .image-container {
+        text-align: center;
+        margin: 1.8rem 0 1.2rem;
+      }
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-medium);
+        border: 1px solid var(--light-gray);
+      }
+      .image-caption {
+        margin-top: 0.8rem;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        font-style: italic;
+      }
+
+      .key-points,
+      .practice-q {
+        background: var(--milky-cream);
+        border-left: 6px solid var(--accent-blue);
+        padding: 24px;
+        margin: 32px 0;
+        border-radius: var(--border-radius-sm);
+      }
+
+      details {
+        margin: 1.2rem 0;
+        border: 1px solid var(--light-gray);
+        border-radius: var(--border-radius-sm);
+        overflow: hidden;
+        background: var(--soft-white);
+      }
+      summary {
+        padding: 14px 18px;
+        background: var(--light-gray);
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--charcoal);
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      .answer {
+        padding: 14px 18px;
+        border-top: 1px solid var(--light-gray);
+      }
+      .options {
+        margin: 0.8rem 0 0.4rem 1.8rem;
+      }
+      .options label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-secondary);
+      }
+
+      ul,
+      ol {
+        margin: 1rem 0 1rem 1.5rem;
+        color: var(--text-secondary);
+      }
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Footer */
+      .main-footer {
+        background: var(--charcoal);
+        color: var(--light-gray);
+        padding: 60px 0 30px;
+      }
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+      .footer-section h4 {
+        color: var(--soft-white);
+        margin-bottom: 1.25rem;
+        font-size: 1.1rem;
+      }
+      .footer-section a {
+        color: var(--medium-gray);
+      }
+      .footer-section a:hover {
+        color: var(--soft-white);
+      }
+      .footer-bottom {
+        border-top: 1px solid var(--dark-gray);
+        padding-top: 25px;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 16px;
+        }
+        .hero-content h2 {
+          font-size: 2.2rem;
+        }
+        .topic-icon-large {
+          font-size: 4.5rem;
+        }
+        .content-card {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo-section">
+            <h1>CompTIA A+ 220-1201</h1>
+            <p class="subtitle">Core 1 Exam Study Guide</p>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="../../../index.html">Home</a></li>
+              <li><a href="../../index.html#topics">Topics</a></li>
+              <li>
+                <a href="../mobile-devices.html" class="active"
+                  >Mobile Devices</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="topic-hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="topic-icon-large">🧠</div>
+          <h2>1.1 RAM – Mobile Device Hardware</h2>
+          <div class="topic-weight">Part of 13% Domain 1.0</div>
+          <p>
+            Understand SODIMM RAM in laptops: types, failure symptoms,
+            monitoring, safe replacement, and compatibility for the CompTIA A+
+            220-1201 exam.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic-content">
+      <div class="container">
+        <div class="content-card">
+          <h3>RAM in Mobile Devices (Laptops & Tablets)</h3>
+          <p>
+            Mobile devices (primarily laptops) use
+            <strong>Small Outline Dual In-line Memory Module (SODIMM)</strong> —
+            a smaller form factor than desktop DIMMs.
+          </p>
+          <ul>
+            <li>
+              Common types: DDR4 (260-pin), DDR5 (262-pin) — DDR5 is newer,
+              faster, lower voltage (1.1V vs 1.2V for DDR4)
+            </li>
+            <li>
+              Older types (still seen): DDR3 (204-pin) — rarely on new devices
+            </li>
+            <li>
+              Capacity: Typically 4–32 GB per module; many laptops support 2
+              slots (max 64 GB common)
+            </li>
+          </ul>
+
+          <div class="image-container">
+            <img
+              src="https://webobjects2.cdw.com/is/image/CDW/6885462?wid=784&hei=477&resMode=bilin&fit=fit,1"
+              alt="DDR5 SODIMM RAM module example"
+            />
+            <div class="image-caption">
+              Typical DDR5 SODIMM module (262-pin) used in modern laptops — note
+              the notch position differs from DDR4.
+            </div>
+          </div>
+
+          <p>
+            <strong>Exam note:</strong> Always match speed, voltage, and
+            generation (DDR4 ≠ DDR5). Incompatible RAM causes no boot or
+            instability.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>Monitoring RAM & Common Failure Symptoms</h3>
+          <p>
+            CompTIA tests recognition of RAM-related issues in mobile devices:
+          </p>
+          <ul>
+            <li>
+              Frequent system crashes / freezes / Blue Screen of Death (BSOD)
+              with codes like MEMORY_MANAGEMENT
+            </li>
+            <li>Random reboots or unexpected shutdowns</li>
+            <li>Sluggish performance / high memory usage even with few apps</li>
+            <li>Application crashes or corrupted data/files</li>
+            <li>POST beeps (memory error codes on some laptops)</li>
+            <li>Failure to boot (no display or stuck at logo)</li>
+          </ul>
+
+          <div class="image-container">
+            <img
+              src="https://images.drivereasy.com/wp-content/uploads/2017/06/img_594b73734961c-1024x813.jpg"
+              alt="Windows BSOD with MEMORY_MANAGEMENT error"
+            />
+            <div class="image-caption">
+              MEMORY_MANAGEMENT BSOD — one of the classic signs of bad or
+              failing RAM (very common on exams).
+            </div>
+          </div>
+
+          <p><strong>Monitoring tools:</strong></p>
+          <ul>
+            <li>Windows Memory Diagnostic (mdsched.exe)</li>
+            <li>Task Manager / Resource Monitor (high usage / errors)</li>
+            <li>Third-party: MemTest86 (bootable USB for thorough testing)</li>
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h3>Safe RAM Replacement Techniques (SODIMM)</h3>
+          <p>
+            Most laptops allow user-upgradeable SODIMM slots (1–2). Always check
+            service manual for model-specific access.
+          </p>
+
+          <h4>Standard Replacement Procedure (exam sequence)</h4>
+          <ol>
+            <li>
+              Power off laptop completely, unplug charger, remove main battery
+              (if removable) to eliminate power.
+            </li>
+            <li>
+              Ground yourself — use ESD wrist strap or touch grounded metal.
+            </li>
+            <li>
+              Remove bottom access panel or RAM cover screws (keep organized).
+            </li>
+            <li>
+              Spread the retaining clips outward — module pops up at ~45° angle.
+            </li>
+            <li>
+              Grasp by edges (never touch gold contacts) and pull straight out.
+            </li>
+            <li>
+              Insert new SODIMM at 45° angle (align notch), press down until
+              clips snap into place.
+            </li>
+            <li>
+              Reassemble, power on, verify in BIOS / OS (capacity/speed
+              recognized).
+            </li>
+          </ol>
+
+          <div class="image-container">
+            <img
+              src="http://honeybee-technologies.com/cdn/shop/articles/how-to-install-sodimm-ram-in-your-laptop-step-by-step-guide.png?v=1767796916"
+              alt="Step-by-step SODIMM insertion diagram"
+            />
+            <div class="image-caption">
+              SODIMM installation: Insert at 45° → press down until clips lock
+              (key exam visual step).
+            </div>
+          </div>
+
+          <p>
+            <strong>Important:</strong> ESD protection is mandatory. Mismatched
+            RAM = no POST or instability. Test after install.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>Safety, Compatibility & Best Practices</h3>
+          <ul>
+            <li>
+              Always match generation (DDR4 vs DDR5), speed, voltage, and rank.
+            </li>
+            <li>Use ESD precautions — static kills RAM.</li>
+            <li>
+              After upgrade: Run memory test + check BIOS for full recognition.
+            </li>
+            <li>
+              Some laptops have soldered RAM (non-upgradable) — check specs
+              first.
+            </li>
+          </ul>
+        </div>
+
+        <!-- KEY EXAM TAKEAWAYS -->
+        <div class="key-points">
+          <h3>🔑 Key Exam Takeaways – Memorize These</h3>
+          <ul>
+            <li>
+              <strong>Form factor</strong>: SODIMM (Small Outline DIMM) is the
+              only RAM type used in laptops/mobile devices (260-pin DDR4 or
+              262-pin DDR5).
+            </li>
+            <li>
+              <strong>Generations & compatibility</strong>: DDR4 and DDR5 are
+              NOT interchangeable (different pin count, notch position,
+              voltage). Mismatch = no boot or POST failure.
+            </li>
+            <li>
+              <strong>Common symptoms of failure</strong>: BSOD (especially
+              MEMORY_MANAGEMENT), random crashes/reboots, application errors,
+              sluggish performance, no POST/beeps.
+            </li>
+            <li>
+              <strong>Replacement safety steps</strong>: Power off/unplug/remove
+              battery first → ESD protection → disconnect power sources → insert
+              at 45° angle → press until clips snap.
+            </li>
+            <li>
+              <strong>ESD is critical</strong>: Static discharge can instantly
+              damage RAM — always use wrist strap or touch grounded metal.
+            </li>
+            <li>
+              <strong>Verification after install</strong>: Check BIOS for
+              detected capacity/speed → run Windows Memory Diagnostic or
+              MemTest86 to confirm no errors.
+            </li>
+            <li>
+              <strong>Soldered RAM</strong>: Some ultrathin laptops/tablets have
+              non-upgradable (soldered) memory — always verify model specs
+              first.
+            </li>
+          </ul>
+        </div>
+
+        <!-- INTERACTIVE MCQ QUIZ -->
+        <div class="practice-q">
+          <h3>
+            Interactive MCQ Quiz – Test Yourself (Click each question to see
+            answer & explanation)
+          </h3>
+
+          <details>
+            <summary>
+              Q1. What is the standard RAM form factor used in modern laptops?
+            </summary>
+            <div class="answer">
+              <strong>Correct Answer: B) SODIMM</strong><br />
+              Explanation: Laptops use Small Outline Dual In-line Memory Module
+              (SODIMM). Desktop computers use full-size DIMM. DDR4/DDR5 refer to
+              generations, not the form factor.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Q2. A laptop displays frequent MEMORY_MANAGEMENT BSOD errors. What
+              component is most likely faulty?
+            </summary>
+            <div class="answer">
+              <strong>Correct Answer: C) RAM</strong><br />
+              Explanation: MEMORY_MANAGEMENT is a classic Windows Blue Screen
+              error directly related to memory (RAM) corruption or failure.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Q3. What is the FIRST safety step before replacing RAM in a
+              laptop?
+            </summary>
+            <div class="answer">
+              <strong
+                >Correct Answer: A) Power off the device, unplug the charger,
+                remove the battery (if removable), and use ESD
+                protection</strong
+              ><br />
+              Explanation: Eliminate all power sources and prevent electrostatic
+              discharge (ESD) before opening the laptop.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Q4. At what angle should a SODIMM module be inserted into the slot
+              during installation?
+            </summary>
+            <div class="answer">
+              <strong>Correct Answer: B) 45 degrees</strong><br />
+              Explanation: SODIMMs are inserted at approximately 45° and then
+              pressed down until the side retaining clips snap into place.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Q5. A technician installs new RAM, but the laptop does not POST.
+              What is the MOST likely cause?
+            </summary>
+            <div class="answer">
+              <strong
+                >Correct Answer: D) Incompatible RAM type, speed, or
+                generation</strong
+              ><br />
+              Explanation: DDR4 and DDR5 modules are physically and electrically
+              incompatible (different pin count, notch position, voltage).
+              Mismatch prevents the system from booting.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Q6. Which built-in Windows tool is used to test for RAM errors?
+            </summary>
+            <div class="answer">
+              <strong>Correct Answer: A) Windows Memory Diagnostic</strong
+              ><br />
+              Explanation: Run mdsched.exe (Windows Memory Diagnostic) to
+              perform extended memory tests. MemTest86 is third-party but also
+              excellent.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Q7. Why is ESD protection mandatory when handling laptop RAM?
+            </summary>
+            <div class="answer">
+              <strong
+                >Correct Answer: C) Static electricity can instantly damage
+                sensitive RAM chips</strong
+              ><br />
+              Explanation: RAM modules are extremely sensitive to electrostatic
+              discharge. Always use an anti-static wrist strap or touch a
+              grounded metal surface.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Q8. Which TWO of the following are common symptoms of failing
+              laptop RAM? (select 2)
+            </summary>
+            <div class="answer">
+              <strong
+                >Correct Answer: A) Frequent BSODs and C) Random system
+                reboots</strong
+              ><br />
+              Explanation: These are direct indicators of memory
+              instability/corruption. Sluggish performance can have many causes;
+              corrupted files are more often storage-related.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>CompTIA A+ 220-1201</h4>
+            <p>Comprehensive study guide for the Core 1 exam.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../mobile-devices.html">Mobile Devices</a></li>
+              <li><a href="../../hardware.html">Hardware</a></li>
+              <li><a href="../../networking.html">Networking</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Study Guide for CompTIA A+ 220-1201 Core 1 Exam • RAM Topic</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

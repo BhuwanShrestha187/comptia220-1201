@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: Mobile Device & Laptop Storage</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #614385, #516395);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #614385, #516395);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #614385;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #516395;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #516395;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #516395;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border: 2px solid #516395;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card h4 {
+        color: #614385;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #614385;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #516395;
+      }
+
+      /* Quiz Section */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #516395;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #614385;
+      }
+
+      .score-display {
+        background: #614385;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #516395;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover {
+        background: #e9ecef;
+        border-color: #516395;
+      }
+
+      .quiz-option.selected {
+        background: #d1ecf1;
+        border-color: #516395;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .submit-btn {
+        background: #516395;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #614385;
+      }
+
+      .submit-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: none;
+      }
+
+      .reset-btn.show {
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #614385, #516395);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>💾 Mobile & Laptop Storage</h1>
+        <p>CompTIA A+ 220-1101 - HDDs & SSDs in Mobile Devices</p>
+      </header>
+
+      <div class="content">
+        <h2>Laptop Storage Types</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>2.5" HDD</h4>
+            <ul>
+              <li>Traditional spinning hard drive</li>
+              <li>Slower (50-120 MB/s)</li>
+              <li>More fragile (moving parts)</li>
+              <li>Cheaper per GB</li>
+              <li>Common: 500GB, 1TB, 2TB</li>
+              <li>7mm or 9.5mm thick</li>
+              <li>SATA interface</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>2.5" SATA SSD</h4>
+            <ul>
+              <li>Solid state, no moving parts</li>
+              <li>Much faster (up to 550 MB/s)</li>
+              <li>More durable</li>
+              <li>More expensive per GB</li>
+              <li>Common: 128GB, 256GB, 512GB, 1TB</li>
+              <li>7mm thick (standard)</li>
+              <li>SATA interface</li>
+              <li>Direct replacement for 2.5" HDD</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>M.2 SSD</h4>
+            <ul>
+              <li>Small stick form factor</li>
+              <li>Plugs directly into motherboard</li>
+              <li>SATA or NVMe protocol</li>
+              <li>NVMe much faster (3500+ MB/s)</li>
+              <li>Common sizes: 2242, 2260, 2280</li>
+              <li>2280 = 22mm wide, 80mm long</li>
+              <li>Saves space in thin laptops</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>1.8" Drive (Legacy)</h4>
+            <ul>
+              <li>Used in older ultrabooks</li>
+              <li>Smaller than 2.5"</li>
+              <li>Less common today</li>
+              <li>Replaced by M.2 drives</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>M.2 Drives - Critical Details</h2>
+
+        <div class="simple-box">
+          <h3>M.2 Form Factor Sizes</h3>
+          <ul>
+            <li><strong>2242:</strong> 22mm x 42mm</li>
+            <li><strong>2260:</strong> 22mm x 60mm</li>
+            <li><strong>2280:</strong> 22mm x 80mm (most common in laptops)</li>
+            <li><strong>22110:</strong> 22mm x 110mm (rare, some desktops)</li>
+          </ul>
+          <p>
+            <strong>Note:</strong> Width is always 22mm. Length varies. Check
+            laptop spec for compatible size.
+          </p>
+        </div>
+
+        <div class="simple-box">
+          <h3>M.2 Key Types (Connector Notches)</h3>
+          <ul>
+            <li><strong>B Key:</strong> SATA SSDs, PCIe x2</li>
+            <li><strong>M Key:</strong> NVMe SSDs, PCIe x4 (faster)</li>
+            <li><strong>B+M Key:</strong> Both notches, works in both slots</li>
+          </ul>
+          <p>
+            <strong>Important:</strong> The notch position determines what slots
+            the drive fits. Must match the motherboard slot.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>M.2 SATA</h4>
+            <ul>
+              <li>Uses SATA protocol</li>
+              <li>Same speed as 2.5" SATA SSD (~550 MB/s)</li>
+              <li>B+M key usually</li>
+              <li>Cheaper than NVMe</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>M.2 NVMe</h4>
+            <ul>
+              <li>Uses NVMe protocol over PCIe</li>
+              <li>Much faster (1500-3500+ MB/s)</li>
+              <li>M key usually</li>
+              <li>More expensive</li>
+              <li>Best for performance</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Mobile Device Storage</h2>
+
+        <table>
+          <tr>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Key Points</th>
+          </tr>
+          <tr>
+            <td><strong>eMMC</strong></td>
+            <td>Embedded MultiMediaCard</td>
+            <td>
+              Soldered to board, slower, budget devices, 16GB-128GB typical
+            </td>
+          </tr>
+          <tr>
+            <td><strong>UFS</strong></td>
+            <td>Universal Flash Storage</td>
+            <td>Faster than eMMC, flagship phones/tablets, not removable</td>
+          </tr>
+          <tr>
+            <td><strong>microSD</strong></td>
+            <td>Removable storage card</td>
+            <td>Expandable storage, Android only (not iOS), up to 1TB+</td>
+          </tr>
+          <tr>
+            <td><strong>Flash Storage (iOS)</strong></td>
+            <td>Apple proprietary</td>
+            <td>Soldered, fast, 64GB-1TB, cannot expand</td>
+          </tr>
+        </table>
+
+        <h3>MicroSD Card Speed Classes</h3>
+        <table>
+          <tr>
+            <th>Class</th>
+            <th>Minimum Speed</th>
+            <th>Use Case</th>
+          </tr>
+          <tr>
+            <td><strong>Class 10</strong></td>
+            <td>10 MB/s</td>
+            <td>Basic storage, photos</td>
+          </tr>
+          <tr>
+            <td><strong>UHS-I U1</strong></td>
+            <td>10 MB/s</td>
+            <td>HD video</td>
+          </tr>
+          <tr>
+            <td><strong>UHS-I U3</strong></td>
+            <td>30 MB/s</td>
+            <td>4K video</td>
+          </tr>
+          <tr>
+            <td><strong>V30</strong></td>
+            <td>30 MB/s</td>
+            <td>4K video (Video Speed Class)</td>
+          </tr>
+          <tr>
+            <td><strong>A1</strong></td>
+            <td>1500 IOPS read</td>
+            <td>Running apps from SD</td>
+          </tr>
+          <tr>
+            <td><strong>A2</strong></td>
+            <td>4000 IOPS read</td>
+            <td>Better app performance</td>
+          </tr>
+        </table>
+
+        <h2>Laptop Drive Replacement</h2>
+
+        <h3>Replacing 2.5" Drive (HDD or SSD)</h3>
+        <div class="simple-box">
+          <ol>
+            <li>Power off laptop completely</li>
+            <li>Remove battery if removable</li>
+            <li>Remove bottom panel or drive bay cover</li>
+            <li>Remove screws holding drive caddy/bracket</li>
+            <li>Slide out old drive</li>
+            <li>Remove mounting screws from old drive</li>
+            <li>Mount screws on new drive</li>
+            <li>Slide new drive into bay</li>
+            <li>Connect SATA connector</li>
+            <li>Secure and reassemble</li>
+          </ol>
+        </div>
+
+        <h3>Installing M.2 SSD</h3>
+        <div class="simple-box">
+          <ol>
+            <li>Power off and disconnect power</li>
+            <li>Remove bottom panel</li>
+            <li>Locate M.2 slot on motherboard</li>
+            <li>Remove existing drive if present (unscrew standoff screw)</li>
+            <li>Insert M.2 drive at 30-degree angle</li>
+            <li>Press down until flat</li>
+            <li>Secure with screw at end of drive</li>
+            <li>Reassemble laptop</li>
+            <li>Boot into BIOS to verify detection</li>
+            <li>Format/partition in OS</li>
+          </ol>
+        </div>
+
+        <div class="warning-box">
+          <strong>⚠️ Important:</strong>
+          <ul>
+            <li>
+              Check laptop manual for compatible M.2 size (2242, 2260, 2280)
+            </li>
+            <li>Verify M.2 key type (B, M, or B+M) matches slot</li>
+            <li>
+              Some laptops have multiple M.2 slots with different capabilities
+            </li>
+            <li>Not all M.2 slots support NVMe - check specs</li>
+          </ul>
+        </div>
+
+        <h2>Common Issues & Troubleshooting</h2>
+
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Laptop slow performance</td>
+            <td>Old HDD degrading</td>
+            <td>Upgrade to SSD for major speed boost</td>
+          </tr>
+          <tr>
+            <td>M.2 drive not detected</td>
+            <td>Wrong key type, not seated properly</td>
+            <td>Check key matches slot, reseat drive, check BIOS</td>
+          </tr>
+          <tr>
+            <td>Laptop won't boot after drive swap</td>
+            <td>No OS on new drive</td>
+            <td>Install OS or clone old drive first</td>
+          </tr>
+          <tr>
+            <td>Clicking noise from laptop</td>
+            <td>HDD physical failure</td>
+            <td>Back up immediately, replace drive</td>
+          </tr>
+          <tr>
+            <td>New SSD shows less capacity</td>
+            <td>Not initialized/formatted</td>
+            <td>Use Disk Management to initialize and format</td>
+          </tr>
+          <tr>
+            <td>Phone storage full, can't install apps</td>
+            <td>Internal storage maxed out</td>
+            <td>Add microSD card (Android), delete files, or upgrade device</td>
+          </tr>
+          <tr>
+            <td>MicroSD card not recognized</td>
+            <td>Dirty contacts, incompatible format</td>
+            <td>Clean contacts, format card (FAT32 or exFAT)</td>
+          </tr>
+        </table>
+
+        <h2>SSD Migration & Data Transfer</h2>
+
+        <h3>Methods to Move Data to New Drive</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Fresh Install</h4>
+            <ul>
+              <li>Install new drive</li>
+              <li>Install clean OS</li>
+              <li>Manually reinstall programs</li>
+              <li>Copy files from backup</li>
+              <li><strong>Pros:</strong> Clean, no issues carried over</li>
+              <li><strong>Cons:</strong> Time consuming</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Cloning</h4>
+            <ul>
+              <li>Use cloning software (e.g., Macrium, Clonezilla)</li>
+              <li>Creates exact copy of old drive</li>
+              <li>Everything transfers (OS, programs, files)</li>
+              <li><strong>Pros:</strong> Fast, everything works</li>
+              <li><strong>Cons:</strong> Copies problems too</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Storage Best Practices</h2>
+
+        <div class="simple-box">
+          <h3>For Laptops:</h3>
+          <ul>
+            <li>
+              Use SSD for OS and programs (faster boot, better performance)
+            </li>
+            <li>Keep at least 15-20% free space for optimal performance</li>
+            <li>Never defragment SSDs (wastes write cycles)</li>
+            <li>Enable TRIM for SSDs (usually automatic)</li>
+            <li>Back up important data regularly</li>
+          </ul>
+        </div>
+
+        <div class="simple-box">
+          <h3>For Mobile Devices:</h3>
+          <ul>
+            <li>Use high-speed microSD cards (A1/A2 class) for apps</li>
+            <li>
+              Format microSD as portable (removable) or internal (Android)
+            </li>
+            <li>Don't remove microSD while device is on</li>
+            <li>Internal storage is always faster than SD card</li>
+            <li>
+              iOS devices cannot expand storage - buy correct size upfront
+            </li>
+          </ul>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Test your knowledge! Select your answers and click Submit.</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. A user wants to upgrade their laptop from an HDD to an SSD for
+              better performance. Which size SSD is a direct replacement for a
+              2.5" laptop HDD?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a" /> 3.5" SATA SSD
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b" /> 2.5" SATA SSD
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c" /> 1.8" mSATA SSD
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d" /> M.2 NVMe SSD
+              </label>
+            </div>
+            <div class="feedback" id="feedback1">
+              <strong>Correct!</strong> A 2.5" SATA SSD is a direct drop-in
+              replacement for a 2.5" laptop HDD. They use the same SATA
+              interface and physical size, making the swap simple. Just clone or
+              reinstall the OS and you're done.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. What does the "2280" designation mean for an M.2 SSD?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a" /> 22 GB capacity, 80
+                MB/s speed
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b" /> 22mm wide, 80mm long
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c" /> Generation 22,
+                version 80
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d" /> 2.2TB capacity, 80mm
+                thick
+              </label>
+            </div>
+            <div class="feedback" id="feedback2">
+              <strong>Correct!</strong> M.2 size designations indicate physical
+              dimensions. 2280 means 22mm wide by 80mm long. Other common sizes
+              are 2242 (42mm), 2260 (60mm), and 22110 (110mm). Always check what
+              size your laptop supports.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. A technician installs an M.2 NVMe drive but it's not detected
+              in BIOS. What should be checked FIRST?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a" /> Update Windows
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b" /> Check if drive key
+                type matches the M.2 slot
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c" /> Format the drive
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d" /> Install NVMe drivers
+              </label>
+            </div>
+            <div class="feedback" id="feedback3">
+              <strong>Correct!</strong> If BIOS doesn't detect the drive, it's a
+              hardware issue. The most common problem is wrong key type (B vs M
+              vs B+M) or the drive not being properly seated. Check that the
+              physical notches match the slot before anything else.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. Which mobile device storage type is soldered to the motherboard
+              and cannot be upgraded?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a" /> MicroSD card
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b" /> SD card
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c" /> eMMC
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d" /> External USB drive
+              </label>
+            </div>
+            <div class="feedback" id="feedback4">
+              <strong>Correct!</strong> eMMC (embedded MultiMediaCard) is
+              soldered directly to the device motherboard and cannot be removed
+              or upgraded. It's common in budget smartphones, tablets, and
+              Chromebooks. MicroSD cards are removable and expandable.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. What is the main difference between M.2 SATA and M.2 NVMe
+              drives?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a" /> Physical size
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b" /> Communication
+                protocol and speed
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c" /> Storage capacity
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d" /> Power consumption
+              </label>
+            </div>
+            <div class="feedback" id="feedback5">
+              <strong>Correct!</strong> Both can be M.2 form factor, but they
+              use different protocols. M.2 SATA uses SATA protocol (~550 MB/s
+              max), while M.2 NVMe uses PCIe lanes (3500+ MB/s). NVMe is
+              significantly faster but more expensive.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. A user wants to expand storage on their Android phone. What is
+              the BEST option?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a" /> Replace the internal
+                eMMC storage
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="b" /> Install an M.2 SSD
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c" /> Add a microSD card
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d" /> Add more RAM
+              </label>
+            </div>
+            <div class="feedback" id="feedback6">
+              <strong>Correct!</strong> Most Android devices support microSD
+              cards for expandable storage. Internal storage is soldered and
+              cannot be replaced. iPhones/iPads don't support microSD expansion.
+              RAM is memory, not storage.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. Which microSD card class is recommended for recording 4K video?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a" /> Class 10
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="b" /> U1
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c" /> U3 or V30
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d" /> Class 2
+              </label>
+            </div>
+            <div class="feedback" id="feedback7">
+              <strong>Correct!</strong> U3 (UHS-I Speed Class 3) or V30 (Video
+              Speed Class 30) both guarantee minimum 30 MB/s write speed, which
+              is required for smooth 4K video recording. Lower classes will
+              result in dropped frames.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. After installing a new SSD in a laptop, what should NOT be
+              done?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a" /> Enable TRIM
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="b" /> Defragment the drive
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c" /> Update firmware
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="d" /> Install operating
+                system
+              </label>
+            </div>
+            <div class="feedback" id="feedback8">
+              <strong>Correct!</strong> Never defragment an SSD. It provides no
+              performance benefit (SSDs have instant access) and wastes limited
+              write cycles, reducing the drive's lifespan. Windows automatically
+              disables defragmentation for SSDs.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              9. What type of storage is used in flagship smartphones for the
+              fastest performance?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="a" /> eMMC
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="b" /> UFS (Universal Flash
+                Storage)
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="c" /> MicroSD
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="d" /> SATA SSD
+              </label>
+            </div>
+            <div class="feedback" id="feedback9">
+              <strong>Correct!</strong> UFS (Universal Flash Storage) is faster
+              than eMMC and is used in flagship smartphones and high-end
+              tablets. It offers better read/write speeds and lower power
+              consumption than eMMC.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              10. A laptop makes clicking noises and runs very slowly. What is
+              the MOST likely issue?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="a" /> Failing CPU
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="b" /> Low battery
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="c" /> Failing HDD
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="d" /> Overheating GPU
+              </label>
+            </div>
+            <div class="feedback" id="feedback10">
+              <strong>Correct!</strong> Clicking noises from a laptop indicate
+              HDD physical failure (read/write head hitting platters). This is
+              the "click of death" and means imminent drive failure. Back up
+              data immediately and replace the drive.
+            </div>
+          </div>
+
+          <button class="submit-btn" id="submitBtn" onclick="submitQuiz()">
+            Submit Quiz
+          </button>
+          <button class="reset-btn" id="resetBtn" onclick="resetQuiz()">
+            Try Again
+          </button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>2.5" SATA SSD</strong> is direct replacement for 2.5"
+              laptop HDD - same size and interface
+            </li>
+            <li>
+              <strong>M.2 sizes:</strong> 2280 = 22mm wide × 80mm long (most
+              common in laptops)
+            </li>
+            <li>
+              <strong>M.2 keys:</strong> B key (SATA), M key (NVMe), B+M key
+              (both) - must match slot
+            </li>
+            <li>
+              <strong>M.2 SATA:</strong> ~550 MB/s max;
+              <strong>M.2 NVMe:</strong> 3500+ MB/s (much faster)
+            </li>
+            <li>
+              <strong>eMMC:</strong> Soldered storage in budget devices, cannot
+              be upgraded
+            </li>
+            <li>
+              <strong>UFS:</strong> Faster than eMMC, used in flagship
+              smartphones
+            </li>
+            <li>
+              <strong>MicroSD:</strong> Expandable storage for Android (not
+              iOS), A1/A2 class for apps
+            </li>
+            <li>
+              <strong>U3 or V30 microSD:</strong> Required for 4K video (30 MB/s
+              minimum)
+            </li>
+            <li>
+              <strong>Never defragment SSDs</strong> - wastes write cycles, no
+              benefit
+            </li>
+            <li>
+              <strong>TRIM:</strong> SSD optimization, keeps performance high,
+              usually automatic
+            </li>
+            <li>
+              <strong>Clicking noise from laptop:</strong> Failing HDD, back up
+              immediately
+            </li>
+            <li>
+              <strong>iOS devices:</strong> Cannot expand storage - no microSD
+              support
+            </li>
+            <li>
+              <strong>M.2 installation:</strong> Insert at 30° angle, press
+              flat, secure with screw
+            </li>
+            <li>
+              <strong>Fresh install vs cloning:</strong> Fresh = clean start;
+              Clone = everything transfers
+            </li>
+            <li>
+              <strong>7mm vs 9.5mm:</strong> 2.5" drive thickness - most laptops
+              use 7mm
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "b",
+        q3: "b",
+        q4: "c",
+        q5: "b",
+        q6: "c",
+        q7: "c",
+        q8: "b",
+        q9: "b",
+        q10: "c",
+      };
+
+      function submitQuiz() {
+        let score = 0;
+        let answered = 0;
+        const totalQuestions = 10;
+
+        for (let i = 1; i <= totalQuestions; i++) {
+          const selected = document.querySelector(
+            `input[name="q${i}"]:checked`,
+          );
+          const feedback = document.getElementById(`feedback${i}`);
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+
+          if (selected) {
+            answered++;
+            const parentLabel = selected.parentElement;
+
+            options.forEach((opt) => {
+              opt.disabled = true;
+              opt.parentElement.classList.add("disabled");
+            });
+
+            if (selected.value === answers[`q${i}`]) {
+              score++;
+              parentLabel.classList.add("correct");
+              feedback.classList.add("show");
+            } else {
+              parentLabel.classList.add("incorrect");
+              feedback.classList.add("show", "wrong");
+              feedback.innerHTML =
+                `<strong>Incorrect.</strong> The correct answer is option ${answers[`q${i}`].toUpperCase()}. ` +
+                feedback.innerHTML.split("</strong>")[1];
+
+              options.forEach((opt) => {
+                if (opt.value === answers[`q${i}`]) {
+                  opt.parentElement.classList.add("correct");
+                }
+              });
+            }
+          }
+        }
+
+        if (answered < totalQuestions) {
+          alert(
+            `Please answer all questions. You've answered ${answered} out of ${totalQuestions}.`,
+          );
+          return;
+        }
+
+        const percentage = Math.round((score / totalQuestions) * 100);
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        let message = "";
+
+        if (percentage >= 90) {
+          message = "🏆 Excellent! You're ready for the exam!";
+        } else if (percentage >= 75) {
+          message = "👍 Good job! Review the incorrect answers.";
+        } else if (percentage >= 60) {
+          message = "📚 Keep studying. Review the material again.";
+        } else {
+          message = "📖 More practice needed. Review all topics.";
+        }
+
+        scoreDisplay.innerHTML = `
+                <div>Your Score: ${score} / ${totalQuestions} (${percentage}%)</div>
+                <div>${message}</div>
+            `;
+        scoreDisplay.classList.add("show");
+
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("resetBtn").classList.add("show");
+
+        scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function resetQuiz() {
+        for (let i = 1; i <= 10; i++) {
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+          const feedback = document.getElementById(`feedback${i}`);
+
+          options.forEach((opt) => {
+            opt.checked = false;
+            opt.disabled = false;
+            opt.parentElement.classList.remove(
+              "selected",
+              "correct",
+              "incorrect",
+              "disabled",
+            );
+          });
+
+          feedback.classList.remove("show", "wrong");
+        }
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("resetBtn").classList.remove("show");
+
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      document.querySelectorAll(".quiz-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const radio = this.querySelector('input[type="radio"]');
+          if (!radio.disabled) {
+            const name = radio.name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+              r.parentElement.classList.remove("selected");
+            });
+            this.classList.add("selected");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

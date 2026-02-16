@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: RAID Configurations</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #fc4a1a, #f7b733);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #fc4a1a, #f7b733);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #fc4a1a;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #f7b733;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #f7b733;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #f7b733;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .info-box {
+        background: #d1ecf1;
+        border-left: 4px solid #0c5460;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .raid-card {
+        background: #f8f9fa;
+        border: 3px solid #f7b733;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .raid-card h3 {
+        color: #fc4a1a;
+        margin-top: 0;
+        font-size: 1.5em;
+      }
+
+      .raid-specs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        margin: 15px 0;
+        background: white;
+        padding: 15px;
+        border-radius: 5px;
+      }
+
+      .spec-item {
+        padding: 8px;
+      }
+
+      .spec-label {
+        font-weight: bold;
+        color: #fc4a1a;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #fc4a1a;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #f7b733;
+      }
+
+      /* Quiz Section with Immediate Feedback */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #f7b733;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #fc4a1a;
+      }
+
+      .score-display {
+        background: #fc4a1a;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #f7b733;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover:not(.disabled) {
+        background: #e9ecef;
+        border-color: #f7b733;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #fc4a1a, #f7b733);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .comparison-item {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        border: 2px solid #f7b733;
+      }
+
+      .comparison-item h4 {
+        color: #fc4a1a;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>💿 RAID Configurations</h1>
+        <p>CompTIA A+ 220-1101 - Drive Configurations</p>
+      </header>
+
+      <div class="content">
+        <h2>What is RAID?</h2>
+
+        <div class="simple-box">
+          <p>
+            <strong
+              >RAID = Redundant Array of Independent (or Inexpensive)
+              Disks</strong
+            >
+          </p>
+          <p>Combines multiple physical drives into one logical unit for:</p>
+          <ul>
+            <li><strong>Performance:</strong> Faster read/write speeds</li>
+            <li>
+              <strong>Redundancy:</strong> Data protection against drive failure
+            </li>
+            <li>
+              <strong>Both:</strong> Some RAID levels provide speed AND
+              protection
+            </li>
+          </ul>
+        </div>
+
+        <h3>RAID Types</h3>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <h4>Hardware RAID</h4>
+            <p>Dedicated RAID controller card</p>
+            <p>Best performance</p>
+            <p>Most expensive</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Software RAID</h4>
+            <p>OS manages RAID</p>
+            <p>Uses CPU resources</p>
+            <p>No extra cost</p>
+          </div>
+
+          <div class="comparison-item">
+            <h4>Firmware/Fake RAID</h4>
+            <p>BIOS-level RAID</p>
+            <p>Uses CPU but has BIOS support</p>
+            <p>Middle ground</p>
+          </div>
+        </div>
+
+        <h2>RAID Levels You MUST Know</h2>
+
+        <!-- RAID 0 -->
+        <div class="raid-card">
+          <h3>RAID 0 - Striping</h3>
+          <div class="raid-specs">
+            <div class="spec-item">
+              <div class="spec-label">Minimum Drives:</div>
+              <div>2</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Redundancy:</div>
+              <div>NONE</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Usable Capacity:</div>
+              <div>100% (all drives)</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Performance:</div>
+              <div>Excellent (fastest)</div>
+            </div>
+          </div>
+
+          <p><strong>How it works:</strong></p>
+          <ul>
+            <li>Data split (striped) across all drives</li>
+            <li>Each drive holds part of the data</li>
+            <li>All drives work together simultaneously</li>
+          </ul>
+
+          <p><strong>Benefits:</strong></p>
+          <ul>
+            <li>Maximum performance - reads and writes are faster</li>
+            <li>Full capacity of all drives available</li>
+            <li>Simple to set up</li>
+          </ul>
+
+          <p><strong>Drawbacks:</strong></p>
+          <ul>
+            <li>
+              <strong>NO FAULT TOLERANCE!</strong> If ANY drive fails, ALL data
+              is lost
+            </li>
+            <li>Not for critical data</li>
+          </ul>
+
+          <p>
+            <strong>Best Use:</strong> Gaming PCs, video editing (where speed
+            matters, not data safety)
+          </p>
+
+          <div class="info-box">
+            <strong>Example:</strong> Two 1TB drives in RAID 0 = 2TB usable
+            space, fast performance, but if one drive fails, everything is lost.
+          </div>
+        </div>
+
+        <!-- RAID 1 -->
+        <div class="raid-card">
+          <h3>RAID 1 - Mirroring</h3>
+          <div class="raid-specs">
+            <div class="spec-item">
+              <div class="spec-label">Minimum Drives:</div>
+              <div>2</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Redundancy:</div>
+              <div>YES (full mirror)</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Usable Capacity:</div>
+              <div>50% (size of one drive)</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Performance:</div>
+              <div>Good reads, normal writes</div>
+            </div>
+          </div>
+
+          <p><strong>How it works:</strong></p>
+          <ul>
+            <li>Identical copy (mirror) of data on each drive</li>
+            <li>Both drives contain exactly the same data</li>
+            <li>If one fails, the other has complete data</li>
+          </ul>
+
+          <p><strong>Benefits:</strong></p>
+          <ul>
+            <li>Complete redundancy - one drive can fail</li>
+            <li>Simple to understand and implement</li>
+            <li>Fast read performance (can read from both drives)</li>
+          </ul>
+
+          <p><strong>Drawbacks:</strong></p>
+          <ul>
+            <li>50% capacity loss - you only get space of one drive</li>
+            <li>More expensive per usable TB</li>
+          </ul>
+
+          <p>
+            <strong>Best Use:</strong> Boot drives, critical data that must be
+            protected
+          </p>
+
+          <div class="info-box">
+            <strong>Example:</strong> Two 1TB drives in RAID 1 = 1TB usable
+            space. If one drive fails, data is safe on the other.
+          </div>
+        </div>
+
+        <!-- RAID 5 -->
+        <div class="raid-card">
+          <h3>RAID 5 - Striping with Parity</h3>
+          <div class="raid-specs">
+            <div class="spec-item">
+              <div class="spec-label">Minimum Drives:</div>
+              <div>3</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Redundancy:</div>
+              <div>YES (1 drive failure)</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Usable Capacity:</div>
+              <div>(N-1) drives worth</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Performance:</div>
+              <div>Good reads, slower writes</div>
+            </div>
+          </div>
+
+          <p><strong>How it works:</strong></p>
+          <ul>
+            <li>Data striped across all drives (like RAID 0)</li>
+            <li>Parity information distributed across all drives</li>
+            <li>Parity allows data reconstruction if one drive fails</li>
+          </ul>
+
+          <p><strong>Benefits:</strong></p>
+          <ul>
+            <li>Good balance of performance, redundancy, and capacity</li>
+            <li>Can survive one drive failure</li>
+            <li>Better capacity efficiency than RAID 1</li>
+          </ul>
+
+          <p><strong>Drawbacks:</strong></p>
+          <ul>
+            <li>Lose capacity of one drive to parity</li>
+            <li>Write performance slower (must calculate parity)</li>
+            <li>If second drive fails during rebuild, all data lost</li>
+            <li>Rebuild time can be long</li>
+          </ul>
+
+          <p>
+            <strong>Best Use:</strong> File servers, NAS devices, business data
+            storage
+          </p>
+
+          <div class="info-box">
+            <strong>Example:</strong> Three 1TB drives in RAID 5 = 2TB usable
+            space (1TB for parity). One drive can fail with no data loss.
+          </div>
+        </div>
+
+        <!-- RAID 10 -->
+        <div class="raid-card">
+          <h3>RAID 10 (1+0) - Mirrored Stripes</h3>
+          <div class="raid-specs">
+            <div class="spec-item">
+              <div class="spec-label">Minimum Drives:</div>
+              <div>4</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Redundancy:</div>
+              <div>YES (multiple drives)</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Usable Capacity:</div>
+              <div>50% (like RAID 1)</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Performance:</div>
+              <div>Excellent (best of RAID 0 & 1)</div>
+            </div>
+          </div>
+
+          <p><strong>How it works:</strong></p>
+          <ul>
+            <li>Creates mirrored pairs (RAID 1)</li>
+            <li>Then stripes across the pairs (RAID 0)</li>
+            <li>Combines benefits of RAID 0 and RAID 1</li>
+          </ul>
+
+          <p><strong>Benefits:</strong></p>
+          <ul>
+            <li>
+              Excellent performance (striping) with redundancy (mirroring)
+            </li>
+            <li>
+              Can survive multiple drive failures (if not in same mirror pair)
+            </li>
+            <li>Faster rebuild than RAID 5</li>
+          </ul>
+
+          <p><strong>Drawbacks:</strong></p>
+          <ul>
+            <li>Expensive - only get 50% capacity</li>
+            <li>Requires minimum 4 drives</li>
+          </ul>
+
+          <p>
+            <strong>Best Use:</strong> Database servers, high-performance
+            applications needing redundancy
+          </p>
+
+          <div class="info-box">
+            <strong>Example:</strong> Four 1TB drives in RAID 10 = 2TB usable.
+            Two drives mirrored, then striped with another mirrored pair.
+          </div>
+        </div>
+
+        <h2>Quick RAID Comparison</h2>
+
+        <table>
+          <tr>
+            <th>RAID Level</th>
+            <th>Min Drives</th>
+            <th>Capacity</th>
+            <th>Fault Tolerance</th>
+            <th>Performance</th>
+            <th>Best For</th>
+          </tr>
+          <tr>
+            <td><strong>RAID 0</strong></td>
+            <td>2</td>
+            <td>100%</td>
+            <td>None</td>
+            <td>Fastest</td>
+            <td>Speed, non-critical data</td>
+          </tr>
+          <tr>
+            <td><strong>RAID 1</strong></td>
+            <td>2</td>
+            <td>50%</td>
+            <td>1 drive</td>
+            <td>Good reads</td>
+            <td>Critical data, boot drives</td>
+          </tr>
+          <tr>
+            <td><strong>RAID 5</strong></td>
+            <td>3</td>
+            <td>N-1 drives</td>
+            <td>1 drive</td>
+            <td>Good reads, slower writes</td>
+            <td>File servers, NAS</td>
+          </tr>
+          <tr>
+            <td><strong>RAID 10</strong></td>
+            <td>4</td>
+            <td>50%</td>
+            <td>Multiple drives</td>
+            <td>Excellent</td>
+            <td>Databases, high performance</td>
+          </tr>
+        </table>
+
+        <h2>Other RAID Levels (Less Common)</h2>
+
+        <div class="simple-box">
+          <p>
+            <strong>RAID 6:</strong> Like RAID 5 but with dual parity - can
+            survive TWO drive failures. Requires minimum 4 drives. Uses capacity
+            of 2 drives for parity.
+          </p>
+
+          <p>
+            <strong>JBOD (Just a Bunch Of Disks):</strong> Not really RAID.
+            Combines drives into one volume but no striping or redundancy. Each
+            drive fills sequentially.
+          </p>
+        </div>
+
+        <h2>Important RAID Concepts</h2>
+
+        <h3>Hot Spare</h3>
+        <div class="simple-box">
+          <ul>
+            <li>Extra drive that sits idle in the RAID array</li>
+            <li>Automatically activates when a drive fails</li>
+            <li>Rebuild starts immediately without technician intervention</li>
+            <li>Common in enterprise environments</li>
+          </ul>
+        </div>
+
+        <h3>Rebuild Process</h3>
+        <div class="simple-box">
+          <ul>
+            <li>
+              When a drive fails in RAID 1, 5, or 10, replace the failed drive
+            </li>
+            <li>RAID controller rebuilds data onto new drive</li>
+            <li>Array remains in degraded state during rebuild</li>
+            <li>
+              System still accessible but at risk - second failure is
+              catastrophic
+            </li>
+            <li>Can take hours to days depending on drive size</li>
+          </ul>
+        </div>
+
+        <div class="warning-box">
+          <strong>⚠️ Critical: RAID is NOT a Backup!</strong>
+          <ul>
+            <li>RAID protects against hardware failure only</li>
+            <li>
+              Does NOT protect against: deletion, corruption, virus, fire, theft
+            </li>
+            <li>Always maintain separate backups of critical data</li>
+            <li>
+              Follow 3-2-1 backup rule: 3 copies, 2 different media, 1 offsite
+            </li>
+          </ul>
+        </div>
+
+        <h2>RAID Setup Locations</h2>
+
+        <table>
+          <tr>
+            <th>Setup Method</th>
+            <th>Where Configured</th>
+            <th>Notes</th>
+          </tr>
+          <tr>
+            <td><strong>Hardware RAID</strong></td>
+            <td>RAID controller BIOS/utility</td>
+            <td>Access during boot, best performance</td>
+          </tr>
+          <tr>
+            <td><strong>Motherboard RAID</strong></td>
+            <td>System BIOS/UEFI</td>
+            <td>Built into motherboard chipset</td>
+          </tr>
+          <tr>
+            <td><strong>Software RAID (Windows)</strong></td>
+            <td>Disk Management or Storage Spaces</td>
+            <td>No special hardware needed</td>
+          </tr>
+          <tr>
+            <td><strong>Software RAID (Linux)</strong></td>
+            <td>mdadm command or installer</td>
+            <td>Very flexible, widely used</td>
+          </tr>
+        </table>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Click an answer to get immediate feedback!</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. Which RAID level provides the BEST performance but NO fault
+              tolerance?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'a')">
+                A) RAID 0
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'b')">
+                B) RAID 1
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'c')">
+                C) RAID 5
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'd')">
+                D) RAID 10
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q1">
+              <strong>✓ Correct!</strong> RAID 0 (striping) provides maximum
+              performance by splitting data across multiple drives, but has NO
+              redundancy. If any drive fails, ALL data is lost. Use only for
+              non-critical data where speed is priority.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. A company needs redundancy for critical data and can afford to
+              lose 50% capacity. Which RAID level uses two drives and mirrors
+              data?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'a')">
+                A) RAID 0
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'b')">
+                B) RAID 1
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'c')">
+                C) RAID 5
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'd')">
+                D) RAID 6
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q2">
+              <strong>✓ Correct!</strong> RAID 1 (mirroring) creates an
+              identical copy of data on both drives. You get 50% usable capacity
+              but complete redundancy. If one drive fails, the other has all the
+              data. Perfect for critical data like boot drives.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. What is the MINIMUM number of drives required for RAID 5?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'a')">
+                A) 2
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'b')">
+                B) 3
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'c')">
+                C) 4
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'd')">
+                D) 5
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q3">
+              <strong>✓ Correct!</strong> RAID 5 requires a minimum of 3 drives.
+              It stripes data across all drives with distributed parity. You
+              lose the capacity of one drive to parity, so 3×1TB drives gives
+              you 2TB usable space with fault tolerance for one drive failure.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. If you have four 2TB drives in RAID 10, how much usable storage
+              space do you have?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'a')">
+                A) 2TB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'b')">
+                B) 4TB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'c')">
+                C) 6TB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'd')">
+                D) 8TB
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q4">
+              <strong>✓ Correct!</strong> RAID 10 gives you 50% usable capacity
+              (like RAID 1). Four 2TB drives = 8TB total, but you only get 4TB
+              usable because data is mirrored. You get excellent performance and
+              can survive multiple drive failures (if not in same mirror pair).
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. Which RAID level uses parity information to provide fault
+              tolerance?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'a')">
+                A) RAID 0
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'b')">
+                B) RAID 1
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'c')">
+                C) RAID 5
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'd')">
+                D) RAID 10
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q5">
+              <strong>✓ Correct!</strong> RAID 5 uses distributed parity across
+              all drives. Parity is calculated mathematical information that
+              allows the array to rebuild data if one drive fails. RAID 0 has no
+              redundancy, RAID 1 uses mirroring, and RAID 10 combines striping
+              and mirroring.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. A server has RAID 5 with four drives. One drive fails. What
+              happens?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'a')">
+                A) All data is lost immediately
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'b')">
+                B) Array continues to function with degraded performance; data
+                is intact
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'c')">
+                C) System shuts down automatically
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'd')">
+                D) Nothing happens, RAID 5 requires 2 drive failures
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q6">
+              <strong>✓ Correct!</strong> RAID 5 can survive one drive failure.
+              The array stays online in degraded mode - data is still accessible
+              but performance is slower. Replace the failed drive immediately
+              and rebuild. If a second drive fails before rebuild completes, all
+              data is lost.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. What is the PRIMARY purpose of a hot spare in a RAID array?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'a')">
+                A) To increase storage capacity
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'b')">
+                B) To automatically replace a failed drive and begin rebuild
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'c')">
+                C) To improve read performance
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'd')">
+                D) To act as a backup drive
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q7">
+              <strong>✓ Correct!</strong> A hot spare is an idle drive in the
+              array that automatically activates when another drive fails. The
+              rebuild process starts immediately without technician
+              intervention, reducing the time the array is in a vulnerable
+              degraded state.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. Which statement about RAID is TRUE?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'a')">
+                A) RAID is a complete backup solution
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'b')">
+                B) RAID protects against all forms of data loss
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'c')">
+                C) RAID is NOT a backup; separate backups are still needed
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'd')">
+                D) Once you have RAID, you don't need backups
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q8">
+              <strong>✓ Correct!</strong> RAID is NOT a backup! RAID only
+              protects against hardware failure. It does NOT protect against
+              accidental deletion, file corruption, viruses, natural disasters,
+              or theft. Always maintain separate backups of critical data.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              9. Three 1TB drives are configured in RAID 5. How much usable
+              storage capacity is available?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'a')">
+                A) 1TB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'b')">
+                B) 2TB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'c')">
+                C) 3TB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'd')">
+                D) 1.5TB
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q9">
+              <strong>✓ Correct!</strong> RAID 5 capacity is (N-1) × drive size,
+              where N is number of drives. With three 1TB drives: (3-1) × 1TB =
+              2TB usable. One drive's worth of capacity is used for parity
+              information distributed across all drives.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              10. Which RAID level provides the best balance of performance,
+              redundancy, and capacity for a database server?
+            </div>
+            <div class="quiz-options">
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'a')"
+              >
+                A) RAID 0
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'b')"
+              >
+                B) RAID 1
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'c')"
+              >
+                C) RAID 5
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'd')"
+              >
+                D) RAID 10
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q10">
+              <strong>✓ Correct!</strong> RAID 10 combines the performance of
+              RAID 0 (striping) with the redundancy of RAID 1 (mirroring). It's
+              ideal for databases needing both high performance and fault
+              tolerance. Though expensive (50% capacity), it provides the best
+              of both worlds for critical applications.
+            </div>
+          </div>
+
+          <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>RAID 0 (Striping):</strong> Min 2 drives, NO redundancy,
+              100% capacity, fastest performance - if one fails, all data lost
+            </li>
+            <li>
+              <strong>RAID 1 (Mirroring):</strong> Min 2 drives, full
+              redundancy, 50% capacity - perfect copy on each drive
+            </li>
+            <li>
+              <strong>RAID 5 (Striping with Parity):</strong> Min 3 drives, 1
+              drive redundancy, (N-1) capacity, good for file servers
+            </li>
+            <li>
+              <strong>RAID 10 (1+0):</strong> Min 4 drives, multiple drive
+              redundancy, 50% capacity, best performance with redundancy
+            </li>
+            <li>
+              <strong>Parity:</strong> Mathematical data used in RAID 5/6 to
+              rebuild lost data from failed drive
+            </li>
+            <li>
+              <strong>Hot spare:</strong> Idle drive that auto-activates when
+              drive fails, starts rebuild immediately
+            </li>
+            <li>
+              <strong>Degraded array:</strong> RAID array operating with failed
+              drive - vulnerable to second failure
+            </li>
+            <li>
+              <strong>Rebuild process:</strong> Recreating data on replacement
+              drive - array at risk during rebuild
+            </li>
+            <li>
+              <strong>RAID is NOT backup:</strong> Only protects hardware
+              failure, not deletion/corruption/disasters
+            </li>
+            <li>
+              <strong>Hardware RAID:</strong> Dedicated controller, best
+              performance, expensive
+            </li>
+            <li>
+              <strong>Software RAID:</strong> OS-managed, uses CPU, no extra
+              cost
+            </li>
+            <li>
+              <strong>RAID 5 capacity formula:</strong> (Number of drives - 1) ×
+              Drive size
+            </li>
+            <li>
+              <strong>RAID 0 use case:</strong> Gaming, video editing (speed,
+              non-critical)
+            </li>
+            <li>
+              <strong>RAID 1 use case:</strong> Boot drives, critical data
+              (simple redundancy)
+            </li>
+            <li>
+              <strong>RAID 10 use case:</strong> Databases, high-performance
+              servers (best of both worlds)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "a",
+        q2: "b",
+        q3: "b",
+        q4: "b",
+        q5: "c",
+        q6: "b",
+        q7: "b",
+        q8: "c",
+        q9: "b",
+        q10: "d",
+      };
+
+      let score = 0;
+      let totalAnswered = 0;
+
+      function checkAnswer(element, questionId, selectedAnswer) {
+        // Prevent re-clicking
+        if (element.classList.contains("disabled")) {
+          return;
+        }
+
+        const feedback = document.getElementById("feedback-" + questionId);
+        const allOptions =
+          element.parentElement.querySelectorAll(".quiz-option");
+        const correctAnswer = answers[questionId];
+
+        // Disable all options for this question
+        allOptions.forEach((opt) => opt.classList.add("disabled"));
+
+        // Mark as correct or incorrect
+        if (selectedAnswer === correctAnswer) {
+          element.classList.add("correct");
+          feedback.classList.remove("wrong");
+          score++;
+        } else {
+          element.classList.add("incorrect");
+          feedback.classList.add("wrong");
+          feedback.innerHTML =
+            `<strong>✗ Incorrect.</strong> The correct answer is option ${correctAnswer.toUpperCase()}. ` +
+            feedback.innerHTML.split("</strong>")[1];
+
+          // Show correct answer
+          allOptions.forEach((opt) => {
+            const optionLetter = opt.textContent.trim().charAt(0).toLowerCase();
+            if (optionLetter === correctAnswer) {
+              opt.classList.add("correct");
+            }
+          });
+        }
+
+        // Show feedback
+        feedback.classList.add("show");
+        totalAnswered++;
+
+        // Update score if all answered
+        if (totalAnswered === 10) {
+          const percentage = Math.round((score / 10) * 100);
+          const scoreDisplay = document.getElementById("scoreDisplay");
+          let message = "";
+
+          if (percentage >= 90) {
+            message = "🏆 Excellent! You're ready for the exam!";
+          } else if (percentage >= 75) {
+            message = "👍 Good job! Review the incorrect answers.";
+          } else if (percentage >= 60) {
+            message = "📚 Keep studying. Review the material again.";
+          } else {
+            message = "📖 More practice needed. Review all RAID levels.";
+          }
+
+          scoreDisplay.innerHTML = `
+                    <div>Your Score: ${score} / 10 (${percentage}%)</div>
+                    <div>${message}</div>
+                `;
+          scoreDisplay.classList.add("show");
+          scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      function resetQuiz() {
+        score = 0;
+        totalAnswered = 0;
+
+        // Reset all questions
+        const allOptions = document.querySelectorAll(".quiz-option");
+        allOptions.forEach((opt) => {
+          opt.classList.remove("correct", "incorrect", "disabled");
+        });
+
+        // Hide all feedback
+        const allFeedback = document.querySelectorAll(".feedback");
+        allFeedback.forEach((fb) => {
+          fb.classList.remove("show", "wrong");
+        });
+
+        // Hide score
+        document.getElementById("scoreDisplay").classList.remove("show");
+
+        // Scroll to quiz top
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

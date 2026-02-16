@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Sound Cards – CompTIA A+ 220-1201 (Simple Exam Notes - Fixed Images)
+    </title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      h1,
+      h2 {
+        color: #2c3e50;
+      }
+      h1 {
+        text-align: center;
+        border-bottom: 3px solid #e67e22;
+        padding-bottom: 10px;
+      }
+      h2 {
+        background-color: #fdf2e9;
+        padding: 10px;
+        border-radius: 6px;
+      }
+      ul {
+        list-style-type: disc;
+        padding-left: 25px;
+      }
+      .key-point {
+        background-color: #fff5eb;
+        padding: 10px;
+        border-left: 5px solid #e67e22;
+        margin: 15px 0;
+        border-radius: 4px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .caption {
+        text-align: center;
+        font-style: italic;
+        color: #555;
+        margin-top: 5px;
+      }
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        color: #777;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sound Cards / Audio Cards – CompTIA A+ 220-1201</h1>
+
+    <h2>What is a Sound Card?</h2>
+
+    <p>
+      A sound card handles all the sound in/out of the computer: digital to
+      analog for speakers, analog to digital for mics, better quality than basic
+      onboard audio.
+    </p>
+
+    <div class="key-point">
+      <strong>Exam Tip:</strong> Sound cards are expansion cards in Domain 3.0
+      Hardware.
+    </div>
+
+    <img
+      src="https://m.media-amazon.com/images/I/814jjbo75FS.jpg"
+      alt="Creative Sound Blaster PCIe sound card"
+    />
+    <div class="caption">
+      Example of a classic PCIe sound card (Creative Sound Blaster)
+    </div>
+
+    <img
+      src="https://m.media-amazon.com/images/I/81nomLMI0jL.jpg"
+      alt="Modern Creative Sound Blaster sound card"
+    />
+    <div class="caption">
+      Modern discrete PCIe sound card with multiple ports
+    </div>
+
+    <h2>Two Main Types</h2>
+
+    <p><strong>Integrated Audio</strong> (onboard)</p>
+    <ul>
+      <li>Built into the motherboard – most common today</li>
+      <li>Good for everyday use (music, videos, calls)</li>
+      <li>Ports on back of motherboard (color-coded)</li>
+    </ul>
+
+    <p><strong>Discrete Sound Card</strong> (dedicated)</p>
+    <ul>
+      <li>Separate PCIe card (usually x1 slot)</li>
+      <li>Better quality, more ports, surround sound (5.1/7.1)</li>
+      <li>For gamers, music producers, high-end audio</li>
+    </ul>
+
+    <h2>How It Connects – Expansion Slots</h2>
+
+    <p>Use **PCIe x1** slot (short one) for sound cards.</p>
+
+    <div class="key-point">
+      <strong>Exam Tip:</strong> Plug speakers/mic into the card's ports (not
+      motherboard) after install.
+    </div>
+
+    <img
+      src="https://www.lifewire.com/thmb/4gLvZyjVNRPigzWoJbk3YoQtkWU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/pci-express-pcie-2625962-79f643e7768d4b8e81e2eee6cf5b02e7.png"
+      alt="PCIe slots diagram"
+    />
+    <div class="caption">
+      PCIe slots: x1 (small/short) for sound cards, x16 for graphics
+    </div>
+
+    <h2>Common Audio Ports / Connectors</h2>
+
+    <p>Color-coded 3.5mm jacks (PC99 standard):</p>
+
+    <ul>
+      <li><strong>Green</strong> → Speakers / Headphones (main output)</li>
+      <li><strong>Pink</strong> → Microphone In</li>
+      <li><strong>Blue</strong> → Line In (external audio sources)</li>
+      <li><strong>Black/Orange/Gray</strong> → Surround speakers (5.1/7.1)</li>
+      <li>
+        <strong>Optical S/PDIF</strong> → Digital out (TOSLINK) for home theater
+      </li>
+    </ul>
+
+    <div class="key-point">
+      <strong>Exam loves colors:</strong> Green = output/speakers, Pink = mic.
+      Extra colors for surround.
+    </div>
+
+    <img
+      src="https://cdn.shopify.com/s/files/1/0106/6339/5391/files/motherboard_audio_ports_1024x1024.jpg?v=1725412299"
+      alt="Color-coded audio ports icons"
+    />
+    <div class="caption">
+      Standard color-coded audio ports (green = out, pink = mic, blue = in)
+    </div>
+
+    <img
+      src="https://cdn.shopify.com/s/files/1/0106/6339/5391/files/How_to_connect_surround_sound_home_theater_to_your_PC_1024x1024.jpg?v=1725412303"
+      alt="Surround sound connection diagram"
+    />
+    <div class="caption">
+      How surround sound ports connect (shows extra colors)
+    </div>
+
+    <h2>Installing a Sound Card (Simple Steps)</h2>
+    <ul>
+      <li>Power off, unplug PC.</li>
+      <li>Open case, insert into PCIe x1 slot.</li>
+      <li>Secure if needed, close case.</li>
+      <li>Plug audio devices into **new card** ports.</li>
+      <li>Boot → install latest drivers from manufacturer.</li>
+    </ul>
+
+    <h2>Troubleshooting Sound Issues</h2>
+    <ul>
+      <li>
+        No sound → Check mute/volume, wrong output selected, drivers
+        bad/missing, plugged into wrong ports.
+      </li>
+      <li>Mic issues → Wrong port (pink), settings disabled.</li>
+      <li>Crackling → Bad cable, interference, update drivers.</li>
+      <li>After install no sound → Used motherboard ports instead of card.</li>
+    </ul>
+
+    <h2>Quick Exam Cheat Sheet</h2>
+    <div class="key-point">
+      <ul>
+        <li>Integrated = motherboard built-in, basic</li>
+        <li>Discrete = PCIe x1 card, better + more ports</li>
+        <li>Colors: Green = speakers, Pink = mic, Blue = line in</li>
+        <li>Optical = digital audio</li>
+        <li>Troubleshoot: Drivers/cables/ports first</li>
+      </ul>
+    </div>
+
+    <footer>
+      For CompTIA A+ Core 1 (220-1201) – Good luck with your exam prep, Nischal!
+      If images still don't load, try a different browser or internet
+      connection. 🚀
+    </footer>
+  </body>
+</html>

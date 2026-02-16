@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1201: Physical Privacy & Security Components</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #203a43;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #2c5364;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #2c5364;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #2c5364;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border: 2px solid #2c5364;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card h4 {
+        color: #203a43;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #203a43;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      /* Quiz Section */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #2c5364;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #203a43;
+      }
+
+      .score-display {
+        background: #203a43;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #2c5364;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover {
+        background: #e9ecef;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.selected {
+        background: #d1ecf1;
+        border-color: #2c5364;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .submit-btn {
+        background: #2c5364;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #203a43;
+      }
+
+      .submit-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: none;
+      }
+
+      .reset-btn.show {
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      strong {
+        color: #2c5364;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🔒 Physical Privacy & Security Components</h1>
+        <p>CompTIA A+ 220-1201 Core 1 Exam</p>
+      </header>
+
+      <div class="content">
+        <h2>Biometrics</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>Common Biometric Methods in Mobile Devices</h4>
+            <ul>
+              <li>
+                <strong>Fingerprint Reader</strong> – Most widespread
+                (capacitive, optical, ultrasonic)
+              </li>
+              <li>
+                <strong>Facial Recognition</strong> – 2D (basic) or 3D
+                (TrueDepth / Windows Hello)
+              </li>
+              <li>
+                <strong>Iris Scanner</strong> – Rare now (used in some older
+                Samsung devices)
+              </li>
+              <li>
+                <strong>Voice Recognition</strong> – Less secure, rarely used as
+                primary
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Advantages & Disadvantages</h4>
+            <ul>
+              <li>Fast and convenient</li>
+              <li>Harder to fake than passwords</li>
+              <li>No need to remember PIN/pattern</li>
+              <li>Can be spoofed (photos, masks, fake fingerprints)</li>
+              <li>
+                Privacy concerns (biometric data stored locally or in secure
+                enclave)
+              </li>
+              <li>
+                Failure in certain conditions (wet fingers, poor lighting,
+                glasses/masks)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Biometric Troubleshooting</h3>
+        <div class="simple-box">
+          <p><strong>Common Issues & Fixes:</strong></p>
+          <ul>
+            <li>
+              Fingerprint not recognized → Clean sensor, re-register
+              fingerprints, check for screen protector interference
+            </li>
+            <li>
+              Facial recognition fails → Good lighting, remove glasses/hat,
+              re-train face
+            </li>
+            <li>
+              Biometrics disabled after failed attempts → Enter PIN/password to
+              re-enable
+            </li>
+            <li>
+              Slow or inconsistent → Update OS/firmware, clean sensor, check for
+              damage
+            </li>
+          </ul>
+        </div>
+
+        <h2>Near-Field Scanner Features (NFC)</h2>
+
+        <div class="simple-box">
+          <p><strong>What is NFC?</strong></p>
+          <ul>
+            <li>Short-range wireless communication (≈4 cm / 1.5 inches)</li>
+            <li>Operates at 13.56 MHz frequency</li>
+            <li>
+              Used for contactless payments, access cards, pairing, data
+              transfer
+            </li>
+            <li>Low power – device can act as reader or tag</li>
+          </ul>
+
+          <p><strong>Common Uses in Mobile Devices:</strong></p>
+          <ul>
+            <li>Contactless payments (Google Pay, Apple Pay, Samsung Pay)</li>
+            <li>Pairing Bluetooth accessories quickly</li>
+            <li>Reading/writing NFC tags (smart posters, business cards)</li>
+            <li>Access control (hotel room keys, transit cards)</li>
+            <li>Android Beam / file sharing (older feature)</li>
+          </ul>
+        </div>
+
+        <h3>NFC Troubleshooting & Security</h3>
+        <div class="simple-box">
+          <p><strong>Common Issues:</strong></p>
+          <ul>
+            <li>
+              NFC not working → Check if enabled in settings, screen on &
+              unlocked
+            </li>
+            <li>
+              Payment fails → Re-add card, check NFC antenna placement, update
+              OS
+            </li>
+            <li>
+              Device reads tag but does nothing → Wrong app default handler
+            </li>
+          </ul>
+
+          <p><strong>Security Considerations:</strong></p>
+          <ul>
+            <li>Very short range reduces risk</li>
+            <li>Use secure element (embedded or host card emulation)</li>
+            <li>Enable screen lock requirement for payments</li>
+            <li>Disable NFC when not in use (privacy & battery)</li>
+          </ul>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Test your knowledge! Select your answers and click Submit.</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. Which biometric method is currently the most common on modern
+              smartphones?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a" /> Iris scanning
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b" /> Fingerprint reader
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c" /> Voice recognition
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d" /> Retina scanning
+              </label>
+            </div>
+            <div class="feedback" id="feedback1">
+              <strong>Correct!</strong> Fingerprint readers (capacitive,
+              optical, or ultrasonic) remain the most widespread biometric
+              method on modern smartphones due to reliability, speed, and cost.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. A user reports their facial recognition stops working in low
+              light. What should be checked first?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a" /> Clean the front
+                camera
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b" /> Re-train the face in
+                good lighting
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c" /> Replace the display
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d" /> Disable screen lock
+              </label>
+            </div>
+            <div class="feedback" id="feedback2">
+              <strong>Correct!</strong> Facial recognition (especially 2D)
+              struggles in poor lighting. Re-training in good lighting usually
+              resolves the issue. 3D systems (Face ID) are more robust but still
+              benefit from proper conditions.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. What is the maximum effective range of NFC?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a" /> 10 meters
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b" /> ≈4 cm (1.5 inches)
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c" /> 1 meter
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d" /> 30 cm
+              </label>
+            </div>
+            <div class="feedback" id="feedback3">
+              <strong>Correct!</strong> NFC is designed for very short range
+              (typically up to 4 cm) to ensure intentional, secure interactions
+              like payments or tag reading.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. Which of the following is a primary use of NFC in mobile
+              devices?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a" /> Long-range file
+                transfer
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b" /> Contactless payments
+                (Google Pay, Apple Pay)
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c" /> Wi-Fi hotspot
+                creation
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="d" /> GPS location sharing
+              </label>
+            </div>
+            <div class="feedback" id="feedback4">
+              <strong>Correct!</strong> NFC is widely used for secure
+              contactless payments via mobile wallets. It is also used for quick
+              Bluetooth pairing and reading/writing tags.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. A user cannot use NFC payments after replacing the screen. What
+              is the MOST likely cause?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a" /> NFC antenna damaged
+                or disconnected during repair
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b" /> OS needs reinstall
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c" /> Payment app bug
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="d" /> Battery needs
+                replacement
+              </label>
+            </div>
+            <div class="feedback" id="feedback5">
+              <strong>Correct!</strong> The NFC antenna is often integrated into
+              or near the screen assembly. Screen replacement can disconnect or
+              damage it, breaking contactless functionality.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. Which security feature helps protect biometric data on modern
+              smartphones?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a" /> Data stored in plain
+                text
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="b" /> Secure Enclave /
+                Trusted Execution Environment
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c" /> Cloud backup of raw
+                biometrics
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="d" /> No encryption
+              </label>
+            </div>
+            <div class="feedback" id="feedback6">
+              <strong>Correct!</strong> Modern devices (Apple Secure Enclave,
+              Android TEE) store biometric templates encrypted and never send
+              raw data off-device.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. What should a user do if fingerprint recognition fails
+              repeatedly?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a" /> Delete and
+                re-register fingerprints
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="b" /> Immediately factory
+                reset
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c" /> Cover the sensor
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="d" /> Disable biometrics
+                permanently
+              </label>
+            </div>
+            <div class="feedback" id="feedback7">
+              <strong>Correct!</strong> Re-registering fingerprints after
+              cleaning the sensor and fingers usually resolves recognition
+              issues.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. Which statement about NFC is TRUE?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a" /> NFC has a range of
+                several meters
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="b" /> NFC requires both
+                devices to be powered on and unlocked for payments
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c" /> NFC is mainly used
+                for long-distance communication
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="d" /> NFC cannot be used
+                for payments
+              </label>
+            </div>
+            <div class="feedback" id="feedback8">
+              <strong>Correct!</strong> For secure payments, the device usually
+              needs to be unlocked (PIN/biometric), and NFC range is very short
+              by design for security.
+            </div>
+          </div>
+
+          <button class="submit-btn" id="submitBtn" onclick="submitQuiz()">
+            Submit Quiz
+          </button>
+          <button class="reset-btn" id="resetBtn" onclick="resetQuiz()">
+            Try Again
+          </button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li>
+              <strong>Biometrics</strong> include fingerprint, facial
+              recognition (2D/3D), and iris (rare now)
+            </li>
+            <li>
+              <strong>Fingerprint readers</strong> are still the most common
+              biometric method on phones/laptops
+            </li>
+            <li>
+              <strong>Facial recognition troubleshooting</strong>: good
+              lighting, re-train face, remove glasses/masks
+            </li>
+            <li>
+              <strong>Biometric data</strong> stored encrypted in Secure Enclave
+              / Trusted Execution Environment – never leaves device in raw form
+            </li>
+            <li>
+              <strong>NFC range</strong> ≈4 cm – designed for intentional,
+              secure short-range communication
+            </li>
+            <li>
+              <strong>Main NFC uses</strong>: contactless payments, tag
+              reading/writing, quick Bluetooth pairing
+            </li>
+            <li>
+              <strong>NFC payments require</strong> device unlocked + secure
+              element (embedded or host card emulation)
+            </li>
+            <li>
+              <strong>NFC antenna issues</strong> often occur after screen
+              replacement – check connections
+            </li>
+            <li>
+              <strong>Biometric failure after attempts</strong> → fallback to
+              PIN/password, then re-register
+            </li>
+            <li>
+              <strong>Privacy tip</strong>: Disable NFC/biometrics when not
+              needed; use screen lock requirement for payments
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "b",
+        q3: "b",
+        q4: "b",
+        q5: "a",
+        q6: "b",
+        q7: "a",
+        q8: "b",
+      };
+
+      function submitQuiz() {
+        let score = 0;
+        let answered = 0;
+        const totalQuestions = 8;
+
+        for (let i = 1; i <= totalQuestions; i++) {
+          const selected = document.querySelector(
+            `input[name="q${i}"]:checked`,
+          );
+          const feedback = document.getElementById(`feedback${i}`);
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+
+          if (selected) {
+            answered++;
+            const parentLabel = selected.parentElement;
+
+            options.forEach((opt) => {
+              opt.disabled = true;
+              opt.parentElement.classList.add("disabled");
+            });
+
+            if (selected.value === answers[`q${i}`]) {
+              score++;
+              parentLabel.classList.add("correct");
+              feedback.classList.add("show");
+            } else {
+              parentLabel.classList.add("incorrect");
+              feedback.classList.add("show", "wrong");
+              feedback.innerHTML =
+                `<strong>Incorrect.</strong> The correct answer is option ${answers[`q${i}`].toUpperCase()}. ` +
+                feedback.innerHTML.split("</strong>")[1];
+
+              options.forEach((opt) => {
+                if (opt.value === answers[`q${i}`]) {
+                  opt.parentElement.classList.add("correct");
+                }
+              });
+            }
+          }
+        }
+
+        if (answered < totalQuestions) {
+          alert(
+            `Please answer all questions. You've answered ${answered} out of ${totalQuestions}.`,
+          );
+          return;
+        }
+
+        const percentage = Math.round((score / totalQuestions) * 100);
+        const scoreDisplay = document.getElementById("scoreDisplay");
+        let message = "";
+
+        if (percentage >= 90) {
+          message = "🏆 Excellent! You're ready for the exam!";
+        } else if (percentage >= 75) {
+          message = "👍 Good job! Review the incorrect answers.";
+        } else if (percentage >= 60) {
+          message = "📚 Keep studying. Review the material again.";
+        } else {
+          message = "📖 More practice needed. Review all topics.";
+        }
+
+        scoreDisplay.innerHTML = `
+                <div>Your Score: ${score} / ${totalQuestions} (${percentage}%)</div>
+                <div>${message}</div>
+            `;
+        scoreDisplay.classList.add("show");
+
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("resetBtn").classList.add("show");
+
+        scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function resetQuiz() {
+        for (let i = 1; i <= 8; i++) {
+          const options = document.querySelectorAll(`input[name="q${i}"]`);
+          const feedback = document.getElementById(`feedback${i}`);
+
+          options.forEach((opt) => {
+            opt.checked = false;
+            opt.disabled = false;
+            opt.parentElement.classList.remove(
+              "selected",
+              "correct",
+              "incorrect",
+              "disabled",
+            );
+          });
+
+          feedback.classList.remove("show", "wrong");
+        }
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("resetBtn").classList.remove("show");
+
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      document.querySelectorAll(".quiz-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const radio = this.querySelector('input[type="radio"]');
+          if (!radio.disabled) {
+            const name = radio.name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+              r.parentElement.classList.remove("selected");
+            });
+            this.classList.add("selected");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

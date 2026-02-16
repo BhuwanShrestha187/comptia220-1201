@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I/O Expansion Cards (USB, eSATA, Thunderbolt) – CompTIA A+ 220-1201</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid #8e44ad;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #f5eef8;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+        .key-point {
+            background-color: #f8f5ff;
+            padding: 10px;
+            border-left: 5px solid #8e44ad;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-top: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Input/Output (I/O) Expansion Cards – CompTIA A+ 220-1201</h1>
+
+<h2>What are I/O Expansion Cards?</h2>
+
+<p>These are "catchall" add-on cards that give your PC extra ports to connect input devices (like keyboards/mice/external drives) or output devices (like monitors/storage). They expand what the motherboard can do.</p>
+
+<ul>
+    <li>Common modern examples: USB cards, eSATA cards, Thunderbolt cards</li>
+    <li>Plug into PCIe slots on the motherboard</li>
+    <li>Minimal setup – usually Plug and Play (PnP) in Windows</li>
+    <li>After install, check BIOS/UEFI for new options (e.g., wake from sleep, resource settings)</li>
+</ul>
+
+<div class="key-point">
+    <strong>Exam Tip:</strong> In Domain 3.0 Hardware – these are expansion/add-on cards. Know they add ports for external devices. BIOS/UEFI may show new entries for config (e.g., Thunderbolt wake settings).
+</div>
+
+<h2>Common Types</h2>
+
+<p><strong>USB Expansion Cards</strong></p>
+<ul>
+    <li>Add extra USB ports (2, 4, 7+ ports common)</li>
+    <li>USB-A, USB-C, or mix – speeds like USB 3.2 Gen 1 (5 Gbps) or Gen 2 (10 Gbps)</li>
+    <li>Used for: more peripherals, faster charging, external drives</li>
+</ul>
+
+<img src="https://m.media-amazon.com/images/I/61TLzqhCj5L._AC_UF894,1000_QL80_.jpg" alt="7-port PCIe USB expansion card">
+<div class="caption">Example 7-port PCIe USB 3.2 expansion card (mix of USB-A and USB-C ports)</div>
+
+<p><strong>eSATA Expansion Cards</strong></p>
+<ul>
+    <li>Add eSATA ports for external SATA drives (faster than USB 2.0 for storage)</li>
+    <li>Usually 1-2 external ports; some have internal SATA too</li>
+    <li>Speed: up to 6 Gbps (SATA III)</li>
+    <li>Less common now (USB/eSATA combos exist)</li>
+</ul>
+
+<img src="https://m.media-amazon.com/images/I/71JFre96cZL._AC_UF894,1000_QL80_.jpg" alt="eSATA PCIe card with ports">
+<div class="caption">eSATA PCIe card (shows external eSATA + possible internal SATA connectors)</div>
+
+<p><strong>Thunderbolt Expansion Cards</strong></p>
+<ul>
+    <li>Add Thunderbolt ports (Thunderbolt 3/4 – very fast, up to 40 Gbps)</li>
+    <li>Supports daisy-chaining, high-res displays, external GPUs, fast storage</li>
+    <li>Often needs BIOS/UEFI tweaks (e.g., allow wake, security levels)</li>
+    <li>Common on newer systems for pro use</li>
+</ul>
+
+<img src="https://m.media-amazon.com/images/I/71wZ6Z0ZfZL._AC_SL1500_.jpg" alt="Thunderbolt PCIe expansion card">
+<div class="caption">Thunderbolt PCIe expansion card (Thunderbolt ports for high-speed I/O)</div>
+
+<h2>How They Connect – Slots</h2>
+
+<p>Most use **PCIe x1** slot (short slot – plenty for these cards). Some higher-end may use x4.</p>
+
+<div class="key-point">
+    <strong>Exam Tip:</strong> Install in compatible PCIe slot. After boot, OS does PnP setup. Always check BIOS/UEFI for new menu items (resources, wake settings for Thunderbolt).
+</div>
+
+<h2>Common Ports on These Cards</h2>
+
+<ul>
+    <li><strong>USB-A / USB-C</strong> → For peripherals, drives, hubs</li>
+    <li><strong>eSATA</strong> → External SATA storage (looks like SATA but with clip)</li>
+    <li><strong>Thunderbolt</strong> → Oval USB-C shaped port (with lightning bolt icon)</li>
+    <li>Some cards mix types (e.g., USB + eSATA)</li>
+</ul>
+
+<div class="key-point">
+    <strong>Exam loves this:</strong> Know these add external I/O ports. USB is most common, eSATA for legacy external drives, Thunderbolt for premium/fast multi-use.
+</div>
+
+<h2>Installing I/O Expansion Cards (Simple Steps)</h2>
+<ul>
+    <li>Power off PC, unplug.</li>
+    <li>Open case, insert card into PCIe slot (usually x1) until it clicks.</li>
+    <li>Secure bracket to case.</li>
+    <li>Close case, connect devices to new ports.</li>
+    <li>Boot up → Windows usually auto-installs (PnP). Install manufacturer drivers if needed.</li>
+    <li>Check BIOS/UEFI setup (press Del/F2/etc.) for new options and save.</li>
+</ul>
+
+<h2>Troubleshooting I/O Card Issues</h2>
+<ul>
+    <li>Ports not working → Check drivers, wrong slot, BIOS settings, cable/device issue.</li>
+    <li>No detection → Reseat card, update BIOS, check Device Manager.</li>
+    <li>Thunderbolt specific → Security level in BIOS/UEFI (may need to approve devices), wake settings.</li>
+    <li>Slow speeds → Wrong cable (e.g., old USB cable), port version mismatch.</li>
+</ul>
+
+<h2>Quick Exam Cheat Sheet</h2>
+<div class="key-point">
+    <ul>
+        <li>I/O cards = add extra ports (USB, eSATA, Thunderbolt) for input/output</li>
+        <li>Common: USB (many ports), eSATA (storage), Thunderbolt (fast/multi-use)</li>
+        <li>Slot: PCIe x1 (or x4 for some)</li>
+        <li>Install: PCIe slot + PnP + check BIOS/UEFI for new settings</li>
+        <li>Troubleshoot: Drivers/BIOS/cables first</li>
+    </ul>
+</div>
+
+<footer>For CompTIA A+ Core 1 (220-1201) – Hardware domain (expansion cards). This rounds out your set of I/O/add-on card notes, Nischal! Good luck with the exam. 🚀</footer>
+
+</body>
+</html>

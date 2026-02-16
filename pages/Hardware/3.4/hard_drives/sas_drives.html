@@ -1,0 +1,957 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: SAS (Serial Attached SCSI)</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #764ba2;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #764ba2;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #764ba2;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #667eea;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #764ba2;
+      }
+
+      /* Quiz Section with Immediate Feedback */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #764ba2;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #667eea;
+      }
+
+      .score-display {
+        background: #667eea;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #764ba2;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover:not(.disabled) {
+        background: #e9ecef;
+        border-color: #764ba2;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>⚙️ SAS (Serial Attached SCSI)</h1>
+        <p>CompTIA A+ 220-1101 - Hardware / Storage Interfaces</p>
+      </header>
+
+      <div class="content">
+        <h2>What is SAS?</h2>
+        <div class="simple-box">
+          <p>
+            <strong>Serial Attached SCSI (SAS)</strong> is a point-to-point
+            serial protocol that succeeds the parallel SCSI interface. It is
+            designed for high-performance enterprise environments. SAS drives
+            use the same physical connector as SATA but are electrically
+            different and support advanced features like full-duplex,
+            dual-porting, and larger command queues.
+          </p>
+        </div>
+
+        <h2>SAS vs SATA Comparison</h2>
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>SAS</th>
+            <th>SATA</th>
+          </tr>
+          <tr>
+            <td><strong>Protocol</strong></td>
+            <td>Serial SCSI (full-duplex)</td>
+            <td>ATA (half-duplex)</td>
+          </tr>
+          <tr>
+            <td><strong>Command Queue Depth</strong></td>
+            <td>256–512 commands (typical)</td>
+            <td>32 commands (NCQ)</td>
+          </tr>
+          <tr>
+            <td><strong>Connector</strong></td>
+            <td>SAS (SFF-8482) – compatible with SATA, but not vice versa</td>
+            <td>SATA (L-shaped)</td>
+          </tr>
+          <tr>
+            <td><strong>Dual-porting</strong></td>
+            <td>Yes – allows redundant paths</td>
+            <td>No – single path</td>
+          </tr>
+          <tr>
+            <td><strong>Rotational Speed</strong></td>
+            <td>Typically 10k or 15k RPM</td>
+            <td>Typically 5400 or 7200 RPM</td>
+          </tr>
+          <tr>
+            <td><strong>Typical Use</strong></td>
+            <td>Servers, storage arrays, enterprise</td>
+            <td>Desktops, consumer NAS, laptops</td>
+          </tr>
+          <tr>
+            <td><strong>MTBF (Reliability)</strong></td>
+            <td>Higher (1.6 – 2.5 million hours)</td>
+            <td>Lower (600k – 1.2 million hours)</td>
+          </tr>
+        </table>
+
+        <h2>SAS Generations & Speeds</h2>
+        <table>
+          <tr>
+            <th>Generation</th>
+            <th>Speed (per lane)</th>
+            <th>Bandwidth (x4 wide port)</th>
+          </tr>
+          <tr>
+            <td><strong>SAS-1</strong> (2005)</td>
+            <td>3.0 Gbit/s</td>
+            <td>1.2 GB/s</td>
+          </tr>
+          <tr>
+            <td><strong>SAS-2</strong> (2009)</td>
+            <td>6.0 Gbit/s</td>
+            <td>2.4 GB/s</td>
+          </tr>
+          <tr>
+            <td><strong>SAS-3</strong> (2013)</td>
+            <td>12.0 Gbit/s</td>
+            <td>4.8 GB/s</td>
+          </tr>
+          <tr>
+            <td><strong>SAS-4</strong> (2017+)</td>
+            <td>22.5 Gbit/s (24G)</td>
+            <td>~9 GB/s</td>
+          </tr>
+        </table>
+        <p>
+          <em
+            >Note: SAS uses 8b/10b encoding (SAS-1/2/3) or 128b/150b (SAS-4).
+            Actual data throughput is roughly 80% of the raw bit rate.</em
+          >
+        </p>
+
+        <h2>Connectors & Cabling</h2>
+        <div class="simple-box">
+          <h3>Internal connectors</h3>
+          <ul>
+            <li>
+              <strong>SFF-8482:</strong> Standard for direct-attach SAS drives
+              (backplane connector).
+            </li>
+            <li>
+              <strong>SFF-8087:</strong> Mini-SAS internal (4 lanes, 36-pin) –
+              used for internal backplane connections.
+            </li>
+            <li>
+              <strong>SFF-8643:</strong> Mini-SAS HD internal (12 Gbps) – common
+              for SAS-3.
+            </li>
+          </ul>
+          <h3>External connectors</h3>
+          <ul>
+            <li>
+              <strong>SFF-8088:</strong> Mini-SAS external (4 lanes) – for
+              cabling between enclosures.
+            </li>
+            <li>
+              <strong>SFF-8644:</strong> Mini-SAS HD external – used in
+              high-performance storage.
+            </li>
+          </ul>
+          <p>
+            <strong>Backward compatibility:</strong> SAS controllers can usually
+            connect to SATA drives (using SATA disks on SAS backplanes), but
+            SATA controllers cannot connect to SAS drives (different protocol).
+          </p>
+        </div>
+
+        <h2>Advantages of SAS</h2>
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>Dual-porting:</strong> Two independent data paths for
+              redundancy and load balancing.
+            </li>
+            <li><strong>Full-duplex:</strong> Simultaneous read/write.</li>
+            <li>
+              <strong>Scalability:</strong> Can connect up to 65,535 devices
+              through expanders.
+            </li>
+            <li>
+              <strong>Error recovery:</strong> Advanced SCSI command set and
+              better error handling.
+            </li>
+            <li>
+              <strong>Higher reliability:</strong> Designed for 24/7 operation
+              with deeper command queues.
+            </li>
+            <li>
+              <strong>Larger drives:</strong> Enterprise capacities often higher
+              than consumer SATA.
+            </li>
+          </ul>
+        </div>
+
+        <h2>Common Use Cases & Deployment</h2>
+        <table>
+          <tr>
+            <th>Environment</th>
+            <th>Why SAS?</th>
+          </tr>
+          <tr>
+            <td><strong>Enterprise servers</strong></td>
+            <td>
+              OS drives for high transaction rates (database, email servers).
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Storage arrays (SAN/NAS)</strong></td>
+            <td>High throughput, reliability, and hot-swap backplanes.</td>
+          </tr>
+          <tr>
+            <td><strong>Workstations for video editing</strong></td>
+            <td>Fast streaming from multiple drives (RAID).</td>
+          </tr>
+          <tr>
+            <td><strong>Data centers</strong></td>
+            <td>Mission-critical applications requiring low latency.</td>
+          </tr>
+        </table>
+
+        <h2>Troubleshooting SAS Drives</h2>
+        <table>
+          <tr>
+            <th>Issue</th>
+            <th>Possible Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Drive not detected</td>
+            <td>Loose cable, faulty backplane, controller not initialized</td>
+            <td>
+              Reseat connections; check SAS controller BIOS; verify expander
+              power
+            </td>
+          </tr>
+          <tr>
+            <td>Slow performance</td>
+            <td>Wrong cable type, bad terminator, link speed mismatch</td>
+            <td>
+              Check for proper SAS generation; update firmware; verify multipath
+              configuration
+            </td>
+          </tr>
+          <tr>
+            <td>Intermittent disconnects</td>
+            <td>Signal degradation, poor shielding, overtemp</td>
+            <td>
+              Replace cables; ensure proper airflow; check S.M.A.R.T. data
+            </td>
+          </tr>
+          <tr>
+            <td>Drive shows as "SATA" in OS</td>
+            <td>SATA drive connected to SAS backplane (normal)</td>
+            <td>
+              No action needed unless SAS features required – verify drive type
+            </td>
+          </tr>
+          <tr>
+            <td>No activity LED</td>
+            <td>Backplane LED circuit, missing activity signal</td>
+            <td>Check backplane connections; try different slot</td>
+          </tr>
+        </table>
+
+        <h2>Important Concepts for A+ Exam</h2>
+        <div class="simple-box">
+          <h3>SAS Expanders</h3>
+          <p>
+            Allow connection of many SAS devices to a single controller port
+            (like a switch). Essential for large storage enclosures.
+          </p>
+          <h3>Wide Ports</h3>
+          <p>
+            Aggregating multiple SAS lanes (e.g., 4x) for increased bandwidth.
+          </p>
+          <h3>Multipathing / Dual-port</h3>
+          <p>
+            Each drive has two ports that can connect to different controllers
+            for failover.
+          </p>
+          <h3>Physical size</h3>
+          <p>
+            SAS drives typically 2.5" (10k/15k RPM) or 3.5" (7200 rpm nearline
+            SAS).
+          </p>
+          <h3>Hot-swap</h3>
+          <p>
+            Supported by design – drives can be replaced without powering down.
+          </p>
+        </div>
+
+        <h2>Historical Context & Legacy</h2>
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>Parallel SCSI:</strong> Predecessor (wide ribbon cables,
+              termination, device IDs).
+            </li>
+            <li>
+              <strong>Fibre Channel:</strong> Another enterprise alternative,
+              but SAS is more common in direct-attach.
+            </li>
+            <li>
+              <strong>NVMe & SSDs:</strong> SAS SSDs exist but NVMe is taking
+              over high-performance roles. However, SAS remains strong for
+              spinning disks.
+            </li>
+          </ul>
+          <p>
+            <strong>Exam tip:</strong> Know that SAS uses SCSI commands,
+            supports higher RPM (15k), dual-port, and is compatible with SATA
+            drives (but not the reverse).
+          </p>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION (SAS) -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 SAS Interactive Practice Quiz</h2>
+            <p>Test your knowledge – click an answer for feedback.</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <!-- 10 Questions about SAS -->
+          <div class="question-card">
+            <div class="question-text">1. Which protocol does SAS use?</div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'a')"
+                >A) ATA (parallel)</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'b')"
+                >B) Serial ATA</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'c')"
+                >C) Serial SCSI</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'd')"
+                >D) NVMe</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q1">
+              <strong>✓ Correct!</strong> SAS stands for Serial Attached SCSI,
+              so it uses the Serial SCSI protocol. It supports full-duplex and
+              advanced command sets.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. What is the typical rotational speed for high-performance SAS
+              drives?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'a')"
+                >A) 5400 RPM</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'b')"
+                >B) 7200 RPM</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'c')"
+                >C) 10k or 15k RPM</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'd')"
+                >D) 5900 RPM</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q2">
+              <strong>✓ Correct!</strong> SAS drives often spin at 10,000 or
+              15,000 RPM for low latency. SATA drives are usually 5400/7200 RPM.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. Which of the following is a key feature of SAS that SATA does
+              NOT support?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'a')"
+                >A) Hot-plug</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'b')"
+                >B) Dual-porting</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'c')"
+                >C) 3.5" form factor</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'd')"
+                >D) 1 TB capacity</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q3">
+              <strong>✓ Correct!</strong> Dual-porting is exclusive to SAS (and
+              Fibre Channel). It allows two separate controller paths for
+              redundancy.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. What is the maximum raw bit rate of SAS-3 (per lane)?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'a')"
+                >A) 3 Gbit/s</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'b')"
+                >B) 6 Gbit/s</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'c')"
+                >C) 12 Gbit/s</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'd')"
+                >D) 24 Gbit/s</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q4">
+              <strong>✓ Correct!</strong> SAS-3 operates at 12 Gbit/s per lane.
+              SAS-2 is 6 Gbit/s, SAS-4 is 24 Gbit/s.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. Can a SATA controller read a SAS drive?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'a')"
+                >A) Yes, with an adapter</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'b')"
+                >B) Yes, but only SSDs</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'c')"
+                >C) No, SATA controllers cannot communicate with SAS
+                drives</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'd')"
+                >D) Only if the drive is low-profile</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q5">
+              <strong>✓ Correct!</strong> SATA controllers do not understand the
+              SCSI command set. However, SAS controllers usually support SATA
+              drives (using SATA tunneling).
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. Which internal SAS connector is commonly used for 12 Gbps
+              backplanes?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'a')"
+                >A) SFF-8482</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'b')"
+                >B) SFF-8087</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'c')"
+                >C) SFF-8643</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'd')"
+                >D) SFF-8088</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q6">
+              <strong>✓ Correct!</strong> SFF-8643 (Mini-SAS HD) is used for
+              internal 12G SAS connections. SFF-8087 is common for 6G, SFF-8482
+              is the drive connector.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. What is the purpose of a SAS expander?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'a')"
+                >A) To convert SAS to SATA</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'b')"
+                >B) To connect multiple drives to a single controller
+                port</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'c')"
+                >C) To increase RPM of drives</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'd')"
+                >D) To provide power to the drive</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q7">
+              <strong>✓ Correct!</strong> Expanders act like a switch, allowing
+              many SAS devices to connect to one or more controllers, essential
+              in large storage arrays.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. Which generation of SAS introduced 12 Gbit/s speeds?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'a')"
+                >A) SAS-1</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'b')"
+                >B) SAS-2</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'c')"
+                >C) SAS-3</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'd')"
+                >D) SAS-4</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q8">
+              <strong>✓ Correct!</strong> SAS-3 (2013) runs at 12 Gbit/s. SAS-2
+              = 6G, SAS-1 = 3G, SAS-4 = 24G.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              9. In terms of command set, SAS is based on:
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'a')"
+                >A) ATA commands</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'b')"
+                >B) SCSI commands</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'c')"
+                >C) NVMe commands</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'd')"
+                >D) MMC commands</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q9">
+              <strong>✓ Correct!</strong> SAS uses the SCSI command set, which
+              supports advanced features like tag queuing and error recovery.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              10. Which of the following environments would MOST likely use SAS
+              drives?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q10', 'a')"
+                >A) Budget home desktop</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q10', 'b')"
+                >B) Enterprise database server</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q10', 'c')"
+                >C) Tablet storage</label
+              >
+              <label class="quiz-option" onclick="checkAnswer(this, 'q10', 'd')"
+                >D) External USB backup</label
+              >
+            </div>
+            <div class="feedback" id="feedback-q10">
+              <strong>✓ Correct!</strong> SAS drives are designed for enterprise
+              servers, storage arrays, and high-availability systems, not
+              consumer devices.
+            </div>
+          </div>
+
+          <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+
+        <!-- KEY POINTS SECTION (SAS summary) -->
+        <div class="key-points">
+          <h2>🔑 Key SAS Points for the Exam</h2>
+          <ul>
+            <li><strong>Full name:</strong> Serial Attached SCSI</li>
+            <li><strong>Command set:</strong> SCSI (vs SATA = ATA)</li>
+            <li>
+              <strong>Speeds:</strong> SAS-1 (3G), SAS-2 (6G), SAS-3 (12G),
+              SAS-4 (24G)
+            </li>
+            <li>
+              <strong>Dual-port:</strong> Redundant paths, failover capability
+            </li>
+            <li>
+              <strong>Connectors:</strong> SFF-8482 (drive), SFF-8087 (internal
+              mini-SAS), SFF-8643 (12G internal)
+            </li>
+            <li>
+              <strong>SAS vs SATA compatibility:</strong> SAS controllers
+              support SATA drives; SATA controllers do NOT support SAS drives.
+            </li>
+            <li>
+              <strong>Typical RPM:</strong> 10k or 15k (enterprise), also
+              nearline 7.2k SAS
+            </li>
+            <li>
+              <strong>Expanders:</strong> Allow large topologies (similar to a
+              switch)
+            </li>
+            <li>
+              <strong>MTBF:</strong> Higher reliability than consumer SATA
+            </li>
+            <li><strong>Hot-swap:</strong> Yes, by design</li>
+            <li>
+              <strong>Wide ports:</strong> Combine multiple lanes for higher
+              throughput
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Answer key for SAS quiz
+      const answers = {
+        q1: "c",
+        q2: "c",
+        q3: "b",
+        q4: "c",
+        q5: "c",
+        q6: "c",
+        q7: "b",
+        q8: "c",
+        q9: "b",
+        q10: "b",
+      };
+
+      let score = 0;
+      let totalAnswered = 0;
+
+      function checkAnswer(element, questionId, selectedAnswer) {
+        if (element.classList.contains("disabled")) {
+          return;
+        }
+
+        const feedback = document.getElementById("feedback-" + questionId);
+        const allOptions =
+          element.parentElement.querySelectorAll(".quiz-option");
+        const correctAnswer = answers[questionId];
+
+        allOptions.forEach((opt) => opt.classList.add("disabled"));
+
+        if (selectedAnswer === correctAnswer) {
+          element.classList.add("correct");
+          feedback.classList.remove("wrong");
+          score++;
+        } else {
+          element.classList.add("incorrect");
+          feedback.classList.add("wrong");
+          // preserve original feedback text but prepend "incorrect"
+          const originalHTML = feedback.innerHTML;
+          feedback.innerHTML =
+            `<strong>✗ Incorrect.</strong> The correct answer is option ${correctAnswer.toUpperCase()}. ` +
+              originalHTML.split("</strong>")[1] || "";
+
+          // highlight correct option
+          allOptions.forEach((opt) => {
+            const optionLetter = opt.textContent.trim().charAt(0).toLowerCase();
+            if (optionLetter === correctAnswer) {
+              opt.classList.add("correct");
+            }
+          });
+        }
+
+        feedback.classList.add("show");
+        totalAnswered++;
+
+        if (totalAnswered === 10) {
+          const percentage = Math.round((score / 10) * 100);
+          const scoreDisplay = document.getElementById("scoreDisplay");
+          let message = "";
+
+          if (percentage >= 90) {
+            message = "🏆 SAS expert! Excellent!";
+          } else if (percentage >= 75) {
+            message = "👍 Good work – review the differences.";
+          } else if (percentage >= 60) {
+            message = "📚 Keep studying: focus on speeds & dual-port.";
+          } else {
+            message = "📖 More practice needed – revisit the basics.";
+          }
+
+          scoreDisplay.innerHTML = `
+            <div>Your Score: ${score} / 10 (${percentage}%)</div>
+            <div>${message}</div>
+          `;
+          scoreDisplay.classList.add("show");
+          scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      function resetQuiz() {
+        score = 0;
+        totalAnswered = 0;
+
+        const allOptions = document.querySelectorAll(".quiz-option");
+        allOptions.forEach((opt) => {
+          opt.classList.remove("correct", "incorrect", "disabled");
+        });
+
+        const allFeedback = document.querySelectorAll(".feedback");
+        allFeedback.forEach((fb) => {
+          fb.classList.remove("show", "wrong");
+          // restore original text (simplified: refresh page content is fine)
+        });
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

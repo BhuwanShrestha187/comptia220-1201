@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: Memory Cards</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #f5576c;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #f093fb;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #f093fb;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #f093fb;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .card-type {
+        background: #f8f9fa;
+        border: 3px solid #f093fb;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .card-type h3 {
+        color: #f5576c;
+        margin-top: 0;
+        font-size: 1.5em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #f5576c;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #f093fb;
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .comparison-card {
+        background: #f8f9fa;
+        border: 2px solid #f093fb;
+        border-radius: 8px;
+        padding: 15px;
+      }
+
+      .comparison-card h4 {
+        color: #f5576c;
+        margin-bottom: 10px;
+      }
+
+      /* Quiz Section with Immediate Feedback */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #f093fb;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #f5576c;
+      }
+
+      .score-display {
+        background: #f5576c;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #f093fb;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover:not(.disabled) {
+        background: #e9ecef;
+        border-color: #f093fb;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #fff;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>💳 Memory Cards</h1>
+        <p>CompTIA A+ 220-1101 - Flash Memory Cards</p>
+      </header>
+
+      <div class="content">
+        <h2>Memory Card Types</h2>
+
+        <div class="simple-box">
+          <p>
+            <strong
+              >Memory cards are removable flash storage devices used in:</strong
+            >
+          </p>
+          <ul>
+            <li>Digital cameras</li>
+            <li>Smartphones (Android)</li>
+            <li>Tablets</li>
+            <li>Action cameras (GoPro, etc.)</li>
+            <li>Drones</li>
+            <li>Gaming devices (Nintendo Switch)</li>
+          </ul>
+        </div>
+
+        <!-- SD Card -->
+        <div class="card-type">
+          <h3>SD (Secure Digital) Card</h3>
+          <div class="simple-box">
+            <p><strong>Physical Size:</strong> 32mm × 24mm × 2.1mm</p>
+            <p><strong>Common Use:</strong> Digital cameras, camcorders</p>
+
+            <h4>SD Card Generations:</h4>
+            <ul>
+              <li><strong>SD:</strong> Up to 2 GB</li>
+              <li><strong>SDHC (High Capacity):</strong> 4 GB to 32 GB</li>
+              <li><strong>SDXC (Extended Capacity):</strong> 64 GB to 2 TB</li>
+              <li>
+                <strong>SDUC (Ultra Capacity):</strong> 2 TB to 128 TB (newer,
+                rare)
+              </li>
+            </ul>
+
+            <p><strong>Features:</strong></p>
+            <ul>
+              <li>Write-protect switch on side</li>
+              <li>Most versatile - works in many devices</li>
+              <li>Different speed classes for different uses</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- MicroSD Card -->
+        <div class="card-type">
+          <h3>MicroSD Card</h3>
+          <div class="simple-box">
+            <p>
+              <strong>Physical Size:</strong> 15mm × 11mm × 1mm (much smaller
+              than SD)
+            </p>
+            <p>
+              <strong>Common Use:</strong> Smartphones, tablets, action cameras,
+              drones
+            </p>
+
+            <h4>MicroSD Generations (same as SD):</h4>
+            <ul>
+              <li><strong>MicroSD:</strong> Up to 2 GB</li>
+              <li><strong>MicroSDHC:</strong> 4 GB to 32 GB</li>
+              <li><strong>MicroSDXC:</strong> 64 GB to 2 TB</li>
+            </ul>
+
+            <p><strong>Features:</strong></p>
+            <ul>
+              <li>Can be used in SD slot with adapter</li>
+              <li>Most common in mobile devices</li>
+              <li>Same speed classes as full-size SD</li>
+              <li>
+                <strong>NOT compatible with iOS devices</strong> (iPhones/iPads)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CompactFlash -->
+        <div class="card-type">
+          <h3>CompactFlash (CF)</h3>
+          <div class="simple-box">
+            <p>
+              <strong>Physical Size:</strong> 43mm × 36mm × 3.3mm (larger,
+              thicker)
+            </p>
+            <p>
+              <strong>Common Use:</strong> Professional cameras, older devices
+            </p>
+
+            <p><strong>Features:</strong></p>
+            <ul>
+              <li>Older technology</li>
+              <li>Still used in some professional cameras</li>
+              <li>Very durable</li>
+              <li>Higher cost per GB</li>
+              <li>Being replaced by faster card types</li>
+            </ul>
+
+            <p><strong>Types:</strong></p>
+            <ul>
+              <li>
+                <strong>CFast:</strong> Faster version using SATA interface
+              </li>
+              <li>
+                <strong>CFexpress:</strong> Newest, uses PCIe/NVMe (very fast)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>SD Card Speed Classes</h2>
+
+        <table>
+          <tr>
+            <th>Speed Class</th>
+            <th>Minimum Write Speed</th>
+            <th>Symbol</th>
+            <th>Best For</th>
+          </tr>
+          <tr>
+            <td><strong>Class 2</strong></td>
+            <td>2 MB/s</td>
+            <td>2 in circle</td>
+            <td>Basic storage (obsolete)</td>
+          </tr>
+          <tr>
+            <td><strong>Class 4</strong></td>
+            <td>4 MB/s</td>
+            <td>4 in circle</td>
+            <td>Basic video (obsolete)</td>
+          </tr>
+          <tr>
+            <td><strong>Class 6</strong></td>
+            <td>6 MB/s</td>
+            <td>6 in circle</td>
+            <td>Basic video</td>
+          </tr>
+          <tr>
+            <td><strong>Class 10</strong></td>
+            <td>10 MB/s</td>
+            <td>10 in circle</td>
+            <td>HD video, photos</td>
+          </tr>
+          <tr>
+            <td><strong>UHS-I U1</strong></td>
+            <td>10 MB/s</td>
+            <td>1 in U</td>
+            <td>HD video</td>
+          </tr>
+          <tr>
+            <td><strong>UHS-I U3</strong></td>
+            <td>30 MB/s</td>
+            <td>3 in U</td>
+            <td>4K video</td>
+          </tr>
+          <tr>
+            <td><strong>V30</strong></td>
+            <td>30 MB/s</td>
+            <td>V30</td>
+            <td>4K video</td>
+          </tr>
+          <tr>
+            <td><strong>V60</strong></td>
+            <td>60 MB/s</td>
+            <td>V60</td>
+            <td>8K video</td>
+          </tr>
+          <tr>
+            <td><strong>V90</strong></td>
+            <td>90 MB/s</td>
+            <td>V90</td>
+            <td>8K video, high bitrate</td>
+          </tr>
+        </table>
+
+        <h3>Application Performance Classes</h3>
+        <div class="simple-box">
+          <p>
+            Designed for running apps from SD card (Android "Adoptable
+            Storage"):
+          </p>
+          <ul>
+            <li>
+              <strong>A1:</strong> Minimum 1500 read IOPS, 500 write IOPS - Good
+              for apps
+            </li>
+            <li>
+              <strong>A2:</strong> Minimum 4000 read IOPS, 2000 write IOPS -
+              Better for apps
+            </li>
+          </ul>
+        </div>
+
+        <h2>Size Comparison Chart</h2>
+
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h4>SD Card</h4>
+            <p><strong>32mm × 24mm</strong></p>
+            <p>Standard size</p>
+            <p>Cameras, laptops</p>
+          </div>
+
+          <div class="comparison-card">
+            <h4>MiniSD</h4>
+            <p><strong>21.5mm × 20mm</strong></p>
+            <p>Obsolete</p>
+            <p>Rarely seen today</p>
+          </div>
+
+          <div class="comparison-card">
+            <h4>MicroSD</h4>
+            <p><strong>15mm × 11mm</strong></p>
+            <p>Smallest</p>
+            <p>Phones, tablets</p>
+          </div>
+
+          <div class="comparison-card">
+            <h4>CompactFlash</h4>
+            <p><strong>43mm × 36mm</strong></p>
+            <p>Largest/thickest</p>
+            <p>Pro cameras</p>
+          </div>
+        </div>
+
+        <h2>Compatibility & Formatting</h2>
+
+        <h3>Device Compatibility</h3>
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>Backward compatible:</strong> SDXC reader can read SDHC
+              and SD cards
+            </li>
+            <li>
+              <strong>NOT forward compatible:</strong> SD reader cannot read
+              SDXC cards
+            </li>
+            <li>
+              <strong>Speed class:</strong> Device must support the speed rating
+              to get full speed
+            </li>
+            <li>
+              <strong>MicroSD adapter:</strong> Allows microSD to work in SD
+              slot
+            </li>
+          </ul>
+        </div>
+
+        <h3>File Systems</h3>
+        <table>
+          <tr>
+            <th>Card Type</th>
+            <th>Default File System</th>
+            <th>Why</th>
+          </tr>
+          <tr>
+            <td><strong>SD (up to 2GB)</strong></td>
+            <td>FAT16</td>
+            <td>Older standard</td>
+          </tr>
+          <tr>
+            <td><strong>SDHC (4-32GB)</strong></td>
+            <td>FAT32</td>
+            <td>Universal compatibility</td>
+          </tr>
+          <tr>
+            <td><strong>SDXC (64GB+)</strong></td>
+            <td>exFAT</td>
+            <td>Supports large files (>4GB)</td>
+          </tr>
+        </table>
+
+        <h2>Common Issues & Solutions</h2>
+
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Card not recognized</td>
+            <td>Dirty contacts, incompatible format, dead card</td>
+            <td>Clean contacts, try different device, reformat (loses data)</td>
+          </tr>
+          <tr>
+            <td>Cannot write to card</td>
+            <td>Write-protect switch enabled (SD cards)</td>
+            <td>Slide switch on side of card to unlock position</td>
+          </tr>
+          <tr>
+            <td>Card full but files deleted</td>
+            <td>Hidden files, corrupted filesystem</td>
+            <td>Show hidden files, format card</td>
+          </tr>
+          <tr>
+            <td>Slow write speed</td>
+            <td>Low speed class card, fragmentation</td>
+            <td>Use faster speed class card (U3, V30+)</td>
+          </tr>
+          <tr>
+            <td>Video recording stops</td>
+            <td>Card too slow for video bitrate</td>
+            <td>Use U3 or V30+ rated card for 4K video</td>
+          </tr>
+          <tr>
+            <td>Files corrupted</td>
+            <td>Removed while writing, fake card</td>
+            <td>Always safely eject, buy from reputable sellers</td>
+          </tr>
+        </table>
+
+        <h2>Important Notes</h2>
+
+        <div class="simple-box">
+          <h3>iOS Devices (iPhones/iPads)</h3>
+          <ul>
+            <li>Do NOT support SD or microSD cards</li>
+            <li>No expandable storage option</li>
+            <li>Must buy device with desired storage capacity</li>
+          </ul>
+        </div>
+
+        <div class="simple-box">
+          <h3>Fake/Counterfeit Cards</h3>
+          <ul>
+            <li>Common problem with memory cards</li>
+            <li>Advertised capacity higher than actual</li>
+            <li>May report as full size but corrupt data</li>
+            <li>Buy from reputable sellers (Amazon, Best Buy, B&H)</li>
+            <li>Test with H2testw (Windows) or F3 (Mac/Linux)</li>
+          </ul>
+        </div>
+
+        <div class="simple-box">
+          <h3>Best Practices</h3>
+          <ul>
+            <li>Always safely eject before removing</li>
+            <li>Format in the device that will use it</li>
+            <li>Don't fill card 100% - leave some free space</li>
+            <li>Keep contacts clean</li>
+            <li>Store in protective case when not in use</li>
+            <li>Backup important data - cards can fail</li>
+          </ul>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Click an answer to get immediate feedback!</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. What is the maximum capacity of an SDHC card?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'a')">
+                A) 2 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'b')">
+                B) 32 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'c')">
+                C) 64 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'd')">
+                D) 2 TB
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q1">
+              <strong>✓ Correct!</strong> SDHC (High Capacity) cards range from
+              4 GB to 32 GB. Standard SD is up to 2 GB, and SDXC is 64 GB to 2
+              TB.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. Which memory card type is SMALLEST in physical size?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'a')">
+                A) SD card
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'b')">
+                B) MicroSD card
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'c')">
+                C) CompactFlash
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'd')">
+                D) MiniSD
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q2">
+              <strong>✓ Correct!</strong> MicroSD (15mm × 11mm) is the smallest
+              common memory card. It's used in smartphones, tablets, and action
+              cameras. It can be used in SD slots with an adapter.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. Which SD card speed class is required for recording 4K video?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'a')">
+                A) Class 10
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'b')">
+                B) U1
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'c')">
+                C) U3 or V30
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'd')">
+                D) Class 6
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q3">
+              <strong>✓ Correct!</strong> U3 or V30 cards (minimum 30 MB/s write
+              speed) are required for smooth 4K video recording. Class 10 and U1
+              (10 MB/s) are too slow for 4K.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. Can iPhones use microSD cards for expandable storage?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'a')">
+                A) Yes, all iPhones support microSD
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'b')">
+                B) No, iOS devices do not support microSD cards
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'c')">
+                C) Only iPhone Pro models support it
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'd')">
+                D) Yes, but only with an adapter
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q4">
+              <strong>✓ Correct!</strong> iPhones and iPads do NOT support SD or
+              microSD cards. There is no way to expand storage on iOS devices -
+              you must buy the storage capacity you need upfront.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. What file system is used on SDXC cards?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'a')">
+                A) FAT16
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'b')">
+                B) FAT32
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'c')">
+                C) exFAT
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'd')">
+                D) NTFS
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q5">
+              <strong>✓ Correct!</strong> SDXC cards use exFAT file system
+              because it supports files larger than 4 GB and works across
+              different operating systems. FAT32 has a 4 GB file size limit.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. A user cannot write to an SD card. What should be checked
+              FIRST?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'a')">
+                A) Format the card
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'b')">
+                B) Check the write-protect switch on the side of the card
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'c')">
+                C) Buy a new card
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'd')">
+                D) Update the device firmware
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q6">
+              <strong>✓ Correct!</strong> SD cards have a physical write-protect
+              switch on the side. If it's in the locked position, you cannot
+              write to the card. Slide it to the unlock position.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. What does the "A1" rating on a microSD card indicate?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'a')">
+                A) Audio recording capability
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'b')">
+                B) Application performance (can run apps from card)
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'c')">
+                C) Adapter included
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'd')">
+                D) Automatic backup feature
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q7">
+              <strong>✓ Correct!</strong> A1 (and A2) ratings indicate the card
+              has good random read/write performance suitable for running apps
+              directly from the SD card (Android "Adoptable Storage").
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. Which card type is commonly used in professional cameras and is
+              being replaced by newer technology?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'a')">
+                A) MicroSD
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'b')">
+                B) SD
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'c')">
+                C) CompactFlash
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'd')">
+                D) USB flash drive
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q8">
+              <strong>✓ Correct!</strong> CompactFlash (CF) cards were standard
+              in professional cameras but are being replaced by faster formats
+              like CFast and CFexpress. They're larger and thicker than SD
+              cards.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              9. Can an SDXC card work in a device that only supports SDHC?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'a')">
+                A) Yes, they are fully compatible
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'b')">
+                B) No, SDXC cards will not work in SDHC-only devices
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'c')">
+                C) Yes, but at reduced speed
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'd')">
+                D) Only if formatted as FAT32
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q9">
+              <strong>✓ Correct!</strong> SD cards are NOT forward compatible.
+              An SDHC device cannot read SDXC cards. However, an SDXC reader CAN
+              read SDHC and SD cards (backward compatible).
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              10. What is the minimum write speed of a UHS-I U3 rated SD card?
+            </div>
+            <div class="quiz-options">
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'a')"
+              >
+                A) 10 MB/s
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'b')"
+              >
+                B) 30 MB/s
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'c')"
+              >
+                C) 60 MB/s
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'd')"
+              >
+                D) 90 MB/s
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q10">
+              <strong>✓ Correct!</strong> U3 guarantees minimum 30 MB/s write
+              speed, which is required for 4K video recording. U1 is 10 MB/s,
+              V60 is 60 MB/s, and V90 is 90 MB/s.
+            </div>
+          </div>
+
+          <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li><strong>SD:</strong> Up to 2 GB (standard size: 32×24mm)</li>
+            <li><strong>SDHC:</strong> 4 GB to 32 GB (High Capacity)</li>
+            <li>
+              <strong>SDXC:</strong> 64 GB to 2 TB (Extended Capacity, uses
+              exFAT)
+            </li>
+            <li>
+              <strong>MicroSD:</strong> Smallest size (15×11mm), used in
+              smartphones/tablets
+            </li>
+            <li>
+              <strong>CompactFlash:</strong> Larger (43×36mm), professional
+              cameras, being phased out
+            </li>
+            <li><strong>Class 10:</strong> 10 MB/s minimum - HD video</li>
+            <li><strong>U3 or V30:</strong> 30 MB/s minimum - 4K video</li>
+            <li>
+              <strong>A1/A2:</strong> Application performance rating (running
+              apps from SD)
+            </li>
+            <li>
+              <strong>iOS devices:</strong> Do NOT support SD or microSD cards
+            </li>
+            <li>
+              <strong>Write-protect switch:</strong> On side of SD cards (not
+              microSD)
+            </li>
+            <li>
+              <strong>Backward compatible:</strong> SDXC readers can read
+              SDHC/SD
+            </li>
+            <li>
+              <strong>NOT forward compatible:</strong> SDHC readers cannot read
+              SDXC
+            </li>
+            <li>
+              <strong>File systems:</strong> SD=FAT16, SDHC=FAT32, SDXC=exFAT
+            </li>
+            <li>
+              <strong>MicroSD adapter:</strong> Allows microSD to work in SD
+              slot
+            </li>
+            <li>
+              <strong>Safely eject:</strong> Always eject before removing to
+              prevent corruption
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "b",
+        q3: "c",
+        q4: "b",
+        q5: "c",
+        q6: "b",
+        q7: "b",
+        q8: "c",
+        q9: "b",
+        q10: "b",
+      };
+
+      let score = 0;
+      let totalAnswered = 0;
+
+      function checkAnswer(element, questionId, selectedAnswer) {
+        if (element.classList.contains("disabled")) {
+          return;
+        }
+
+        const feedback = document.getElementById("feedback-" + questionId);
+        const allOptions =
+          element.parentElement.querySelectorAll(".quiz-option");
+        const correctAnswer = answers[questionId];
+
+        allOptions.forEach((opt) => opt.classList.add("disabled"));
+
+        if (selectedAnswer === correctAnswer) {
+          element.classList.add("correct");
+          feedback.classList.remove("wrong");
+          score++;
+        } else {
+          element.classList.add("incorrect");
+          feedback.classList.add("wrong");
+          feedback.innerHTML =
+            `<strong>✗ Incorrect.</strong> The correct answer is option ${correctAnswer.toUpperCase()}. ` +
+            feedback.innerHTML.split("</strong>")[1];
+
+          allOptions.forEach((opt) => {
+            const optionLetter = opt.textContent.trim().charAt(0).toLowerCase();
+            if (optionLetter === correctAnswer) {
+              opt.classList.add("correct");
+            }
+          });
+        }
+
+        feedback.classList.add("show");
+        totalAnswered++;
+
+        if (totalAnswered === 10) {
+          const percentage = Math.round((score / 10) * 100);
+          const scoreDisplay = document.getElementById("scoreDisplay");
+          let message = "";
+
+          if (percentage >= 90) {
+            message = "🏆 Excellent! You know your memory cards!";
+          } else if (percentage >= 75) {
+            message = "👍 Good job! Review the incorrect answers.";
+          } else if (percentage >= 60) {
+            message = "📚 Keep studying. Review the capacities and speeds.";
+          } else {
+            message = "📖 More practice needed. Focus on SD card types.";
+          }
+
+          scoreDisplay.innerHTML = `
+                    <div>Your Score: ${score} / 10 (${percentage}%)</div>
+                    <div>${message}</div>
+                `;
+          scoreDisplay.classList.add("show");
+          scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      function resetQuiz() {
+        score = 0;
+        totalAnswered = 0;
+
+        const allOptions = document.querySelectorAll(".quiz-option");
+        allOptions.forEach((opt) => {
+          opt.classList.remove("correct", "incorrect", "disabled");
+        });
+
+        const allFeedback = document.querySelectorAll(".feedback");
+        allFeedback.forEach((fb) => {
+          fb.classList.remove("show", "wrong");
+        });
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CompTIA A+ 220-1101: Optical Drives</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #764ba2;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #764ba2;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .simple-box {
+        background: #f5f5f5;
+        border-left: 4px solid #764ba2;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th {
+        background: #667eea;
+        color: white;
+        padding: 12px;
+        text-align: left;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      ul {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      strong {
+        color: #764ba2;
+      }
+
+      /* Quiz Section with Immediate Feedback */
+      .quiz-container {
+        background: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 10px;
+        border: 3px solid #764ba2;
+      }
+
+      .quiz-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .quiz-header h2 {
+        border: none;
+        margin: 0;
+        color: #667eea;
+      }
+
+      .score-display {
+        background: #667eea;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .score-display.show {
+        display: block;
+      }
+
+      .question-card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 5px solid #764ba2;
+      }
+
+      .question-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .quiz-options {
+        margin: 15px 0;
+      }
+
+      .quiz-option {
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+      }
+
+      .quiz-option:hover:not(.disabled) {
+        background: #e9ecef;
+        border-color: #764ba2;
+      }
+
+      .quiz-option.correct {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+        font-weight: 600;
+      }
+
+      .quiz-option.incorrect {
+        background: #f8d7da;
+        border-color: #dc3545;
+        color: #721c24;
+      }
+
+      .quiz-option.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      .feedback {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.show {
+        display: block;
+      }
+
+      .feedback.wrong {
+        background: #f8d7da;
+        border-color: #dc3545;
+      }
+
+      .reset-btn {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9em;
+        margin: 10px auto;
+        display: block;
+      }
+
+      .reset-btn:hover {
+        background: #5a6268;
+      }
+
+      /* Key Points Section */
+      .key-points {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .key-points h2 {
+        color: white;
+        border-bottom: 3px solid white;
+        margin-top: 0;
+      }
+
+      .key-points ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      .key-points li {
+        padding-left: 30px;
+        position: relative;
+        margin: 12px 0;
+        font-size: 1.05em;
+      }
+
+      .key-points li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #4caf50;
+      }
+
+      .key-points strong {
+        color: #fff;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>💿 Optical Drives</h1>
+        <p>CompTIA A+ 220-1101 - Basic Essentials</p>
+      </header>
+
+      <div class="content">
+        <h2>Optical Drive Types</h2>
+
+        <table>
+          <tr>
+            <th>Type</th>
+            <th>Read</th>
+            <th>Write/Burn</th>
+            <th>Capacity</th>
+          </tr>
+          <tr>
+            <td><strong>CD-ROM</strong></td>
+            <td>Read CDs only</td>
+            <td>No</td>
+            <td>700 MB</td>
+          </tr>
+          <tr>
+            <td><strong>CD-RW</strong></td>
+            <td>Read CDs</td>
+            <td>Write/rewrite CDs</td>
+            <td>700 MB</td>
+          </tr>
+          <tr>
+            <td><strong>DVD-ROM</strong></td>
+            <td>Read DVDs and CDs</td>
+            <td>No</td>
+            <td>4.7 GB (single layer)</td>
+          </tr>
+          <tr>
+            <td><strong>DVD-RW</strong></td>
+            <td>Read DVDs and CDs</td>
+            <td>Write/rewrite DVDs and CDs</td>
+            <td>4.7 GB (single layer)</td>
+          </tr>
+          <tr>
+            <td><strong>Blu-ray (BD-ROM)</strong></td>
+            <td>Read Blu-ray, DVDs, CDs</td>
+            <td>No</td>
+            <td>25 GB (single layer), 50 GB (dual layer)</td>
+          </tr>
+          <tr>
+            <td><strong>BD-RE</strong></td>
+            <td>Read Blu-ray, DVDs, CDs</td>
+            <td>Write/rewrite Blu-ray, DVDs, CDs</td>
+            <td>25 GB (single layer), 50 GB (dual layer)</td>
+          </tr>
+        </table>
+
+        <h2>Key Specifications</h2>
+
+        <h3>Capacities (Remember These)</h3>
+        <div class="simple-box">
+          <ul>
+            <li><strong>CD:</strong> 700 MB (80 minutes audio)</li>
+            <li><strong>DVD (single layer):</strong> 4.7 GB</li>
+            <li><strong>DVD (dual layer):</strong> 8.5 GB</li>
+            <li><strong>Blu-ray (single layer):</strong> 25 GB</li>
+            <li><strong>Blu-ray (dual layer):</strong> 50 GB</li>
+          </ul>
+        </div>
+
+        <h3>Write Speeds</h3>
+        <div class="simple-box">
+          <ul>
+            <li><strong>1x CD speed:</strong> 150 KB/s</li>
+            <li><strong>52x CD:</strong> Common maximum speed</li>
+            <li><strong>1x DVD speed:</strong> 1.32 MB/s</li>
+            <li><strong>16x DVD:</strong> Common maximum speed</li>
+            <li>Higher number = faster burning</li>
+          </ul>
+        </div>
+
+        <h2>Disc Types</h2>
+
+        <table>
+          <tr>
+            <th>Suffix</th>
+            <th>Meaning</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td><strong>-ROM</strong></td>
+            <td>Read-Only Memory</td>
+            <td>Factory pressed, cannot write</td>
+          </tr>
+          <tr>
+            <td><strong>-R</strong></td>
+            <td>Recordable</td>
+            <td>Write once, cannot erase</td>
+          </tr>
+          <tr>
+            <td><strong>-RW</strong></td>
+            <td>ReWritable</td>
+            <td>Write, erase, rewrite multiple times</td>
+          </tr>
+          <tr>
+            <td><strong>-RE</strong></td>
+            <td>Recordable Erasable</td>
+            <td>Same as RW (Blu-ray uses RE)</td>
+          </tr>
+        </table>
+
+        <h2>Connection Types</h2>
+
+        <div class="simple-box">
+          <h3>Internal Optical Drives</h3>
+          <ul>
+            <li>
+              <strong>SATA:</strong> Modern standard connection (same as
+              HDDs/SSDs)
+            </li>
+            <li>
+              <strong>PATA/IDE:</strong> Legacy, wide ribbon cable (older
+              systems)
+            </li>
+            <li>Connects to motherboard via data cable</li>
+            <li>Requires power cable from PSU</li>
+            <li>5.25" drive bay size</li>
+          </ul>
+        </div>
+
+        <div class="simple-box">
+          <h3>External Optical Drives</h3>
+          <ul>
+            <li><strong>USB:</strong> Most common (USB 2.0, 3.0, or USB-C)</li>
+            <li>Plug and play - no installation needed</li>
+            <li>Portable, works with laptops</li>
+            <li>Powered by USB or separate power adapter</li>
+          </ul>
+        </div>
+
+        <h2>Common Issues & Solutions</h2>
+
+        <table>
+          <tr>
+            <th>Problem</th>
+            <th>Cause</th>
+            <th>Solution</th>
+          </tr>
+          <tr>
+            <td>Disc won't read</td>
+            <td>Dirty/scratched disc, wrong format</td>
+            <td>Clean disc, try different disc, check drive compatibility</td>
+          </tr>
+          <tr>
+            <td>Drive not detected</td>
+            <td>Loose cable, driver issue, BIOS disabled</td>
+            <td>Check cables, update drivers, enable in BIOS</td>
+          </tr>
+          <tr>
+            <td>Disc tray won't open</td>
+            <td>Mechanical failure, disc stuck</td>
+            <td>Use manual eject hole with paperclip</td>
+          </tr>
+          <tr>
+            <td>Burning fails</td>
+            <td>Wrong media type, buffer underrun, old firmware</td>
+            <td>
+              Use correct disc type, close other programs, update firmware
+            </td>
+          </tr>
+          <tr>
+            <td>Slow read speed</td>
+            <td>Dirty lens, old drive, DMA disabled</td>
+            <td>Clean lens, check DMA mode in Device Manager</td>
+          </tr>
+        </table>
+
+        <h2>Important Compatibility</h2>
+
+        <div class="simple-box">
+          <h3>Backward Compatibility</h3>
+          <ul>
+            <li>
+              <strong>Blu-ray drives:</strong> Can read Blu-ray, DVD, and CD
+            </li>
+            <li>
+              <strong>DVD drives:</strong> Can read DVD and CD (NOT Blu-ray)
+            </li>
+            <li><strong>CD drives:</strong> Can read CD only</li>
+          </ul>
+          <p>
+            <strong>Rule:</strong> Higher technology can read lower, but not
+            vice versa
+          </p>
+        </div>
+
+        <div class="simple-box">
+          <h3>DVD Formats (For Exam)</h3>
+          <ul>
+            <li><strong>DVD+R/RW:</strong> One recordable format</li>
+            <li><strong>DVD-R/RW:</strong> Another recordable format</li>
+            <li>Both work similarly, slight technical differences</li>
+            <li>Most modern drives support both (DVD±R/RW)</li>
+            <li>Not critical to memorize differences for exam</li>
+          </ul>
+        </div>
+
+        <h2>Cleaning & Maintenance</h2>
+
+        <div class="simple-box">
+          <ul>
+            <li>
+              <strong>Lens cleaning:</strong> Use optical drive cleaning disc
+            </li>
+            <li>
+              <strong>Disc cleaning:</strong> Wipe from center outward (not
+              circular)
+            </li>
+            <li>
+              <strong>Avoid:</strong> Never use abrasive cleaners on discs
+            </li>
+            <li>
+              <strong>Storage:</strong> Keep discs in cases to prevent scratches
+            </li>
+            <li><strong>Environment:</strong> Keep drives dust-free</li>
+          </ul>
+        </div>
+
+        <h2>Modern Context</h2>
+
+        <div class="simple-box">
+          <p><strong>Declining Use:</strong></p>
+          <ul>
+            <li>Many modern laptops don't include optical drives</li>
+            <li>USB flash drives and cloud storage have replaced CDs/DVDs</li>
+            <li>OS installation now done via USB or network</li>
+            <li>External USB optical drives common when needed</li>
+            <li>
+              Still used for: legacy software, media archives, some backups
+            </li>
+          </ul>
+        </div>
+
+        <!-- INTERACTIVE QUIZ SECTION -->
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>🎯 Interactive Practice Quiz</h2>
+            <p>Click an answer to get immediate feedback!</p>
+          </div>
+
+          <div class="score-display" id="scoreDisplay"></div>
+
+          <div class="question-card">
+            <div class="question-text">
+              1. What is the storage capacity of a standard single-layer DVD?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'a')">
+                A) 700 MB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'b')">
+                B) 4.7 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'c')">
+                C) 8.5 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q1', 'd')">
+                D) 25 GB
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q1">
+              <strong>✓ Correct!</strong> A single-layer DVD holds 4.7 GB. CD
+              holds 700 MB, dual-layer DVD holds 8.5 GB, and single-layer
+              Blu-ray holds 25 GB.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              2. Which optical drive type can read Blu-ray, DVD, and CD discs?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'a')">
+                A) CD-ROM drive
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'b')">
+                B) DVD-ROM drive
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'c')">
+                C) Blu-ray drive
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q2', 'd')">
+                D) CD-RW drive
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q2">
+              <strong>✓ Correct!</strong> Blu-ray drives are backward compatible
+              and can read all three formats: Blu-ray, DVD, and CD. DVD drives
+              can only read DVD and CD. CD drives can only read CDs.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              3. What does the "RW" suffix mean in CD-RW or DVD-RW?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'a')">
+                A) Read-Write
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'b')">
+                B) ReWritable
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'c')">
+                C) Rapid Write
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q3', 'd')">
+                D) Random Write
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q3">
+              <strong>✓ Correct!</strong> RW stands for ReWritable, meaning the
+              disc can be written to, erased, and rewritten multiple times. -R
+              discs can only be written once.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              4. What is the standard storage capacity of a CD?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'a')">
+                A) 700 MB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'b')">
+                B) 4.7 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'c')">
+                C) 1 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q4', 'd')">
+                D) 650 MB
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q4">
+              <strong>✓ Correct!</strong> Standard CDs hold 700 MB of data or 80
+              minutes of audio. This is the most common capacity you'll see.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              5. What is the most common connection type for modern internal
+              optical drives?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'a')">
+                A) USB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'b')">
+                B) SATA
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'c')">
+                C) SCSI
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q5', 'd')">
+                D) Thunderbolt
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q5">
+              <strong>✓ Correct!</strong> SATA is the modern standard connection
+              for internal optical drives, just like modern HDDs and SSDs.
+              PATA/IDE was used on older systems.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              6. How much data can a single-layer Blu-ray disc hold?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'a')">
+                A) 4.7 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'b')">
+                B) 8.5 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'c')">
+                C) 25 GB
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q6', 'd')">
+                D) 50 GB
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q6">
+              <strong>✓ Correct!</strong> Single-layer Blu-ray holds 25 GB.
+              Dual-layer Blu-ray holds 50 GB. This is much more than DVDs (4.7
+              GB) or CDs (700 MB).
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              7. The optical drive tray won't open. What is the FIRST thing to
+              try?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'a')">
+                A) Replace the drive
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'b')">
+                B) Use the manual eject hole with a paperclip
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'c')">
+                C) Force it open with a screwdriver
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q7', 'd')">
+                D) Reinstall Windows
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q7">
+              <strong>✓ Correct!</strong> All optical drives have a manual eject
+              hole (small pinhole near the tray). Insert a straightened
+              paperclip to manually open the tray. This works even when the
+              drive has no power.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              8. What does "ROM" stand for in CD-ROM or DVD-ROM?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'a')">
+                A) Random Order Memory
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'b')">
+                B) Read-Only Memory
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'c')">
+                C) Removable Optical Media
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q8', 'd')">
+                D) Recordable Original Media
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q8">
+              <strong>✓ Correct!</strong> ROM stands for Read-Only Memory. ROM
+              discs are factory-pressed and cannot be written to. They can only
+              be read.
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              9. Can a DVD drive read Blu-ray discs?
+            </div>
+            <div class="quiz-options">
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'a')">
+                A) Yes, all DVD drives can read Blu-ray
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'b')">
+                B) No, DVD drives cannot read Blu-ray discs
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'c')">
+                C) Only DVD-RW drives can read Blu-ray
+              </label>
+              <label class="quiz-option" onclick="checkAnswer(this, 'q9', 'd')">
+                D) Yes, but only dual-layer discs
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q9">
+              <strong>✓ Correct!</strong> DVD drives CANNOT read Blu-ray discs.
+              Blu-ray uses a different laser technology. However, Blu-ray drives
+              can read DVDs and CDs (backward compatible).
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="question-text">
+              10. What is the capacity of a dual-layer Blu-ray disc?
+            </div>
+            <div class="quiz-options">
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'a')"
+              >
+                A) 8.5 GB
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'b')"
+              >
+                B) 25 GB
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'c')"
+              >
+                C) 50 GB
+              </label>
+              <label
+                class="quiz-option"
+                onclick="checkAnswer(this, 'q10', 'd')"
+              >
+                D) 100 GB
+              </label>
+            </div>
+            <div class="feedback" id="feedback-q10">
+              <strong>✓ Correct!</strong> Dual-layer Blu-ray discs hold 50 GB
+              (double the 25 GB of single-layer). Dual-layer DVDs hold 8.5 GB.
+            </div>
+          </div>
+
+          <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+        </div>
+
+        <!-- KEY POINTS SECTION -->
+        <div class="key-points">
+          <h2>🎯 Key Points for the Exam</h2>
+          <ul>
+            <li><strong>CD capacity:</strong> 700 MB (80 minutes audio)</li>
+            <li><strong>DVD single-layer:</strong> 4.7 GB</li>
+            <li><strong>DVD dual-layer:</strong> 8.5 GB</li>
+            <li><strong>Blu-ray single-layer:</strong> 25 GB</li>
+            <li><strong>Blu-ray dual-layer:</strong> 50 GB</li>
+            <li><strong>-ROM:</strong> Read-Only Memory (cannot write)</li>
+            <li><strong>-R:</strong> Recordable (write once only)</li>
+            <li>
+              <strong>-RW/-RE:</strong> ReWritable (write, erase, rewrite)
+            </li>
+            <li>
+              <strong>Backward compatibility:</strong> Blu-ray reads DVD/CD; DVD
+              reads CD; CD reads CD only
+            </li>
+            <li>
+              <strong>Connection:</strong> SATA for modern internal drives; USB
+              for external
+            </li>
+            <li>
+              <strong>Drive bay size:</strong> 5.25" for internal optical drives
+            </li>
+            <li>
+              <strong>Manual eject:</strong> Paperclip in pinhole to manually
+              open stuck tray
+            </li>
+            <li>
+              <strong>Cleaning:</strong> Wipe discs from center outward, not
+              circular
+            </li>
+            <li>
+              <strong>Speed:</strong> Higher number = faster (e.g., 52x CD
+              faster than 8x CD)
+            </li>
+            <li>
+              <strong>Modern trend:</strong> Many laptops no longer include
+              optical drives
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const answers = {
+        q1: "b",
+        q2: "c",
+        q3: "b",
+        q4: "a",
+        q5: "b",
+        q6: "c",
+        q7: "b",
+        q8: "b",
+        q9: "b",
+        q10: "c",
+      };
+
+      let score = 0;
+      let totalAnswered = 0;
+
+      function checkAnswer(element, questionId, selectedAnswer) {
+        if (element.classList.contains("disabled")) {
+          return;
+        }
+
+        const feedback = document.getElementById("feedback-" + questionId);
+        const allOptions =
+          element.parentElement.querySelectorAll(".quiz-option");
+        const correctAnswer = answers[questionId];
+
+        allOptions.forEach((opt) => opt.classList.add("disabled"));
+
+        if (selectedAnswer === correctAnswer) {
+          element.classList.add("correct");
+          feedback.classList.remove("wrong");
+          score++;
+        } else {
+          element.classList.add("incorrect");
+          feedback.classList.add("wrong");
+          feedback.innerHTML =
+            `<strong>✗ Incorrect.</strong> The correct answer is option ${correctAnswer.toUpperCase()}. ` +
+            feedback.innerHTML.split("</strong>")[1];
+
+          allOptions.forEach((opt) => {
+            const optionLetter = opt.textContent.trim().charAt(0).toLowerCase();
+            if (optionLetter === correctAnswer) {
+              opt.classList.add("correct");
+            }
+          });
+        }
+
+        feedback.classList.add("show");
+        totalAnswered++;
+
+        if (totalAnswered === 10) {
+          const percentage = Math.round((score / 10) * 100);
+          const scoreDisplay = document.getElementById("scoreDisplay");
+          let message = "";
+
+          if (percentage >= 90) {
+            message = "🏆 Excellent! You know your optical drives!";
+          } else if (percentage >= 75) {
+            message = "👍 Good job! Review the incorrect answers.";
+          } else if (percentage >= 60) {
+            message = "📚 Keep studying. Review the capacities.";
+          } else {
+            message = "📖 More practice needed. Focus on the basics.";
+          }
+
+          scoreDisplay.innerHTML = `
+                    <div>Your Score: ${score} / 10 (${percentage}%)</div>
+                    <div>${message}</div>
+                `;
+          scoreDisplay.classList.add("show");
+          scoreDisplay.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      function resetQuiz() {
+        score = 0;
+        totalAnswered = 0;
+
+        const allOptions = document.querySelectorAll(".quiz-option");
+        allOptions.forEach((opt) => {
+          opt.classList.remove("correct", "incorrect", "disabled");
+        });
+
+        const allFeedback = document.querySelectorAll(".feedback");
+        allFeedback.forEach((fb) => {
+          fb.classList.remove("show", "wrong");
+        });
+
+        document.getElementById("scoreDisplay").classList.remove("show");
+        document
+          .querySelector(".quiz-container")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
